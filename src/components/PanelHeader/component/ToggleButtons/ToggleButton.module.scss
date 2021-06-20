@@ -1,0 +1,26 @@
+
+.toggleButton {
+  // background-color: #35baf6 !important;
+  border-radius: 0 !important;
+  color: #fff !important;
+  width: 15vw !important;
+// min-width: 120px !important;
+// max-width: 180px !important;
+  // border:1px solid #019de6!important;   
+  font-weight: bold !important;
+  font-size: 1.2em !important;
+  box-shadow: 0 3px 1px #004d70;
+  z-index: 10 !important;
+
+  // &:hover {
+    // background-color: #0195da !important;
+  // }
+  &:active{
+  background-color: #016b9c !important;
+    
+  }
+  // &:focus {
+  // background-color: #001e2c !important;
+    
+  // }
+}

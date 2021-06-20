@@ -1,17 +1,16 @@
 import React, { Component } from 'react';
 import { Button } from '@material-ui/core';
-import Badge from '@material-ui/core/Badge';
 import { makeStyles } from '@material-ui/core/styles';
-import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
 
 
-
-export default function CartButton() {
+export default function HomeButton() {
   const useStyles = makeStyles((theme) => ({
     root: {
       '& > *': {
         margin: theme.spacing(1),
-        color: '#fff'
+        color: '#fff',
+        fontWeight: 'bold',
+        fontSize: '20px'
       },
     },
   }));
@@ -20,9 +19,7 @@ export default function CartButton() {
   return (
     <div className={classes.root}>
       <Button>
-        <Badge badgeContent={1} color="secondary">
-          <ShoppingCartIcon />
-        </Badge>
+       بازگشت به سایت
       </Button>
 
     </div>

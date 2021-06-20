@@ -19,48 +19,12 @@ const useStyles = makeStyles((theme) => ({
     backgroundColor: ''
   },
   toolbar: {
-    justifyContent:'space-between'
-  },
-  drawer: {
-    width: drawerWidth,
-    flexShrink: 0,
-  },
-  drawerPaper: {
-    width: drawerWidth,
-  },
-  drawerContainer: {
-    overflow: 'auto',
-
-  },
-  content: {
-    flexGrow: 1,
-    padding: theme.spacing(3),
-  },
-  subHeader: {
-    color: '#555',
-    fontWeight: 'bold',
-    margin: 0,
-    // padding:0
-  },
-  inline: {
-    margin: 0,
-    padding: 0
-  },
-  text: {
-    margin: 0,
-    padding: 0
-  },
-  list: {
-    margin: 0,
-    padding: 0
-  },
-  listItem: {
-    padding: '0 15px'
+    justifyContent:'space-between',
   }
 
 }));
 
-export default function ClippedDrawer() {
+export default function StoreHeader(props) {
   const classes = useStyles();
 
   return (
@@ -68,13 +32,14 @@ export default function ClippedDrawer() {
       <CssBaseline />
       {/* you can give  position="fixed"  */}
       <AppBar elevation={1} className={classes.appBar}>
-        <Toolbar className={classes.toolbar}>
+        <Toolbar className={classes.toolbar} >
 
           <Logo />
           <NavButtons />
-
+          
         </Toolbar>
       </AppBar>
+      {props.children}
     </div>
   );
 }
