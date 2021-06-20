@@ -18,6 +18,9 @@ const useStyles = makeStyles((theme) => ({
     zIndex: theme.zIndex.drawer + 1,
     backgroundColor: ''
   },
+  toolbar: {
+    justifyContent:'space-between'
+  },
   drawer: {
     width: drawerWidth,
     flexShrink: 0,
@@ -65,11 +68,11 @@ export default function ClippedDrawer() {
       <CssBaseline />
       {/* you can give  position="fixed"  */}
       <AppBar elevation={1} className={classes.appBar}>
-        <Toolbar  >
+        <Toolbar className={classes.toolbar}>
 
-          <NavButtons />
           <Logo />
-          
+          <NavButtons />
+
         </Toolbar>
       </AppBar>
     </div>

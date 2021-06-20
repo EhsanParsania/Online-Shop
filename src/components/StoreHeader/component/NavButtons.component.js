@@ -5,10 +5,17 @@ import CartButton from './CartButton.component'
 
 
 function NavButtons() {
+  const style = {
+    navButton: {
+      display: 'flex',
+      alignItems: 'center'
+    }
+  }
+
   return (
-    <div>
-      <ManagementButton/>
-      <CartButton/>
+    <div style={style.navButton}>
+      <ManagementButton />
+      <CartButton />
     </div>
   )
 }
