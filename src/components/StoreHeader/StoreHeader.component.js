@@ -18,46 +18,8 @@ const useStyles = makeStyles((theme) => ({
     zIndex: theme.zIndex.drawer + 1,
     backgroundColor: ''
   },
-<<<<<<< Updated upstream
-  drawer: {
-    width: drawerWidth,
-    flexShrink: 0,
-  },
-  drawerPaper: {
-    width: drawerWidth,
-  },
-  drawerContainer: {
-    overflow: 'auto',
-
-  },
-  content: {
-    flexGrow: 1,
-    padding: theme.spacing(3),
-  },
-  subHeader: {
-    color: '#555',
-    fontWeight: 'bold',
-    margin: 0,
-    // padding:0
-  },
-  inline: {
-    margin: 0,
-    padding: 0
-  },
-  text: {
-    margin: 0,
-    padding: 0
-  },
-  list: {
-    margin: 0,
-    padding: 0
-  },
-  listItem: {
-    padding: '0 15px'
-=======
   toolbar: {
     justifyContent:'space-between'
->>>>>>> Stashed changes
   }
 
 }));
