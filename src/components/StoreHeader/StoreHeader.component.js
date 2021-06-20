@@ -18,6 +18,7 @@ const useStyles = makeStyles((theme) => ({
     zIndex: theme.zIndex.drawer + 1,
     backgroundColor: ''
   },
+<<<<<<< Updated upstream
   drawer: {
     width: drawerWidth,
     flexShrink: 0,
@@ -53,11 +54,15 @@ const useStyles = makeStyles((theme) => ({
   },
   listItem: {
     padding: '0 15px'
+=======
+  toolbar: {
+    justifyContent:'space-between'
+>>>>>>> Stashed changes
   }
 
 }));
 
-export default function ClippedDrawer() {
+export default function StoreHeader(props) {
   const classes = useStyles();
 
   return (
@@ -72,6 +77,7 @@ export default function ClippedDrawer() {
           
         </Toolbar>
       </AppBar>
+      {props.children}
     </div>
   );
 }
