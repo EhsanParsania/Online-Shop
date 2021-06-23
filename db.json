@@ -1,0 +1,196 @@
+{
+  "products": [
+    {
+      "name": "asus laptop",
+      "brand": "asus",
+      "price": "1000$",
+      "createdAt": 1622901942857,
+      "id": 1
+    },
+    {
+      "name": "apple laptop",
+      "brand": "apple",
+      "price": "2000$",
+      "createdAt": 1622901942857,
+      "id": 2
+    },
+    {
+      "name": "MSI laptop",
+      "brand": "MSI",
+      "price": "800$",
+      "createdAt": 1622970916276,
+      "id": 3
+    },
+    {
+      "name": "Mouse",
+      "brand": "MSI",
+      "price": "30$",
+      "createdAt": 1622970954009,
+      "id": 4
+    },
+    {
+      "name": "iphone",
+      "brand": "apple",
+      "price": "1030$",
+      "createdAt": 1622970974534,
+      "id": 5
+    },
+    {
+      "name": "iphone 12",
+      "brand": "apple",
+      "price": "1200$",
+      "createdAt": 1622970991643,
+      "id": 6
+    }
+  ],
+  "customers": [
+    {
+      "name": "Nina",
+      "age": "23",
+      "lastName": "female",
+      "image": "/files/ec25e268e1c2d6a5c52ab2d0f35c13e5",
+      "createdAt": 1622970347923,
+      "id": 1
+    },
+    {
+      "name": "Mandy",
+      "age": "28",
+      "lastName": "female",
+      "image": "/files/4fd3494d66a59fcf06f24afd6f3e7a35",
+      "createdAt": 1622970376680,
+      "id": 2
+    },
+    {
+      "name": "Joe",
+      "age": "15",
+      "lastName": "male",
+      "image": "/files/bd85282dfcf1fb90996d69bc4496512e",
+      "createdAt": 1622970407853,
+      "id": 3
+    },
+    {
+      "name": "Dan",
+      "age": "21",
+      "lastName": "male",
+      "image": "/files/bb75c192059bb773acdfbb51294dbb3f",
+      "createdAt": 1622970468719,
+      "id": 4
+    },
+    {
+      "name": "John",
+      "age": "47",
+      "lastName": "male",
+      "image": "/files/f0ea1fec9bbcc15d0cf3794593bbc421",
+      "createdAt": 1622970537854,
+      "id": 5
+    },
+    {
+      "name": "Narsis",
+      "age": "29",
+      "lastName": "female",
+      "image": "/files/9c177d0da2df71f28e5ca47fa0b61556",
+      "createdAt": 1622970585403,
+      "id": 6
+    },
+    {
+      "name": "Sara",
+      "age": "22",
+      "lastName": "female",
+      "image": "/files/66200a50bfa478106115feafbdb7c00a",
+      "createdAt": 1622970598952,
+      "id": 7
+    },
+    {
+      "name": "Sheldon",
+      "age": "30",
+      "lastName": "male",
+      "image": "/files/8ed9e6028a8cee1bdda909318c373205",
+      "createdAt": 1622970622946,
+      "id": 8
+    },
+    {
+      "name": "Tom",
+      "age": "33",
+      "lastName": "male",
+      "image": "/files/1cd69682d0be56ad260d8a34755aa122",
+      "createdAt": 1622970640488,
+      "id": 9
+    },
+    {
+      "name": "Hanna",
+      "age": "30",
+      "lastName": "female",
+      "image": "/files/8b492126b0f31d16708e2865447927a3",
+      "createdAt": 1622970669789,
+      "id": 10
+    },
+    {
+      "name": "Emy",
+      "age": "24",
+      "lastName": "female",
+      "image": "/files/36fc06939095c762598728aac8408aeb",
+      "createdAt": 1622970710130,
+      "id": 11
+    },
+    {
+      "name": "Maria",
+      "age": "24",
+      "lastName": "female",
+      "image": "/files/a24ab99f1952eb249040e01eb3a81ab5",
+      "createdAt": 1622970773321,
+      "id": 12
+    },
+    {
+      "name": "Rechel",
+      "age": "14",
+      "lastName": "female",
+      "image": "/files/6f65db18da26ec309fa07b8da82f35c9",
+      "createdAt": 1622971477395,
+      "id": 13
+    }
+  ],
+  "orders": [
+    {
+      "name": "asus laptop",
+      "brand": "asus",
+      "price": "1000$",
+      "createdAt": 1622901942857,
+      "id": 1
+    },
+    {
+      "name": "apple laptop",
+      "brand": "apple",
+      "price": "2000$",
+      "createdAt": 1622901942857,
+      "id": 2
+    },
+    {
+      "name": "MSI laptop",
+      "brand": "MSI",
+      "price": "800$",
+      "createdAt": 1622970916276,
+      "id": 3
+    },
+    {
+      "name": "Mouse",
+      "brand": "MSI",
+      "price": "30$",
+      "createdAt": 1622970954009,
+      "id": 4
+    },
+    {
+      "name": "iphone",
+      "brand": "apple",
+      "price": "1030$",
+      "createdAt": 1622970974534,
+      "id": 5
+    },
+    {
+      "name": "iphone 12",
+      "brand": "apple",
+      "price": "1200$",
+      "createdAt": 1622970991643,
+      "id": 6
+    }
+  ]
+}
