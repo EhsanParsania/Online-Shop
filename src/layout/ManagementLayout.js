@@ -1,14 +1,18 @@
+import { Toolbar } from '@material-ui/core'
 import React from 'react'
-import PanelHeader from '../components/PanelHeader/PanelHeader.component'
+import {PanelHeader} from '../components/index.components'
+
 
 function ManagementLayout(props) {
   return (
 
-      <PanelHeader>
-        {props.children}
-      </PanelHeader>
+    <PanelHeader>
+      <Toolbar />
+      <Toolbar />
+      {props.children}
+    </PanelHeader>
 
   )
 }
 
-export default ManagementLayout
+export  {ManagementLayout}

@@ -1,12 +1,17 @@
 import React from 'react'
-import StoreHeader from '../components/StoreHeader/StoreHeader.component'
+import { Toolbar } from '@material-ui/core'
+import {StoreHeader} from '../components/index.components'
 
-export default function MainLayout(props) {
+function MainLayout(props) {
   return (
     <div>
       <StoreHeader >
+        {/* <Toolbar />
+        <Toolbar /> */}
         {props.children}
       </StoreHeader>
     </div>
   )
 }
+
+export {MainLayout}
