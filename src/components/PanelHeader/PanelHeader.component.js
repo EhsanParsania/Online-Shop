@@ -13,7 +13,8 @@ const useStyles = makeStyles((theme) => ({
   root: {
     display: 'flex',
     left: 'auto',
-    right: 0
+    right: 0,
+    flexDirection:'column'
   },
   appBar: {
     zIndex: theme.zIndex.drawer + 1,
@@ -25,7 +26,7 @@ const useStyles = makeStyles((theme) => ({
 
 }));
 
-export default function PanelHeader(props) {
+function PanelHeader(props) {
   const classes = useStyles();
 
   return (
@@ -39,7 +40,11 @@ export default function PanelHeader(props) {
           <HomeButton />
         </Toolbar>
       </AppBar>
+  
+
       {props.children}
     </div>
   );
 }
+
+export {PanelHeader}

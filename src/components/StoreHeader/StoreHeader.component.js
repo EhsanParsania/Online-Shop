@@ -24,7 +24,7 @@ const useStyles = makeStyles((theme) => ({
 
 }));
 
-export default function StoreHeader(props) {
+ function StoreHeader(props) {
   const classes = useStyles();
 
   return (
@@ -43,3 +43,5 @@ export default function StoreHeader(props) {
     </div>
   );
 }
+
+export {StoreHeader}

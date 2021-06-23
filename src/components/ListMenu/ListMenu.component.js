@@ -91,7 +91,7 @@ const useStyles = makeStyles((theme) => ({
 
 }));
 
-export default function ClippedDrawer() {
+ function ListMenu() {
   const classes = useStyles();
 
   return (
@@ -220,3 +220,6 @@ export default function ClippedDrawer() {
     </div>
   );
 }
+
+
+export {ListMenu}
