@@ -6,8 +6,7 @@ function MainLayout(props) {
   return (
     <div>
       <StoreHeader >
-        {/* <Toolbar />
-        <Toolbar /> */}
+        {/* <Toolbar /> */}
         {props.children}
       </StoreHeader>
     </div>

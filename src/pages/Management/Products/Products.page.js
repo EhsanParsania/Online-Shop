@@ -5,13 +5,11 @@ import React from 'react'
 
 function Products() {
   return (
-    <div style={{width:'100%'}}>
-    {/* <Toolbar/>
-    <Toolbar/>
-    <Toolbar/> */}
-      <TableGrid data={'importData'}/>
+    <div style={{ width: '100%' }}>
+      {/* <Toolbar/> */}
+      <TableGrid data={'importData'} />
     </div >
   )
 }
 
-export  {Products}
+export { Products }

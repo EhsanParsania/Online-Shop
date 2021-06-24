@@ -8,7 +8,7 @@ function ManagementLayout(props) {
 
     <PanelHeader>
       <Toolbar />
-      <Toolbar />
+      {/* <Toolbar /> */}
       {props.children}
     </PanelHeader>
 
