@@ -1,7 +1,7 @@
 import React from 'react'
 import { makeStyles } from '@material-ui/core/styles';
 import Pagination from '@material-ui/lab/Pagination';
-import { getCustomersList } from '../../../../../api/API';
+import { getData } from '../../../../../api/API';
 
 
 const useStyles = makeStyles((theme) => ({
@@ -16,11 +16,12 @@ const useStyles = makeStyles((theme) => ({
 
 export function Paginate(props) {
   const classes = useStyles();
+  const dataName='products'
 
   const handlePageChange = async (event, pageNumber) => {
     let rowNumber = 6
     console.log(pageNumber, rowNumber)
-    const response = await getCustomersList(pageNumber , rowNumber=6,)
+    const response = await getData(dataName,pageNumber , rowNumber=6,)
     console.log(response.data)
     const currentPageData=response.data
     // const numberOfRecievedData=response.headers['x-total-count']

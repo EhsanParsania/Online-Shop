@@ -2,7 +2,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
 
-import { getCustomersList } from '../../../../../api/API';
+import { getData } from '../../../../../api/API';
 import { useState, useEffect } from 'react';
 import { Paginate } from '../Paginate/Paginate.component'
 import { Button } from '@material-ui/core'
@@ -24,10 +24,10 @@ function TableGrid() {
 // add an asunc function for put in useEffect : 
 
     const fetchData = async () => {
-     
+     const dataName='products'
 
       try {
-        const initResponse = await getCustomersList(1, rowNumber) 
+        const initResponse = await getData(dataName,1, rowNumber) 
         const response = initResponse ? initResponse : [{}]
         console.log(initResponse)
         const numberOfRecievedData = initResponse ? response.headers['x-total-count'] : 1

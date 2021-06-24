@@ -1,7 +1,7 @@
 import { BrowserRouter, Route, Link, Switch } from "react-router-dom";
 import createHistrory from "history/createBrowserHistory"
 import { MainLayout, ManagementLayout } from '../layout/index.layout'
-import { Quantity, Products, SignIn } from "../pages/index.pages";
+import { Quantity, Products, SignIn,Orders } from "../pages/index.pages";
 import {ListMenu} from '../components/ListMenu/ListMenu.component'
 import React from 'react'
 
@@ -23,9 +23,9 @@ function Routes() {
             <SignIn />
           </ManagementLayout>
         </Route>
-        <Route path='/panel/login' exact>
+        <Route path='/panel/orders' exact>
           <ManagementLayout>
-            <SignIn />
+            <Orders />
           </ManagementLayout>
         </Route>
         <Route path='/panel/products' exact>
