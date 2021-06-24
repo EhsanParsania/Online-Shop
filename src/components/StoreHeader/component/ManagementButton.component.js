@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Button } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
+import {Link} from 'react-router-dom'
 
 
 export default function CartButton() {
@@ -18,9 +19,9 @@ export default function CartButton() {
 
   return (
     <div className={classes.root}>
-      <Button>
-        مدیریت
-      </Button>
+      <Link to='/panel/login' style={{ textDecoration: 'none' }}>
+          مدیریت
+      </Link>
 
     </div>
   );

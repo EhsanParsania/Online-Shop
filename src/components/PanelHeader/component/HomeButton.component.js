@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Button } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
+import {Link} from 'react-router-dom'
 
 
 export default function HomeButton() {
@@ -18,9 +19,9 @@ export default function HomeButton() {
 
   return (
     <div className={classes.root}>
-      <Button>
-       بازگشت به سایت
-      </Button>
+      <Link to='/' style={{ textDecoration: 'none', color: 'white' }}>
+        بازگشت به سایت
+      </Link>
 
     </div>
   );
