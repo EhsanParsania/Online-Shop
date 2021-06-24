@@ -54,6 +54,7 @@ function BasicTable(props) {
             <TableCell className={classes.tableHeadText} align="right">نام کاربر</TableCell>
             <TableCell className={classes.tableHeadText} align='right' >مجموع مبلغ</TableCell>
             <TableCell className={classes.tableHeadText} align="right">زمان ثبت سفارش </TableCell>
+            <TableCell className={classes.tableHeadText} align="right"/> 
             {/* <TableCell align="right">Carbs&nbsp;(g)</TableCell>
             <TableCell align="right">Protein&nbsp;(g)</TableCell> */}
           </TableRow>
