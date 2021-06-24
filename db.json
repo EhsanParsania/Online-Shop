@@ -1,46 +1,33 @@
 {
-  "products": [
+  "basics": [
     {
-      "name": "asus laptop",
-      "brand": "asus",
-      "price": "1000$",
-      "createdAt": 1622901942857,
-      "id": 1
-    },
+      "image": "",
+      "name": "",
+      "branch": "",
+      "group": "",
+      "information": "",
+      "price": "",
+      "supply": "",
+      "createdAt": "",
+      "id": ""
+    }
+  ],
+  "branches":[
     {
-      "name": "apple laptop",
-      "brand": "apple",
-      "price": "2000$",
-      "createdAt": 1622901942857,
-      "id": 2
-    },
+      "icon":"",
+      "title":"",
+      "branchTitle":""
+    }
+  ],
+  
+  "ordersDetails":[
     {
-      "name": "MSI laptop",
-      "brand": "MSI",
-      "price": "800$",
-      "createdAt": 1622970916276,
-      "id": 3
-    },
-    {
-      "name": "Mouse",
-      "brand": "MSI",
-      "price": "30$",
-      "createdAt": 1622970954009,
-      "id": 4
-    },
-    {
-      "name": "iphone",
-      "brand": "apple",
-      "price": "1030$",
-      "createdAt": 1622970974534,
-      "id": 5
-    },
-    {
-      "name": "iphone 12",
-      "brand": "apple",
-      "price": "1200$",
-      "createdAt": 1622970991643,
-      "id": 6
+      "customerName":"",
+      "customerAddress":"",
+      "totalAmount":"",
+      "deliveryTime":"",
+      "orderTime":"",
+      "endProccessTime":""
     }
   ],
   "customers": [
@@ -147,50 +134,6 @@
       "image": "/files/6f65db18da26ec309fa07b8da82f35c9",
       "createdAt": 1622971477395,
       "id": 13
-    }
-  ],
-  "orders": [
-    {
-      "name": "asus laptop",
-      "brand": "asus",
-      "price": "1000$",
-      "createdAt": 1622901942857,
-      "id": 1
-    },
-    {
-      "name": "apple laptop",
-      "brand": "apple",
-      "price": "2000$",
-      "createdAt": 1622901942857,
-      "id": 2
-    },
-    {
-      "name": "MSI laptop",
-      "brand": "MSI",
-      "price": "800$",
-      "createdAt": 1622970916276,
-      "id": 3
-    },
-    {
-      "name": "Mouse",
-      "brand": "MSI",
-      "price": "30$",
-      "createdAt": 1622970954009,
-      "id": 4
-    },
-    {
-      "name": "iphone",
-      "brand": "apple",
-      "price": "1030$",
-      "createdAt": 1622970974534,
-      "id": 5
-    },
-    {
-      "name": "iphone 12",
-      "brand": "apple",
-      "price": "1200$",
-      "createdAt": 1622970991643,
-      "id": 6
     }
   ]
 }
