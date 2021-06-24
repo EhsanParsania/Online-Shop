@@ -4,6 +4,7 @@ import './index.css';
 import App from './App';
 import {ThemeProvider} from '@material-ui/core/styles'
 import {theme} from './configs/RTLprovider'
+import './asset/global.scss'
 
 ReactDOM.render(
   <ThemeProvider theme={theme}>
