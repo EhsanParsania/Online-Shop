@@ -13,7 +13,7 @@ import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import FormControlLabelPlacement from '../RadioButtons/RadioButtons.component'
 import { SimpleTable } from '../Table/Table.component'
-
+import { Link } from 'react-router-dom'
 
 
 
@@ -67,6 +67,10 @@ function BasicTable(props) {
               <TableCell className={classes.tableCell} align="right">{row.customerName}</TableCell>
               <TableCell className={classes.tableCell} align="right">  {row.totalAmount} </TableCell>
               <TableCell className={classes.tableCell} align="right">{row.orderTime}</TableCell>
+              <TableCell className={classes.tableCell} align="right">
+                <Link >ویرایش</Link>
+                &nbsp;  <Link >حذف</Link>
+              </TableCell>
               {/* <TableCell align="right">{row.carbs}</TableCell>
               <TableCell align="right">{row.protein}</TableCell> */}
             </TableRow>

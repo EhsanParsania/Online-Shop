@@ -7,6 +7,7 @@ import TableCell from '@material-ui/core/TableCell';
 import TableContainer from '@material-ui/core/TableContainer';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
+import { EditableText } from '../EditableText.component';
 
 
 
@@ -48,7 +49,7 @@ const useStyles = makeStyles({
               
               <TableCell className={classes.tableCell} align="right">{row.name}</TableCell>
               <TableCell className={classes.tableCell} align="right">{row.price}</TableCell>
-              <TableCell className={classes.tableCell} align="right">{row.supply}</TableCell>
+              <TableCell className={classes.tableCell} align="right"><EditableText value={row.supply} /> </TableCell>
               {/* <TableCell align="right">{row.carbs}</TableCell>
               <TableCell align="right">{row.protein}</TableCell> */}
             </TableRow>
