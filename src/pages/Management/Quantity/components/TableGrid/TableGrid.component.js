@@ -24,27 +24,25 @@ function TableGrid() {
 // add an asunc function for put in useEffect : 
 
     const fetchData = async () => {
-      const response = await getCustomersList(1, rowNumber)
-      const numberOfRecievedData = response.headers['x-total-count']
-      console.log(response.data)
-      console.log(numberOfRecievedData)
-      const numberOfPages = Math.ceil(numberOfRecievedData / rowNumber)
-      console.log(numberOfPages)
+     
 
       try {
-
+        const initResponse = await getCustomersList(1, rowNumber) 
+        const response = initResponse ? initResponse : [{}]
+        console.log(initResponse)
+        const numberOfRecievedData = initResponse ? response.headers['x-total-count'] : 1
+        const numberOfPages = Math.ceil(numberOfRecievedData / rowNumber)
         await setState({
           ...state,
           data: response.data,
           numberOfPages: numberOfPages
-
         })
-        console.log('data')
       }
       catch (error) {
         console.log(error.message)
       }
     }
+    // write and call an async function to put in useEffect :
     fetchData()
 
 

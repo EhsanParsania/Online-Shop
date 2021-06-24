@@ -1,6 +1,7 @@
 import React from 'react';
 import ManagementButton from './ManagementButton.component'
 import CartButton from './CartButton.component'
+import {SearchField} from './SearchField.component'
 
 
 
@@ -16,6 +17,8 @@ function NavButtons() {
     <div style={style.navButton}>
       <ManagementButton />
       <CartButton />
+      <SearchField/>
+
     </div>
   )
 }
