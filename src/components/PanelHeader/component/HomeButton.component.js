@@ -10,8 +10,8 @@ export default function HomeButton() {
       '& > *': {
         margin: theme.spacing(1),
         color: '#fff',
-        fontWeight: 'bold',
-        fontSize: '20px'
+        // fontWeight: 'bold',
+        // fontSize: '20px'
       },
     },
   }));
