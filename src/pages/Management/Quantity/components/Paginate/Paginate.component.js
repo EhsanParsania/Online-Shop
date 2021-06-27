@@ -16,16 +16,13 @@ const useStyles = makeStyles((theme) => ({
 
 export function Paginate(props) {
   const classes = useStyles();
-
+const dataName='orders'
   const handlePageChange = async (event, pageNumber) => {
     let rowNumber = 6
-    const dataName='products'
-    const response = await getData(dataName,pageNumber, rowNumber = 6,)
+    console.log(pageNumber, rowNumber)
+    const response = await getData(dataName,pageNumber , rowNumber=6,)
     console.log(response.data)
-    const currentPageData = response.data
-
-    //get and generate pages and data from response header:
-    
+    const currentPageData=response.data
     // const numberOfRecievedData=response.headers['x-total-count']
     // console.log(numberOfRecievedData)
     // const numberOfPages=Math.ceil(numberOfRecievedData/rowNumber)
@@ -34,9 +31,8 @@ export function Paginate(props) {
 
     //send data for parent to use in its useState
     props.handlePagination(currentPageData)
-
-    // 1- create address with page number   check
-    // 2 - put address in axios request    check
+    // 1- create address with page number   dido
+    // 2 - put address in axios request    dido
     // 3 put result in useState 
     // 4 error handling 
   }

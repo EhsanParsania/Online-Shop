@@ -28,7 +28,7 @@ const useStyles = makeStyles({
 });
 
 
-  function SimpaleTable(props) {
+  function BasicTable(props) {
   const classes = useStyles();
 
   return (
@@ -60,4 +60,4 @@ const useStyles = makeStyles({
   );
 }
 
-export default SimpaleTable
+export  {BasicTable}

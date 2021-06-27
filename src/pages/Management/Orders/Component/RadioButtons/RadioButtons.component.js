@@ -5,7 +5,7 @@ import FormControlLabel from '@material-ui/core/FormControlLabel';
 import FormControl from '@material-ui/core/FormControl';
 import FormLabel from '@material-ui/core/FormLabel';
 
-export default function FormControlLabelPlacement() {
+export function RadioButtons() {
   return (
     <FormControl component="fieldset">
       {/* <FormLabel component="legend">labelPlacement</FormLabel> */}

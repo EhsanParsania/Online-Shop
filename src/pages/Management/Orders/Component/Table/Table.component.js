@@ -1,9 +1,5 @@
 import { makeStyles } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
-import Grid from '@material-ui/core/Grid';
-import { getCustomersList } from '../../../../../api/API';
-import { useState, useEffect } from 'react';
-import { Paginate } from '../Paginate/Paginate.component'
 import * as React from 'react';
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
@@ -11,8 +7,6 @@ import TableCell from '@material-ui/core/TableCell';
 import TableContainer from '@material-ui/core/TableContainer';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
-import FormControlLabelPlacement from '../RadioButtons/RadioButtons.component'
-import { SimpleTable } from '../Table/Table.component'
 import { Link } from 'react-router-dom'
 
 
