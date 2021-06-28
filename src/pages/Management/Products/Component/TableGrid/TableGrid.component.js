@@ -43,9 +43,8 @@ class TableGrid extends Component {
       return true
     }
     else return false
-
-
   }
+  
 
   handleClickedPage = async (clickedPage) => {
     console.log(clickedPage)

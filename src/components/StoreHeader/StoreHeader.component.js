@@ -6,7 +6,6 @@ import Toolbar from '@material-ui/core/Toolbar';
 import Logo from './component/Logo.component'
 import NavButtons from './component/NavButtons.component';
 
-const drawerWidth = 240;
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -19,12 +18,12 @@ const useStyles = makeStyles((theme) => ({
     backgroundColor: ''
   },
   toolbar: {
-    justifyContent:'space-between',
+    justifyContent: 'space-between',
   }
 
 }));
 
- function StoreHeader(props) {
+function StoreHeader(props) {
   const classes = useStyles();
 
   return (
@@ -36,7 +35,7 @@ const useStyles = makeStyles((theme) => ({
 
           <Logo />
           <NavButtons />
-          
+
         </Toolbar>
       </AppBar>
       {props.children}
@@ -44,4 +43,4 @@ const useStyles = makeStyles((theme) => ({
   );
 }
 
-export {StoreHeader}
+export { StoreHeader }
