@@ -13,9 +13,9 @@
   font-family: yekan;
 }
 
-tr:nth-child(even) {
-  background-color: #ccc;
-}
+// tr:nth-child(even) {
+//   background-color: #ccc;
+// }
 
 .easy-edit-inline-wrapper {
   width: 80px;
@@ -27,10 +27,10 @@ tr:nth-child(even) {
   text-decoration: underline;
 }
 
-.MuiTableRow-root:not(:first-child) {
-  &:nth-child(even) {
-    background-color: rgb(245, 245, 245) !important;
-  }
+.MuiTableRow-root{
+  // &:nth-child(even) {
+  //   background-color: rgb(245, 245, 245) !important;
+  // }
 
   &:hover {
     background-color: rgb(233, 233, 233) !important;
