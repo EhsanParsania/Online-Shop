@@ -1,13 +1,17 @@
 @font-face {
   font-family: iran-sans;
   src: url('./font//Iranian\ Sans.ttf');
- 
+
 }
+
 @font-face {
   font-family: yekan;
   src: url('./font//Yekan.ttf');
 }
-*{font-family: yekan;}
+
+* {
+  font-family: yekan;
+}
 
 tr:nth-child(even) {
   background-color: #ccc;
@@ -23,11 +27,12 @@ tr:nth-child(even) {
   text-decoration: underline;
 }
 
-.MuiTableRow-root {
- &:nth-child(even){
-  background-color: rgb(245, 245, 245) !important;
- } 
- &:hover{
-   background-color: rgb(233, 233, 233) !important;
- }
+.MuiTableRow-root:not(:first-child) {
+  &:nth-child(even) {
+    background-color: rgb(245, 245, 245) !important;
+  }
+
+  &:hover {
+    background-color: rgb(233, 233, 233) !important;
+  }
 }
