@@ -41,19 +41,7 @@ function TableContainer(props) {
       <Grid container spacing={3} justify='center' >
         <Grid item xs={12} md={6}>
           <Paper className={classes.paper}>
-            <div className={classes.buttonContainer} >
-              <div>
-                <h2>
-                  مدیریت کــــالاهــا
-                </h2>
-              </div>
-              <div>
-                <Button className={classes.saveButton} variant="contained" color="primary">
-                  ذخیره
-                </Button>
-              </div>
-            </div >
-
+          
             {props.children}
 
           </Paper>

@@ -43,7 +43,7 @@ class TableGrid extends Component {
   }
 
 
-// get orders function with or without filtering path :
+  // get orders function with or without filtering path :
   getOrdersData = async (clickedPage = 1, path) => {
     const field = 'orders'
     const rowNumber = 6
@@ -61,7 +61,7 @@ class TableGrid extends Component {
   }
 
 
-// set page number that clicked in paginate :
+  // set page number that clicked in paginate :
   handleClickedPage = async (clickedPage) => {
     console.log(clickedPage)
     await this.setState({
@@ -80,15 +80,25 @@ class TableGrid extends Component {
     }
   }
 
+  style={
+    tableHeader:{
+      display:'flex',
+      justifyContent:'space-between',
+      flexWrap:'wrap'
 
+    }
+  }
 
   render() {
     return (
       <div>
         <TableContainer>
-          <RadioButtons details={this.handleRadioButtonClick} />
+          <div style={this.style.tableHeader}>
+            <h2 > مدیریت سفارش ها</h2>
+            <RadioButtons details={this.handleRadioButtonClick} />
+          </div>
           <BasicTable rows={this.state.data} />
-          <Paginate numberOfPages={this.state.numberOfPages} clickedPage={this.handleClickedPage} />
+          <Paginate numberOfPages={this.state.numberOfPages} clickedPage={this.handleClickedPage} pathSection='orders' />
         </TableContainer>
 
       </div>

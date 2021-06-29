@@ -5,6 +5,7 @@ import { BasicTable } from '../Table/Table.component'
 import { Paginate } from '../../../../../components/index.components'
 import { TableContainer } from '../../../../../components/TableContainer.component'
 import React, { Component } from 'react'
+import { Button } from '@material-ui/core';
 
 class TableGrid extends Component {
   state = {
@@ -14,7 +15,7 @@ class TableGrid extends Component {
     clickedPage: 1
   }
 
-  
+
   getProductsData = async (clickedPage) => {
 
     const field = 'products'
@@ -44,7 +45,7 @@ class TableGrid extends Component {
     }
     else return false
   }
-  
+
 
   handleClickedPage = async (clickedPage) => {
     console.log(clickedPage)
@@ -53,13 +54,34 @@ class TableGrid extends Component {
     })
   }
 
+  style = {
+    tableHeader: {
+      display: 'flex',
+      justifyContent: 'space-between',
+      flexWrap: 'wrap'
+
+    },
+    saveButton: {
+      alignSelf: 'center'
+    }
+  }
+
 
   render() {
     return (
       <div>
         <TableContainer>
+          <div style={this.style.tableHeader}>
+            <h2 >مدیریت کالاها</h2>
+            <div style={this.style.saveButton}>
+              <Button variant="contained" color="primary" >
+                ذخیره
+              </Button>
+            </div>
+          </div>
+
           <BasicTable rows={this.state.data} />
-          <Paginate numberOfPages={this.state.numberOfPages} clickedPage={this.handleClickedPage} />
+          <Paginate numberOfPages={this.state.numberOfPages} clickedPage={this.handleClickedPage} pathSection='products' />
         </TableContainer>
 
       </div>

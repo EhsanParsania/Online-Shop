@@ -11,8 +11,15 @@ export function RadioButtons(props) {
   useEffect(() => {
     props.details(state)
   }, [state])
+
+  const style={
+    formControl:{
+      flexDirection:'row'
+    }
+  }
+
   return (
-    <FormControl component="fieldset">
+    <FormControl component="fieldset" style={style.formControl}>
       {/* <FormLabel component="legend">labelPlacement</FormLabel> */}
       <RadioGroup row aria-label="position" name="position" defaultValue="top">
 
