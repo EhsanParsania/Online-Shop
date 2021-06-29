@@ -1,63 +1,76 @@
-import { makeStyles } from '@material-ui/core/styles';
-import Paper from '@material-ui/core/Paper';
-import * as React from 'react';
+import React from 'react';
+import { withStyles, makeStyles } from '@material-ui/core/styles';
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
 import TableCell from '@material-ui/core/TableCell';
 import TableContainer from '@material-ui/core/TableContainer';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
+import Paper from '@material-ui/core/Paper';
 import { EditableText } from '../EditableText.component';
+
+
+const StyledTableCell = withStyles((theme) => ({
+  head: {
+    backgroundColor: theme.palette.common.black,
+    color: theme.palette.common.white,
+  },
+  body: {
+    fontSize: 14,
+  },
+}))(TableCell);
+
+const StyledTableRow = withStyles((theme) => ({
+  root: {
+    '&:nth-of-type(odd)': {
+      backgroundColor: theme.palette.action.hover,
+    },
+  },
+}))(TableRow);
+
 
 
 
 const useStyles = makeStyles({
   table: {
-    minWidth: 650,
-  }, tableHead:{
-    backgroundColor:'#bbb',
-    fontWeight:'bold'
+    minWidth: 700,
   },
-  tableHeadText:{
-    fontWeight:'bold'
-  },
-  tableCell:{
-    // margin:'0px',
-    // padding:'0px'
+  image:{
+    width:'30px',
+    height:'30px',
+    borderRadius:'5px'
   }
 });
 
-
-  function BasicTable(props) {
+export function BasicTable(props) {
   const classes = useStyles();
 
   return (
     <TableContainer component={Paper}>
-      <Table className={classes.table} aria-label="simple table">
-      <TableHead className={classes.tableHead}>
-          <TableRow >
-            <TableCell className={classes.tableHeadText} align="right">کالا</TableCell>
-            <TableCell className={classes.tableHeadText} align='right' >قیمت</TableCell>
-            <TableCell className={classes.tableHeadText} align="right">موجودی</TableCell>
-            {/* <TableCell align="right">Carbs&nbsp;(g)</TableCell>
-            <TableCell align="right">Protein&nbsp;(g)</TableCell> */}
+      <Table className={classes.table} aria-label="customized table">
+        <TableHead>
+          <TableRow>
+            <StyledTableCell align="right">کالا </StyledTableCell>
+            <StyledTableCell align="right"> قیمت</StyledTableCell>
+            <StyledTableCell align="right">موجودی </StyledTableCell>
+   
           </TableRow>
         </TableHead>
         <TableBody>
           {props.rows.map((row) => (
-            <TableRow key={row.name}>
-              
-              <TableCell className={classes.tableCell} align="right">{row.name}</TableCell>
-              <TableCell className={classes.tableCell} align="right">{row.price}</TableCell>
-              <TableCell className={classes.tableCell} align="right"><EditableText value={row.supply} /> </TableCell>
-              {/* <TableCell align="right">{row.carbs}</TableCell>
-              <TableCell align="right">{row.protein}</TableCell> */}
-            </TableRow>
+            <StyledTableRow key={row.id}>
+              {/* <StyledTableCell component="th" scope="row">
+                {row.name}
+              </StyledTableCell> */}
+              <StyledTableCell align="right"><img className={classes.image}  src={`http://localhost:3001${row.image}`}alt='aks' /></StyledTableCell>
+              <StyledTableCell align="right">{row.name}</StyledTableCell>
+              <StyledTableCell align="right"><EditableText value={row.supply} /></StyledTableCell>
+          
+   
+            </StyledTableRow>
           ))}
         </TableBody>
       </Table>
     </TableContainer>
   );
 }
-
-export  {BasicTable}

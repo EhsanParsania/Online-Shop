@@ -1,6 +1,5 @@
 
 import { getData } from '../../../../../api/API';
-
 import { BasicTable } from '../Table/Table.component'
 import { Paginate } from '../../../../../components/index.components'
 import { TableContainer } from '../../../../../components/TableContainer.component'
