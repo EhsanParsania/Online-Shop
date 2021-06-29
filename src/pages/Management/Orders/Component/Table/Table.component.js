@@ -7,8 +7,7 @@ import TableContainer from '@material-ui/core/TableContainer';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
-import { Link } from 'react-router-dom'
-
+import {OrdersModal} from '../OrdersModal/OrdersModal.component'
 const StyledTableCell = withStyles((theme) => ({
   head: {
     backgroundColor: theme.palette.common.black,
@@ -60,10 +59,7 @@ export function BasicTable(props) {
               <StyledTableCell align="right">{row.customerName}</StyledTableCell>
               <StyledTableCell align="right">{row.totalAmount}</StyledTableCell>
               <StyledTableCell align="right">{row.orderTime}</StyledTableCell>
-              <StyledTableCell align="right">
-              <Link >ویرایش</Link>
-                 &nbsp;  <Link >حذف</Link>
-              </StyledTableCell>
+            <OrdersModal data={row}/>
    
             </StyledTableRow>
           ))}

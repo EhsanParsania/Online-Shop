@@ -62,8 +62,8 @@ export function BasicTable(props) {
               {/* <StyledTableCell component="th" scope="row">
                 {row.name}
               </StyledTableCell> */}
-              <StyledTableCell align="right"><img className={classes.image}  src={`http://localhost:3001${row.image}`}alt='aks' /></StyledTableCell>
               <StyledTableCell align="right">{row.name}</StyledTableCell>
+              <StyledTableCell align="right"><EditableText value={row.price} /></StyledTableCell>
               <StyledTableCell align="right"><EditableText value={row.supply} /></StyledTableCell>
           
    
