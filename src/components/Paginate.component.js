@@ -27,13 +27,13 @@ export function Paginate(props) {
     <div dir='ltr' className={classes.root}>
       <Pagination
         count={props.numberOfPages}
-        defaultPage={1}
+        defaultPage={props.defaultPage}
         onChange={handlePageChange}
         color='primary'
         renderItem={(item) => (
           <PaginationItem
             component={Link}
-            to={`/panel/orders/${item.page}`}
+            to={`/panel/${props.pathSection}/${item.page}`}
             {...item}
           />
       )}
