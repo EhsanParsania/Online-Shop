@@ -23,7 +23,12 @@ function Routes() {
             <SignIn />
           </ManagementLayout>
         </Route>
-        <Route path='/panel/orders' exact>
+        <Route path='/panel/orders' exact >
+          <ManagementLayout>
+            <Orders />
+          </ManagementLayout>
+        </Route>
+        <Route path='/panel/orders/:id' exact>
           <ManagementLayout>
             <Orders />
           </ManagementLayout>
@@ -33,7 +38,17 @@ function Routes() {
             <Products />
           </ManagementLayout>
         </Route>
+        <Route path='/panel/products/:id' exact>
+          <ManagementLayout>
+            <Products />
+          </ManagementLayout>
+        </Route>
         <Route path='/panel/quantity' exact>
+          <ManagementLayout>
+            <Quantity />
+          </ManagementLayout>
+        </Route>
+        <Route path='/panel/quantity/:id' exact>
           <ManagementLayout>
             <Quantity />
           </ManagementLayout>
