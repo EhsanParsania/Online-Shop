@@ -6,8 +6,7 @@ import { Paginate } from '../../../../../components/index.components'
 import { TableContainer } from '../../../../../components/TableContainer.component'
 import React, { Component } from 'react'
 import { Button } from '@material-ui/core';
-import {ProductsModal} from '../ProductsModal/ProductsModal.component'
-
+import {AddProductsModal} from '../AddProductsModal/AddProductsModal.component'
 class TableGrid extends Component {
   state = {
     data: [{}],
@@ -78,7 +77,7 @@ class TableGrid extends Component {
               {/* <Button variant="contained" color="primary" >
                 افزودن کالا
               </Button> */}
-              <ProductsModal/>
+             <AddProductsModal/>
             </div>
           </div>
 

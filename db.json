@@ -28,7 +28,7 @@
       "orderTime": "۱۴۰۰/۳/۲۷",
       "endProccessTime": "۱۸",
       "createdAt": 1624547158551,
-      "delivered":"true",
+      "delivered": "true",
       "id": 1
     },
     {
@@ -39,7 +39,7 @@
       "orderTime": "۱۴۰۰/۲/۵",
       "endProccessTime": "۱۸",
       "createdAt": 1624547158501,
-      "delivered":"false",
+      "delivered": "false",
       "id": 2
     },
     {
@@ -50,7 +50,7 @@
       "orderTime": "۱۴۰۰/۲/۹",
       "endProccessTime": "۱۸",
       "createdAt": 1624547228545,
-      "delivered":"true",
+      "delivered": "true",
       "id": 3
     },
     {
@@ -61,7 +61,7 @@
       "orderTime": "۱۴۰۰/۳/۹",
       "endProccessTime": "۱۸",
       "createdAt": 1624547275241,
-      "delivered":"true",
+      "delivered": "true",
       "id": 4
     },
     {
@@ -72,7 +72,7 @@
       "orderTime": "۱۴۰۰/۳/۱۲",
       "endProccessTime": "۱۸",
       "createdAt": 1624547319890,
-      "delivered":"true",
+      "delivered": "true",
       "id": 5
     },
     {
@@ -83,7 +83,7 @@
       "orderTime": "۱۴۰۰/۳/۲۴",
       "endProccessTime": "۱۸",
       "createdAt": 1624547363749,
-      "delivered":"false",
+      "delivered": "false",
       "id": 6
     },
     {
@@ -94,7 +94,7 @@
       "orderTime": "۱۴۰۰/۳/۲۹",
       "endProccessTime": "۱۸",
       "createdAt": 1624547399301,
-      "delivered":"true",
+      "delivered": "true",
       "id": 7
     },
     {
@@ -105,7 +105,7 @@
       "orderTime": "۱۴۰۰/۲/۱۳",
       "endProccessTime": "۱۸",
       "createdAt": 1624547158551,
-      "delivered":"false",
+      "delivered": "false",
       "id": 8
     },
     {
@@ -116,7 +116,7 @@
       "orderTime": "۱۴۰۰/۲/۵",
       "endProccessTime": "۱۸",
       "createdAt": 1624547158501,
-      "delivered":"false",
+      "delivered": "false",
       "id": 9
     },
     {
@@ -127,7 +127,7 @@
       "orderTime": "۱۴۰۰/۲/۹",
       "endProccessTime": "۱۸",
       "createdAt": 1624547228545,
-      "delivered":"true",
+      "delivered": "true",
       "id": 10
     },
     {
@@ -138,7 +138,7 @@
       "orderTime": "۱۴۰۰/۳/۹",
       "endProccessTime": "۱۸",
       "createdAt": 1624547275241,
-      "delivered":"true",
+      "delivered": "true",
       "id": 11
     },
     {
@@ -149,7 +149,7 @@
       "orderTime": "۱۴۰۰/۳/۱۲",
       "endProccessTime": "۱۸",
       "createdAt": 1624547319890,
-      "delivered":"true",
+      "delivered": "true",
       "id": 12
     },
     {
@@ -160,7 +160,7 @@
       "orderTime": "۱۴۰۰/۳/۲۴",
       "endProccessTime": "۱۸",
       "createdAt": 1624547363749,
-      "delivered":"true",
+      "delivered": "true",
       "id": 13
     },
     {
@@ -171,7 +171,7 @@
       "orderTime": "۱۴۰۰/۳/۲۹",
       "endProccessTime": "۱۸",
       "createdAt": 1624547399301,
-      "delivered":"true",
+      "delivered": "true",
       "id": 14
     },
     {
@@ -182,7 +182,7 @@
       "orderTime": "۱۴۰۰/۲/۹",
       "endProccessTime": "۱۸",
       "createdAt": 1624547228545,
-      "delivered":"false",
+      "delivered": "false",
       "id": 15
     },
     {
@@ -193,7 +193,7 @@
       "orderTime": "۱۴۰۰/۳/۹",
       "endProccessTime": "۱۸",
       "createdAt": 1624547275241,
-      "delivered":"true",
+      "delivered": "true",
       "id": 16
     },
     {
@@ -204,7 +204,7 @@
       "orderTime": "۱۴۰۰/۳/۱۲",
       "endProccessTime": "۱۸",
       "createdAt": 1624547319890,
-      "delivered":"false",
+      "delivered": "false",
       "id": 17
     },
     {
@@ -215,7 +215,7 @@
       "orderTime": "۱۴۰۰/۳/۲۴",
       "endProccessTime": "۱۸",
       "createdAt": 1624547363749,
-      "delivered":"true",
+      "delivered": "true",
       "id": 18
     }
   ],
@@ -527,7 +527,8 @@
       "image": "/files/8b8f058b3107903aafe90d660ede98cf",
       "createdAt": 1624542341987,
       "id": 28
-    },{
+    },
+    {
       "name": "نان جو نان آوران",
       "branch": "مواد غذایی / کالاهای اساسی و خوار و بار",
       "group": "نان",

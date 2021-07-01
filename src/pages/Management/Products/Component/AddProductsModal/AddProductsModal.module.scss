@@ -29,6 +29,14 @@ text-align: center;
   margin: 0 10px;
   height: 80px;
   border-radius: 5px;
+  border: 1px solid rgb(194, 194, 194);
+  outline: none;
  
   resize: none;
+  &:hover{
+    border: 1px solid black;
+  }
+  &:focus{
+    border: 2px solid rgb(27, 27, 153);
+  }
 }

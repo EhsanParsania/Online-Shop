@@ -8,6 +8,8 @@ import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
 import { Link } from 'react-router-dom'
+import { EditProductsModal } from '../EditProductsModal/EditProductsModal.component';
+import DeleteButton from '../DeleteButton/DeleteButton.component';
 
 const StyledTableCell = withStyles((theme) => ({
   head: {
@@ -34,15 +36,22 @@ const useStyles = makeStyles({
   table: {
     minWidth: 700,
   },
-  image:{
-    width:'30px',
-    height:'30px',
-    borderRadius:'5px'
+  image: {
+    width: '30px',
+    height: '30px',
+    borderRadius: '5px'
+  },
+
+  buttonContainer: {
+    display: 'flex',
+    justifyContent: 'space-between'
   }
 });
 
 export function BasicTable(props) {
   const classes = useStyles();
+
+
 
   return (
     <TableContainer component={Paper}>
@@ -53,7 +62,7 @@ export function BasicTable(props) {
             <StyledTableCell align="right"> محصول</StyledTableCell>
             <StyledTableCell align="right">  دسته بندی</StyledTableCell>
             <StyledTableCell align="right"></StyledTableCell>
-   
+
           </TableRow>
         </TableHead>
         <TableBody>
@@ -62,14 +71,14 @@ export function BasicTable(props) {
               {/* <StyledTableCell component="th" scope="row">
                 {row.name}
               </StyledTableCell> */}
-              <StyledTableCell align="right"><img className={classes.image}  src={`http://localhost:3001${row.image}`}alt='aks' /></StyledTableCell>
+              <StyledTableCell align="right"><img className={classes.image} src={`http://localhost:3001${row.image}`} alt='aks' /></StyledTableCell>
               <StyledTableCell align="right">{row.name}</StyledTableCell>
               <StyledTableCell align="right">{row.branch}</StyledTableCell>
-              <StyledTableCell align="right">
-              <Link >ویرایش</Link>
-                 &nbsp;  <Link >حذف</Link>
+              <StyledTableCell align="right" className={classes.buttonContainer}>
+                <EditProductsModal name={row.name} imageName={row.image} />
+                <DeleteButton productField={'products'} productId={row.id} />
               </StyledTableCell>
-   
+
             </StyledTableRow>
           ))}
         </TableBody>

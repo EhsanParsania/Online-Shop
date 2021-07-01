@@ -115,7 +115,7 @@ const useStyles = makeStyles((theme) => ({
 
 
                 <List className={classes.list}>
-                  <ListSubheader color={'secondary'} className={classes.subHeader}>
+                  <ListSubheader  className={classes.subHeader}>
                     کالاهای اساسی و خوار و بار
                   </ListSubheader>
                   {['نان', 'برنج', ' روغن', 'قند و نبات'].map((text, index) => (
