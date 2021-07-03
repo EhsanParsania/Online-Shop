@@ -41,16 +41,21 @@ function DeleteButton(props) {
     const productId = id
     const productField = field
     console.log('hey')
+    const confirm=window.confirm('Are you sure you want to remove this product ?')
+    if (confirm) {
 
-    try {
-      await deleteProducts( productId,productField)
-    
+      try {
+        await deleteProducts(productId, productField)
+      }
+      catch (error) {
+        console.log(error.message)
+      }
 
+      console.log('product was removed ');
+    } else {
+      // Do nothing!
+      console.log('product was not removed ');
     }
-    catch (error) {
-      console.log(error.message)
-    }
-
   }
 
   return (

@@ -43,8 +43,8 @@ const useStyles = makeStyles({
   },
 
   buttonContainer: {
-    display: 'flex',
-    justifyContent: 'space-between'
+    // display: 'flex',
+    // justifyContent: 'space-between'
   }
 });
 

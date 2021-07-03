@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { withStyles, makeStyles } from '@material-ui/core/styles';
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
@@ -8,6 +8,9 @@ import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
 import { EditableText } from '../EditableText.component';
+
+import { connect } from 'react-redux';
+import { setNewQuantity } from '../../../../../redux/actions'
 
 
 const StyledTableCell = withStyles((theme) => ({
@@ -35,38 +38,62 @@ const useStyles = makeStyles({
   table: {
     minWidth: 700,
   },
-  image:{
-    width:'30px',
-    height:'30px',
-    borderRadius:'5px'
+  image: {
+    width: '30px',
+    height: '30px',
+    borderRadius: '5px'
   }
 });
 
-export function BasicTable(props) {
+
+
+
+function TableData(props) {
   const classes = useStyles();
+
+
+  String.prototype.toPersinaDigit = function () {
+    var id = ['۰', '۱', '۲', '۳', '۴', '۵', '۶', '۷', '۸', '۹'];
+    return this.replace(/[0-9]/g, function (w) { return id[+w] });
+  }
+
+  const handleChangeEditedField = (changeDetail) => {
+    const { newValue, productName, productId, productItem } = changeDetail
+    const value = newValue.toPersinaDigit()
+    const payload = {
+      productName,
+      productId,
+      productItem,
+      newValue: value
+    }
+    props.setNewQuantity(payload)
+    console.log(payload)
+
+    // then give them to API.editProducts which exists now in API 
+  }
+
 
   return (
     <TableContainer component={Paper}>
       <Table className={classes.table} aria-label="customized table">
         <TableHead>
           <TableRow>
+
             <StyledTableCell align="right">کالا </StyledTableCell>
             <StyledTableCell align="right"> قیمت</StyledTableCell>
             <StyledTableCell align="right">موجودی </StyledTableCell>
-   
+
           </TableRow>
         </TableHead>
         <TableBody>
           {props.rows.map((row) => (
             <StyledTableRow key={row.id}>
-              {/* <StyledTableCell component="th" scope="row">
-                {row.name}
-              </StyledTableCell> */}
+
               <StyledTableCell align="right">{row.name}</StyledTableCell>
-              <StyledTableCell align="right"><EditableText value={row.price} /></StyledTableCell>
-              <StyledTableCell align="right"><EditableText value={row.supply} /></StyledTableCell>
-          
-   
+              <StyledTableCell align="right"><EditableText productId={row.id} productName={row.name} productItem='price' onSave={handleChangeEditedField} value={row.price} /></StyledTableCell>
+              <StyledTableCell align="right"><EditableText productId={row.id} productName={row.name} productItem='supply' onSave={handleChangeEditedField} value={row.supply} /></StyledTableCell>
+
+
             </StyledTableRow>
           ))}
         </TableBody>
@@ -74,3 +101,18 @@ export function BasicTable(props) {
     </TableContainer>
   );
 }
+
+
+const mapDispathToProps = (dispatch) => {
+  return {
+    setNewQuantity: (payload) => dispatch(setNewQuantity(payload))
+  }
+}
+const mapStateToProps = (state) => ({
+
+})
+
+
+
+const BasicTable = connect(mapStateToProps, mapDispathToProps)(TableData)
+export { BasicTable }
