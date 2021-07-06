@@ -1,8 +1,9 @@
 import React from 'react'
 import { makeStyles } from '@material-ui/core/styles';
 import Pagination from '@material-ui/lab/Pagination';
-import {Link} from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import { PaginationItem } from '@material-ui/lab';
+import { useEffect, useRef, useState } from 'react';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -14,9 +15,13 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
+
+
+
 export function Paginate(props) {
 
   const classes = useStyles();
+
 
   // onChange gives you event and number which clicked on it :
   const handlePageChange = async (event, pageNumber) => {
@@ -26,17 +31,21 @@ export function Paginate(props) {
   return (
     <div dir='ltr' className={classes.root}>
       <Pagination
+        // boundaryCount={props.defaultPage}
+        // variant='outlined'
+        page={props.currentPage}
         count={props.numberOfPages}
-        defaultPage={props.defaultPage}
+        // defaultPage={0}
         onChange={handlePageChange}
         color='primary'
         renderItem={(item) => (
           <PaginationItem
             component={Link}
-            to={`/panel/${props.pathSection}/${item.page}`}
+            //  creating address for the Link 
+            to={`/${props.field}/${props.pathSection}/${item.page}`}
             {...item}
           />
-      )}
+        )}
       />
 
     </div>
