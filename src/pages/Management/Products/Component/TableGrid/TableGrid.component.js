@@ -82,7 +82,7 @@ class TableGrid extends Component {
           </div>
 
           <BasicTable rows={this.state.data} />
-          <Paginate numberOfPages={this.state.numberOfPages} clickedPage={this.handleClickedPage} pathSection='products' />
+          <Paginate numberOfPages={this.state.numberOfPages} clickedPage={this.handleClickedPage} field='panel'  pathSection='products' />
         </TableContainer>
 
       </div>

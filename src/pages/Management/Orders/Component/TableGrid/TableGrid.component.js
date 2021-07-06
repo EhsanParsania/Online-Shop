@@ -48,9 +48,7 @@ class TableGrid extends Component {
     const field = 'orders'
     const rowNumber = 6
     try {
-      console.log('new hey')
       const { data = [{}], headers } = await getData(field, clickedPage, rowNumber, path)
-      console.log(data, headers)
       const totalCount = headers ? headers['x-total-count'] : 1
       const numberOfPages = Math.ceil(totalCount / rowNumber)
       await this.setState({ data, numberOfPages })
@@ -98,7 +96,7 @@ class TableGrid extends Component {
             <RadioButtons details={this.handleRadioButtonClick} />
           </div>
           <BasicTable rows={this.state.data} />
-          <Paginate numberOfPages={this.state.numberOfPages} clickedPage={this.handleClickedPage} pathSection='orders' />
+          <Paginate numberOfPages={this.state.numberOfPages} clickedPage={this.handleClickedPage}field='panel'  pathSection='orders' />
         </TableContainer>
 
       </div>

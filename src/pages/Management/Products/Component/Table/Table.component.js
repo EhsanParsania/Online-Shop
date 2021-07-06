@@ -7,7 +7,6 @@ import TableContainer from '@material-ui/core/TableContainer';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
-import { Link } from 'react-router-dom'
 import { EditProductsModal } from '../EditProductsModal/EditProductsModal.component';
 import DeleteButton from '../DeleteButton/DeleteButton.component';
 
@@ -58,24 +57,26 @@ export function BasicTable(props) {
       <Table className={classes.table} aria-label="customized table">
         <TableHead>
           <TableRow>
+            
             <StyledTableCell align="right">عکس </StyledTableCell>
             <StyledTableCell align="right"> محصول</StyledTableCell>
             <StyledTableCell align="right">  دسته بندی</StyledTableCell>
-            <StyledTableCell align="right"></StyledTableCell>
+            <StyledTableCell align="right"> </StyledTableCell>
+            <StyledTableCell align="right"> </StyledTableCell>
 
           </TableRow>
         </TableHead>
         <TableBody>
           {props.rows.map((row) => (
             <StyledTableRow key={row.id}>
-              {/* <StyledTableCell component="th" scope="row">
-                {row.name}
-              </StyledTableCell> */}
+
               <StyledTableCell align="right"><img className={classes.image} src={`http://localhost:3001${row.image}`} alt='aks' /></StyledTableCell>
               <StyledTableCell align="right">{row.name}</StyledTableCell>
               <StyledTableCell align="right">{row.branch}</StyledTableCell>
-              <StyledTableCell align="right" className={classes.buttonContainer}>
+              <StyledTableCell align="right" >
                 <EditProductsModal name={row.name} imageName={row.image} />
+              </StyledTableCell>
+              <StyledTableCell align="right" >
                 <DeleteButton productField={'products'} productId={row.id} />
               </StyledTableCell>
 

@@ -16,7 +16,7 @@ class TableGrid extends Component {
 
 
   getProductsData = async (clickedPage) => {
-    const field = 'products'
+    const field = 'groceries'
     const rowNumber = 6
     try {
       const { data = [{}], headers } = await getData(field, clickedPage, rowNumber)
@@ -79,7 +79,7 @@ class TableGrid extends Component {
             </div>
           </div>
           <BasicTable rows={this.state.data} />
-          <Paginate numberOfPages={this.state.numberOfPages} clickedPage={this.handleClickedPage} pathSection='quantity' />
+          <Paginate numberOfPages={this.state.numberOfPages} clickedPage={this.handleClickedPage} field='panel'  pathSection='quantity' />
         </TableContainer>
 
       </div>
