@@ -27,7 +27,7 @@ function StoreHeader(props) {
   const classes = useStyles();
 
   return (
-    <div className={classes.root}>
+    <div className={classes.root} style={props.style}>
       <CssBaseline />
       {/* you can give  position="fixed"  */}
       <AppBar elevation={1} className={classes.appBar}>
