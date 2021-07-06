@@ -1,9 +1,9 @@
 import API from './Config.api'
 
-export function getData(field, pageNumber, rowNumber, isDelivered = '') {
+export function getData(group, pageNumber, rowNumber, isDelivered = '') {
   // get req example :
   //  http://localhost:3001/products?_page=2&_limit=3
-  return API.get(`/${field}?_page=${pageNumber}&_limit=${rowNumber}${isDelivered}`)
+  return API.get(`/${group}?_page=${pageNumber}&_limit=${rowNumber}${isDelivered}`)
     .then(response => {
 
       console.log(response)
@@ -44,8 +44,8 @@ export const editProducts = (bodyFormData, id) => {
 }
 
 
-export const deleteProducts = async (id, field) => {
-  const address = `/${field}/${id}`
+export const deleteProducts = async (id, group) => {
+  const address = `/${group}/${id}`
   return API.delete(address)
     .then(response => {
       console.log('The product deleted --> ', response)
@@ -54,4 +54,20 @@ export const deleteProducts = async (id, field) => {
     .catch(error => {
       console.log('The product not deleted --> ', error.message)
     })
+}
+
+
+
+export const getFilteredProducts = (group, subGroup, limit, pageNumber) => {
+  const address = `/${group}?_page=${pageNumber}&_limit=${limit}&subgroup=${subGroup}`
+  return API.get(address)
+    .then(response => {
+      console.log('get filtered products for list menu ===> ', response)
+      return response
+    })
+    .catch(error => {
+      console.log('get filtered products for list had error ===> ', error.message)
+      return error
+    })
+
 }
