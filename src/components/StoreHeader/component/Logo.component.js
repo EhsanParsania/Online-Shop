@@ -2,7 +2,9 @@ import React from 'react';
 import Brightness6Icon from '@material-ui/icons/Brightness6';
 import { Typography } from '@material-ui/core'
 import { fade, makeStyles } from '@material-ui/core/styles';
-
+import persiaIcon from '../../../asset/logo/persia-icon.png'
+import logoText from '../../../asset/logo/logotext.png'
+import { Link } from 'react-router-dom';
 
 function Logo(props) {
 
@@ -15,6 +17,18 @@ function Logo(props) {
     },
     logoText: {
       // padding: '5px'
+    },
+    logo: {
+      width: 50,
+      heigth: 50,
+      filter: ' invert()'
+    },
+    logoText: {
+      width: 150,
+      height: 40,
+      filter: ' invert()',
+      paddingTop: 10
+
     }
   }
 
@@ -24,19 +38,28 @@ function Logo(props) {
       display: 'none',
       [theme.breakpoints.up('sm')]: {
         display: 'block',
+        margin: '0 20px',
+        padding: 5,
+        marginTop: 2
       },
     }
   }));
 
-  const classes=useStyles()
+  const classes = useStyles()
   return (
-    <div style={style.logoContainer}>
-      <Typography className={classes.title} variant="h6" noWrap>
-        فروشگاه فلان
-      </Typography>
-      {/* <h1 style={style.logoText} >فروشگاه فلان</h1> */}
-      <Brightness6Icon />
-    </div>
+    <Link to='/home' >
+      <div style={style.logoContainer}>
+        <img src={persiaIcon} style={style.logo} alt='logo' />
+
+        <Typography className={classes.title} noWrap>
+          <img src={logoText} style={style.logoText} alt='logoText' />
+        </Typography>
+        {/* <h1 style={style.logoText} >فروشگاه فلان</h1> */}
+        {/* <Brightness6Icon /> */}
+        {/* <img style={style.logo} src={persiaIcon} /> */}
+      </div>
+    </Link>
+
   );
 }
 
