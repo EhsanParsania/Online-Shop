@@ -35,7 +35,8 @@ const useStyles = makeStyles((theme) => ({
   root: {
     display: 'flex',
     left: 'auto',
-    right: 0
+    right: 0,
+   
   },
   appBar: {
     zIndex: theme.zIndex.drawer + 1,
@@ -44,9 +45,19 @@ const useStyles = makeStyles((theme) => ({
   drawer: {
     width: drawerWidth,
     flexShrink: 0,
+
+    [theme.breakpoints.down('sm')]: {
+      display: 'none',
+      width: 0,
+      // margin: '0 20px',
+      // padding: 5,
+      // marginTop: 2
+    },
+  
   },
   drawerPaper: {
     width: drawerWidth,
+
   },
   drawerContainer: {
     overflow: 'auto',
