@@ -7,11 +7,14 @@ import { theme } from './configs/RTLprovider'
 import './asset/global.scss'
 import { Provider } from 'react-redux';
 import { store } from './redux/store';
+import { Toastify } from './components/index.components'
+import 'react-toastify/dist/ReactToastify.css';
 
 ReactDOM.render(
   <Provider store={store}>
     <ThemeProvider theme={theme}>
       <App />
+      <Toastify />
     </ThemeProvider>
   </Provider>,
   document.getElementById('root')
