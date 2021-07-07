@@ -3,10 +3,6 @@ import React, { Component } from 'react'
 import { ListMenu } from '../../../components/ListMenu/ListMenu.component'
 import { CardGroupContainer } from './component/CardGroupContainer.component';
 
-import { MediaCard } from '../../../components/index.components';
-import { getData } from '../../../api/API';
-
-import {CardGroup} from '../../../components/CardGroup/CardGroup.component'
 
 class MainCustomers extends Component {
   state = {

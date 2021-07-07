@@ -32,15 +32,22 @@ const StyledTableRow = withStyles((theme) => ({
 
 
 const useStyles = makeStyles({
+  paper: {
+    minWidth: 400
+  }
+  ,
   table: {
-    minWidth: 700,
+    // minWidth: 700,
   },
   image: {
-    width: '30px',
-    height: '30px',
+    width: 38,
+    height: 38,
     borderRadius: '5px'
   },
-
+  row: {
+    // height:30
+    padding:7
+  } ,
   buttonContainer: {
     // display: 'flex',
     // justifyContent: 'space-between'
@@ -53,11 +60,11 @@ export function BasicTable(props) {
 
 
   return (
-    <TableContainer component={Paper}>
+    <TableContainer component={Paper} className={classes.paper}>
       <Table className={classes.table} aria-label="customized table">
         <TableHead>
           <TableRow>
-            
+
             <StyledTableCell align="right">عکس </StyledTableCell>
             <StyledTableCell align="right"> محصول</StyledTableCell>
             <StyledTableCell align="right">  دسته بندی</StyledTableCell>
@@ -70,14 +77,14 @@ export function BasicTable(props) {
           {props.rows.map((row) => (
             <StyledTableRow key={row.id}>
 
-              <StyledTableCell align="right"><img className={classes.image} src={`http://localhost:3001${row.image}`} alt='aks' /></StyledTableCell>
-              <StyledTableCell align="right">{row.name}</StyledTableCell>
-              <StyledTableCell align="right">{row.branch}</StyledTableCell>
-              <StyledTableCell align="right" >
-                <EditProductsModal name={row.name} imageName={row.image} />
+              <StyledTableCell className={classes.row} align="right"><img className={classes.image} src={`http://localhost:3001${row.image}`} alt='aks' /></StyledTableCell>
+              <StyledTableCell className={classes.row} align="right">{row.name}</StyledTableCell>
+              <StyledTableCell className={classes.row} align="right">{row.groupfa}</StyledTableCell>
+              <StyledTableCell className={classes.row} align="right" >
+                <EditProductsModal name={row.name} imageName={row.image} group={'groceries'} productId={row.id} />
               </StyledTableCell>
-              <StyledTableCell align="right" >
-                <DeleteButton productField={'products'} productId={row.id} />
+              <StyledTableCell className={classes.row} align="right" >
+                <DeleteButton productField={'groceries'} productId={row.id} />
               </StyledTableCell>
 
             </StyledTableRow>

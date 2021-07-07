@@ -1,10 +1,13 @@
 
-import { getData } from '../../../../../api/API';
+import { editProducts, getData } from '../../../../../api/API';
 import { BasicTable } from '../Table/Table.component'
 import { Paginate } from '../../../../../components/index.components'
 import { TableContainer } from '../../../../../components/TableContainer.component'
 import React, { Component } from 'react'
 import { Button } from '@material-ui/core';
+import { connect } from 'react-redux';
+import { deleteQuantityChangeLog } from '../../../../../redux/actions';
+import { toast } from 'react-toastify';
 
 class TableGrid extends Component {
   state = {
@@ -36,7 +39,6 @@ class TableGrid extends Component {
   }
 
   async shouldComponentUpdate(nextProps, nextState) {
-    const clickedPage = this.state.clickedPage
     if (this.state.clickedPage !== nextState.clickedPage) {
       await this.getProductsData(nextState.clickedPage)
       return true
@@ -46,11 +48,56 @@ class TableGrid extends Component {
 
 
   handleClickedPage = async (clickedPage) => {
-    console.log(clickedPage)
     await this.setState({
       clickedPage
     })
   }
+
+
+  handleAllPatchData = async () => {
+    // get quantity change from redux : 
+    const quantityChangeArray = this.props.quantityChange
+
+    try {
+      quantityChangeArray.map(async (item) => {
+        if (item) {
+          const { productGroup, productId, changedItem, newValue } = item
+
+          // create a www-form-urlencoded body : 
+          const data = new URLSearchParams({
+            [changedItem]: newValue
+          })
+          await editProducts(data, productGroup, productId)
+        }
+      })
+
+      // delete all quantity change on redux : 
+      this.props.deleteAllQuantity()
+
+      toast.success(<p dir='rtl'> &emsp;<strong> ✔ </strong> &ensp;ویرایش با موفقیت انجام شد    </p>, {
+        position: "bottom-left",
+        autoClose: 7000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+      });
+
+    }
+    catch (error) {
+      toast.error(<p>{error.message}</p>, {
+        position: "bottom-left",
+        autoClose: 7000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+      });
+    }
+  }
+
 
 
   style = {
@@ -73,13 +120,13 @@ class TableGrid extends Component {
           <div style={this.style.tableHeader}>
             <h2 > مدیریت موجودی و قیمت ها</h2>
             <div style={this.style.saveButton}>
-              <Button variant="contained" color="primary" >
+              <Button variant="contained" color="primary" onClick={this.handleAllPatchData} >
                 ذخیره
               </Button>
             </div>
           </div>
           <BasicTable rows={this.state.data} />
-          <Paginate numberOfPages={this.state.numberOfPages} clickedPage={this.handleClickedPage} field='panel'  pathSection='quantity' />
+          <Paginate numberOfPages={this.state.numberOfPages} clickedPage={this.handleClickedPage} field='panel' pathSection='quantity' />
         </TableContainer>
 
       </div>
@@ -87,4 +134,25 @@ class TableGrid extends Component {
   }
 }
 
-export default TableGrid
+const mapStateToProps = (state) => ({
+  quantityChange: state.quantityChange
+})
+
+// const mapDispatchToProps = (dispatch) => ({
+//   deleteQuantityChangeLog: dispatch(deleteQuantityChangeLog())
+// })
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    deleteAllQuantity: () => dispatch(deleteQuantityChangeLog())
+  }
+}
+
+// const mapDispatchToProps = (dispatch) => {
+//   return {
+//     insertTodo: (row) => { dispatch(insertTodo(row)) }
+//   }
+// }
+
+
+export default connect(mapStateToProps, mapDispatchToProps)(TableGrid)

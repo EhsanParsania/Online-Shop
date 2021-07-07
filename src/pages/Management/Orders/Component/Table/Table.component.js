@@ -8,6 +8,7 @@ import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
 import {OrdersModal} from '../OrdersModal/OrdersModal.component'
+
 const StyledTableCell = withStyles((theme) => ({
   head: {
     backgroundColor: theme.palette.common.black,
@@ -30,8 +31,11 @@ const StyledTableRow = withStyles((theme) => ({
 
 
 const useStyles = makeStyles({
+  paper:{
+    minWidth:400
+  },
   table: {
-    minWidth: 700,
+    // minWidth: 700,
   },
 });
 
@@ -39,7 +43,7 @@ export function BasicTable(props) {
   const classes = useStyles();
 
   return (
-    <TableContainer component={Paper}>
+    <TableContainer component={Paper} className={classes.paper}>
       <Table className={classes.table} aria-label="customized table">
         <TableHead>
           <TableRow>

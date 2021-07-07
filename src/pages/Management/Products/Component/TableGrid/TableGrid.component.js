@@ -18,7 +18,7 @@ class TableGrid extends Component {
 
   getProductsData = async (clickedPage) => {
 
-    const field = 'products'
+    const field = 'groceries'
     const rowNumber = 6
     try {
       const { data = [{}], headers } = await getData(field, clickedPage, rowNumber)

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { withStyles, makeStyles } from '@material-ui/core/styles';
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
@@ -35,8 +35,11 @@ const StyledTableRow = withStyles((theme) => ({
 
 
 const useStyles = makeStyles({
+  paper:{
+    minWidth:400
+  },
   table: {
-    minWidth: 700,
+    // minWidth: 700,
   },
   image: {
     width: '30px',
@@ -58,23 +61,23 @@ function TableData(props) {
   }
 
   const handleChangeEditedField = (changeDetail) => {
-    const { newValue, productName, productId, productItem } = changeDetail
+    const { newValue, productGroup, productId, changedItem } = changeDetail
     const value = newValue.toPersinaDigit()
     const payload = {
-      productName,
+      productGroup,
       productId,
-      productItem,
-      newValue: value
+      changedItem,
+      newValue: value,
     }
-    props.setNewQuantity(payload)
-    console.log(payload)
+
+    payload  && props.setNewQuantity(payload)
 
     // then give them to API.editProducts which exists now in API 
   }
 
 
   return (
-    <TableContainer component={Paper}>
+    <TableContainer component={Paper} className={classes.paper} >
       <Table className={classes.table} aria-label="customized table">
         <TableHead>
           <TableRow>
@@ -90,8 +93,8 @@ function TableData(props) {
             <StyledTableRow key={row.id}>
 
               <StyledTableCell align="right">{row.name}</StyledTableCell>
-              <StyledTableCell align="right"><EditableText productId={row.id} productName={row.name} productItem='price' onSave={handleChangeEditedField} value={row.price} /></StyledTableCell>
-              <StyledTableCell align="right"><EditableText productId={row.id} productName={row.name} productItem='supply' onSave={handleChangeEditedField} value={row.supply} /></StyledTableCell>
+              <StyledTableCell align="right"><EditableText productId={row.id} changedItem='price' productGroup={row.group} onSave={handleChangeEditedField} value={row.price} /></StyledTableCell>
+              <StyledTableCell align="right"><EditableText productId={row.id} changedItem='supply' productGroup={row.group} onSave={handleChangeEditedField} value={row.supply} /></StyledTableCell>
 
 
             </StyledTableRow>

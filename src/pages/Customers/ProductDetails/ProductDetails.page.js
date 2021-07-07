@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
 import CardActionArea from '@material-ui/core/CardActionArea';
@@ -7,15 +7,22 @@ import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
+import Divider from '@material-ui/core/Divider';
+import { CssBaseline } from '@material-ui/core';
 import { BASE_URL } from '../../../api/Variables.api';
 
-import Breadcrumbs from '@material-ui/core/Breadcrumbs';
-import { Link } from 'react-router-dom';
-import ArrowBackIosSharpIcon from '@material-ui/icons/ArrowBackIosSharp';
-import { TextField } from '@material-ui/core';
+
+import { BreadCrumb } from './component/BreadCrumb.component';
 
 import { StoreHeader } from '../../../components/index.components';
 import { Toolbar } from '@material-ui/core'
+
+import { InputNumber } from './component/InputNumber.component';
+import { withRouter } from 'react-router-dom';
+import { getOneProduct } from '../../../api/API';
+import { Markup } from 'interweave';
+
+import { SimpleRating } from '../../../components/index.components'
 
 
 
@@ -23,25 +30,31 @@ import { Toolbar } from '@material-ui/core'
 
 const useStyles = makeStyles({
   root: {
+    // display:'flex',
+    // flexDirection:'column',
     maxWidth: '100%',
-    // height:'100%',
+    // minHeight:'100%',
+    minHeight:610,
     padding: 15,
     margin: 20,
   },
-  container:{
-    display:'flex',
-    flexDirection:'column',
-    justifyContent:'center'
+  container: {
+    display: 'flex',
+    flexDirection: 'column',
+    justifyContent: 'center'
   },
   topContent: {
     display: 'flex',
-    justifyContent: 'space-evenly',
+    justifyContent: 'flex-start',
+    flexWrap:'wrap',
     cursor: 'unset',
-    
+    marginBottom: 20
+
   },
   image: {
-    width: 400,
-    height: 400,
+    width: 360,
+    height: 360,
+    // margin: '0px 20px 0 20px'
   },
   leftContent: {
     display: 'flex',
@@ -55,111 +68,135 @@ const useStyles = makeStyles({
 
   },
   inputNumber: {
-    marginLeft: 10
+    marginLeft: 20,
+    width: 60
+  },
+  bottomContent: {
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'flex-start',
+    padding: 20,
+    color: '#777'
+
+  },
+  rateContainer:{
+    display:'flex',
+    // flexDirection:'column '
   }
 });
 
-export function ProductDetails() {
+
+
+function ProductDetailsss(props) {
   const classes = useStyles();
 
+  const [state, setState] = useState([{}])
+  const [product, setProduct] = useState([{}])
+  const [htmlInformation, setHtmlInformation] = useState()
+
+  const getDataWithParams = async () => {
+    try {
+      const { group, id } = props.match.params
+      const { data: product } = await getOneProduct(group, id)
+      await setProduct(product)
+
+    }
+    catch (error) {
+      console.log(error.messege)
+    }
+  }
+
+
+
+  useEffect(async () => {
+
+    await getDataWithParams()
+
+  }, [])
+
+
+
   return (
-    <StoreHeader style={{flexDirection:'column'}}>
-      <Toolbar/>
-    <Card className={classes.root} raised={true}>
-      <div className={classes.topContent} >
+    <StoreHeader style={{ flexDirection: 'column' }}>
+      <Toolbar />
+      <CssBaseline/>
+      <Card className={classes.root} raised={true}>
+        <div className={classes.topContent} >
 
-        <CardMedia className={classes.image}
-          component="img"
-          alt="Contemplative Reptile"
-          height="140"
-          image={`${BASE_URL}/files/4c510049903eb0bef26b53ca8cf84994`}
-          title="Contemplative Reptile"
-        />
-        <CardContent className={classes.leftContent} >
-          <Typography gutterBottom variant="h5" component="h2" >
-            کالای فلان
-          </Typography>
-          <BreadCrumb />
-          <Typography variant="body2" color="textSecondary" component="p">
-            Lizards are a widespread group of squamate reptiles, with over 6,000 species, ranging
-            across all continents except Antarctica
-          </Typography>
-          <div className={classes.buttonContainer} >
+          <CardMedia className={classes.image}
+            component="img"
+            alt={product.name}
+            height="140"
+            image={`${BASE_URL}${product.image}`}
+            title={product.name}
+          />
 
-            <Button variant='contained' color="secondary">
-              افزودن به سبد خرید
-            </Button>
-            <InputNumber />
-          </div>
-        </CardContent>
-      </div>
-      <CardActions>
-        <Button size="small" color="primary">
-          Share
-        </Button>
-        <Button size="small" color="primary">
-          Learn More
-        </Button>
-      </CardActions>
-    </Card>
+
+          <CardContent className={classes.leftContent} >
+            <Typography gutterBottom variant="h5" component="h2" >
+              {product.name}
+            </Typography>
+
+            <BreadCrumb {...product} />
+
+
+            <div className={classes.rateContainer}>
+              <Typography variant="body2" color="textSecondary" component="p">
+                <p>
+                امتیاز محصول
+                </p>
+                <SimpleRating />
+
+              </Typography>
+            </div>
+
+            <div className={classes.buttonContainer} >
+              <InputNumber className={classes.inputNumber} />
+              <Button variant='contained' color="secondary">
+                افزودن به سبد خرید
+              </Button>
+
+            </div>
+          </CardContent>
+
+        </div>
+
+
+        <Divider variant='middle' />
+        <CardActions className={classes.bottomContent}>
+          {/* <Button size="small" color="primary">
+            Share
+          </Button>
+          <Button size="small" color="primary">
+            Learn More
+          </Button> */}
+          <Typography gutterBottom variant="h6" component="h6" >
+            توضیحات محصول
+          </Typography>
+
+          <Markup content={product.information} />
+
+        </CardActions>
+
+
+      </Card>
     </StoreHeader>
   );
 }
 
 
 
-
-
-const useStyles$ = makeStyles((theme) => ({
-  root: {
-    '& > * + *': {
-      marginTop: theme.spacing(2),
-    },
-  },
-  link: {
-    textDecoration: 'none',
-    color: 'black'
-  }
-}));
+const ProductDetails = withRouter(ProductDetailsss)
+export { ProductDetails }
 
 
 
-function BreadCrumb() {
-  const classes = useStyles$();
 
-  return (
-    <div className={classes.root}>
 
-      <Breadcrumbs separator={<ArrowBackIosSharpIcon fontSize="small" />} aria-label="breadcrumb">
-        <Link className={classes.link} to="/" >
-          فروشگاه
-        </Link>
-        <Link className={classes.link} to="/getting-started/installation/" >
-          خوار و بار
-        </Link>
-        <Typography color="textSecondary">نان</Typography>
-      </Breadcrumbs>
-    </div>
-  );
-}
 
-function InputNumber(props) {
 
-  const onChange = (event) => {
-    const value = event.target.value
-    props.onChange(value)
-  }
 
-  return (
-    <TextField
-      type='number'
-      variant='outlined'
-      // value={1}
-      // color='secondary'
-      defaultValue={1}
-      onChange={onChange}
-    // min={1}
-    // max={100}
-    />
-  )
-}
+
+
+
+
