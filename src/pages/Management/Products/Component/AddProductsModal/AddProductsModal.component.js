@@ -6,16 +6,13 @@ import style from './AddProductsModal.module.scss'
 import CancelIcon from '@material-ui/icons/Cancel';
 import { makeStyles } from '@material-ui/core/styles';
 import { Button } from '@material-ui/core';
-
 import TextField from '@material-ui/core/TextField';
-
 import MenuItem from '@material-ui/core/MenuItem';
 import FormControl from '@material-ui/core/FormControl';
 import Select from '@material-ui/core/Select';
-
 import { UploadFile } from '../UploadFile/UploadFile.component'
-
 import * as AXIOS from '../../../../../api/API'
+import { toast } from 'react-toastify';
 
 
 const useStyles = makeStyles((theme) => ({
@@ -36,6 +33,9 @@ const useStyles = makeStyles((theme) => ({
     cursor: 'pointer',
     color: 'darkblue'
   },
+  addButton:{
+    width:100
+  }
 
 
 }));
@@ -43,16 +43,39 @@ const useStyles = makeStyles((theme) => ({
 export function AddProductsModal(props) {
   const classes = useStyles();
   const [open, setOpen] = React.useState(false);
-  const [state, setState] = React.useState({ image: '', name: '', branch: '', information: '' })
+  const [state, setState] = React.useState({ image: '', name: '', group: '', information: '' })
 
   const handlePostData = async () => {
     let bodyFormData = new FormData()
     bodyFormData.append('name', state.name)
     bodyFormData.append('information', state.information)
-    bodyFormData.append('branch', state.branch)
+    bodyFormData.append('group', state.group)
     bodyFormData.append('image', state.image)
 
-    await AXIOS.postProducts(bodyFormData)
+    try {
+      await AXIOS.postProducts(bodyFormData)
+      handleClose()
+      toast.success(<p dir='rtl'> &emsp;<strong> ✔ </strong> &ensp;افزودن کالا با موفقیت انجام شد    </p>, {
+        position: "bottom-left",
+        autoClose: 7000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+      });
+    }
+    catch (error) {
+      toast.error(<p>{error.message}</p>, {
+        position: "bottom-left",
+        autoClose: 7000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+      });
+    }
 
   }
 
@@ -70,10 +93,10 @@ export function AddProductsModal(props) {
       {/* <p onClick={handleOpen} className={classes.button} >
         افزودن کالا
       </p> */}
-      <Button onClick={handleOpen} color='primary' variant='contained' >
+      <Button className={classes.addButton}  onClick={handleOpen} color='primary' variant='contained' >
         افزودن کالا
       </Button>
-      <Modal style={{overflow:'scroll'}}
+      <Modal style={{ overflow: 'scroll' }}
         aria-labelledby="transition-modal-title"
         aria-describedby="transition-modal-description"
         className={classes.modal}
@@ -101,7 +124,7 @@ export function AddProductsModal(props) {
             <BasicTextFields value={(value) => setState({ ...state, name: value })} />
 
             <p> دسته بندی</p>
-            <SimpleSelect value={(value) => setState({ ...state, branch: value })} />
+            <SimpleSelect value={(value) => setState({ ...state, group: value })} />
 
             <p>  توضیحات </p>
             <TextArea value={(value) => setState({ ...state, information: value })} />
@@ -191,9 +214,10 @@ function SimpleSelect(props) {
           <MenuItem value="">
             <em>گروه محصول</em>
           </MenuItem>
-          <MenuItem value={10}>کالاهای اساسی و خوار و بار</MenuItem>
-          <MenuItem value={20}>کالاهای اساسی و خوار و بار</MenuItem>
-          <MenuItem value={30}>کالاهای اساسی و خوار و بار</MenuItem>
+          <MenuItem value={'groceries'}>کالاهای اساسی و خوار و بار</MenuItem>
+          <MenuItem value={'dairies'}>لبنیات</MenuItem>
+          <MenuItem value={'proteins'}>محصولات پروتئینی</MenuItem>
+          <MenuItem value={'drinkd'}>نوشیدنی و</MenuItem>
         </Select>
       </FormControl>
 
