@@ -1,7 +1,6 @@
 import React from 'react';
-import Brightness6Icon from '@material-ui/icons/Brightness6';
 import { Typography } from '@material-ui/core'
-import { fade, makeStyles } from '@material-ui/core/styles';
+import {  makeStyles } from '@material-ui/core/styles';
 import persiaIcon from '../../../asset/logo/persia-icon.png'
 import logoText from '../../../asset/logo/logotext.png'
 import { Link } from 'react-router-dom';
@@ -22,6 +21,7 @@ function Logo(props) {
       width: 50,
       heigth: 50,
       filter: ' invert()'
+      
     },
     logoText: {
       width: 150,
@@ -36,12 +36,16 @@ function Logo(props) {
     title: {
       flexGrow: 1,
       display: 'none',
+      '&:hover':{
+        filter:' drop-shadow(2px 2px 10px #111)'
+      },
       [theme.breakpoints.up('sm')]: {
         display: 'block',
         margin: '0 20px',
         padding: 5,
         marginTop: 2
       },
+ 
     }
   }));
 
@@ -49,7 +53,8 @@ function Logo(props) {
   return (
     <Link to='/home' >
       <div style={style.logoContainer}>
-        <img src={persiaIcon} style={style.logo} alt='logo' />
+        
+        <img   src={persiaIcon} style={style.logo} alt='logo' />
 
         <Typography className={classes.title} noWrap>
           <img src={logoText} style={style.logoText} alt='logoText' />

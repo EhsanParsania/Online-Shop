@@ -3,7 +3,6 @@ import React, { Component } from 'react'
 import { ListMenu } from '../../../components/ListMenu/ListMenu.component'
 import { CardGroupContainer } from './component/CardGroupContainer.component';
 
-
 class MainCustomers extends Component {
   state = {
     data:[{}]
@@ -21,8 +20,12 @@ class MainCustomers extends Component {
       <ListMenu>
       <section>
 
-      <CardGroupContainer field='groceries' groupName={'نان'}/>
-      <CardGroupContainer field='groceries' groupName={'لبنیات'}/>
+      <CardGroupContainer field='groceries'/>
+      <CardGroupContainer field='groceries'/>
+      <CardGroupContainer field='groceries'/>
+      <CardGroupContainer field='groceries'/>
+      <CardGroupContainer field='groceries'/>
+      <CardGroupContainer field='groceries'/>
 
    
 

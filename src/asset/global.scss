@@ -36,3 +36,17 @@
     background-color: rgb(233, 233, 233) !important;
   }
 }
+.date-input-with-dialog-empty{
+  display: none;
+}
+.date-input-with-dialog-calendar{
+  // right:1rem;
+  top: 1.3rem;
+  width: 30px;
+}
+.JDatePicker{
+//  position: absolute;  
+//  left: 50%;
+//  top: 50%;
+ transform:  translate(-50%,0%);
+}
