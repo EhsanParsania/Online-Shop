@@ -36,7 +36,7 @@ const useStyles = makeStyles((theme) => ({
     display: 'flex',
     left: 'auto',
     right: 0,
-   
+
   },
   appBar: {
     zIndex: theme.zIndex.drawer + 1,
@@ -53,7 +53,7 @@ const useStyles = makeStyles((theme) => ({
       // padding: 5,
       // marginTop: 2
     },
-  
+
   },
   drawerPaper: {
     width: drawerWidth,
@@ -68,9 +68,10 @@ const useStyles = makeStyles((theme) => ({
     padding: theme.spacing(3),
   },
   subHeader: {
-    color: '#555',
-    fontWeight: 'bold',
+    color: '#222',
+    fontWeight: 600,
     margin: 0,
+    fontSize:16
     // padding:0
   },
   inline: {
@@ -79,7 +80,8 @@ const useStyles = makeStyles((theme) => ({
   },
   text: {
     margin: 0,
-    padding: 0
+    padding: 0,
+    color:'#666'
   },
   list: {
     margin: 0,
@@ -88,9 +90,9 @@ const useStyles = makeStyles((theme) => ({
   listItem: {
     padding: '0 15px'
   },
-  link:{
-    textDecoration:'none',
-    color:'black',
+  link: {
+    textDecoration: 'none',
+    color: 'black',
   }
 
 }));
@@ -139,29 +141,213 @@ function ListMenu(props) {
                   </Link>
 
                   <Link className={classes.link} to='/home/groceries/rice/1' >
-                  <ListItem className={classes.listItem} alignItems={'start'} dense={'true'} button >
-                    <ListItemText disableTypography={true} className={classes.text}>
-                      برنج
-                    </ListItemText>
-                  </ListItem>
+                    <ListItem className={classes.listItem} alignItems={'start'} dense={'true'} button >
+                      <ListItemText disableTypography={true} className={classes.text}>
+                        برنج
+                      </ListItemText>
+                    </ListItem>
                   </Link>
 
                   <Link className={classes.link} to='/home/groceries/oil/1' >
-                  <ListItem className={classes.listItem} alignItems={'start'} dense={'true'} button >
-                    <ListItemText disableTypography={true} className={classes.text}>
-                      روغن
-                    </ListItemText>
-                  </ListItem>
+                    <ListItem className={classes.listItem} alignItems={'start'} dense={'true'} button >
+                      <ListItemText disableTypography={true} className={classes.text}>
+                        روغن
+                      </ListItemText>
+                    </ListItem>
                   </Link>
 
                   <Link className={classes.link} to='/home/groceries/sugar/1' >
-                  <ListItem className={classes.listItem} alignItems={'start'} dense={'true'} button >
-                    <ListItemText disableTypography={true} className={classes.text}>
-                      قند و نبات
-                    </ListItemText>
-                  </ListItem>
+                    <ListItem className={classes.listItem} alignItems={'start'} dense={'true'} button >
+                      <ListItemText disableTypography={true} className={classes.text}>
+                        قند و نبات
+                      </ListItemText>
+                    </ListItem>
                   </Link>
                 </List>
+
+
+
+
+                <List className={classes.list} disableTypography={true}>
+                  <ListSubheader className={classes.subHeader} >
+
+                    <span style={{ backgroundColor: 'white' }}> لبنیات </span>
+
+                  </ListSubheader>
+
+                  <Link className={classes.link} to='/home/groceries/bread/1' >
+                    <ListItem className={classes.listItem} alignItems={'start'} dense={'true'} button  >
+                      <ListItemText disableTypography={true} className={classes.text}  >
+                        شیر
+                      </ListItemText>
+                    </ListItem>
+                  </Link>
+
+                  <Link className={classes.link} to='/home/groceries/rice/1' >
+                    <ListItem className={classes.listItem} alignItems={'start'} dense={'true'} button >
+                      <ListItemText disableTypography={true} className={classes.text}>
+                        کره حیوانی و گیاهی
+                      </ListItemText>
+                    </ListItem>
+                  </Link>
+
+                  <Link className={classes.link} to='/home/groceries/oil/1' >
+                    <ListItem className={classes.listItem} alignItems={'start'} dense={'true'} button >
+                      <ListItemText disableTypography={true} className={classes.text}>
+                        ماست
+                      </ListItemText>
+                    </ListItem>
+                  </Link>
+
+                  <Link className={classes.link} to='/home/groceries/sugar/1' >
+                    <ListItem className={classes.listItem} alignItems={'start'} dense={'true'} button >
+                      <ListItemText disableTypography={true} className={classes.text}>
+                        دوغ
+                      </ListItemText>
+                    </ListItem>
+                  </Link>
+                </List>
+
+
+
+
+                <List className={classes.list} disableTypography={true}>
+                  <ListSubheader className={classes.subHeader} >
+
+                    <span style={{ backgroundColor: 'white' }}> محصولات پروتئینی</span>
+
+                  </ListSubheader>
+
+                  <Link className={classes.link} to='/home/groceries/bread/1' >
+                    <ListItem className={classes.listItem} alignItems={'start'} dense={'true'} button  >
+                      <ListItemText disableTypography={true} className={classes.text}  >
+                        گوشت گاو و گوساله
+                      </ListItemText>
+                    </ListItem>
+                  </Link>
+
+                  <Link className={classes.link} to='/home/groceries/rice/1' >
+                    <ListItem className={classes.listItem} alignItems={'start'} dense={'true'} button >
+                      <ListItemText disableTypography={true} className={classes.text}>
+                        گوشت مرغ
+                      </ListItemText>
+                    </ListItem>
+                  </Link>
+
+                  <Link className={classes.link} to='/home/groceries/oil/1' >
+                    <ListItem className={classes.listItem} alignItems={'start'} dense={'true'} button >
+                      <ListItemText disableTypography={true} className={classes.text}>
+                        تخم مرغ
+                      </ListItemText>
+                    </ListItem>
+                  </Link>
+
+                  <Link className={classes.link} to='/home/groceries/sugar/1' >
+                    <ListItem className={classes.listItem} alignItems={'start'} dense={'true'} button >
+                      <ListItemText disableTypography={true} className={classes.text}>
+                        ماهی، میگو و خاویار
+                      </ListItemText>
+                    </ListItem>
+                  </Link>
+                </List>
+
+
+
+
+
+         
+
+
+                <List className={classes.list} disableTypography={true}>
+                  <ListSubheader className={classes.subHeader} >
+
+                    <span style={{ backgroundColor: 'white' }}> نوشیدنی</span>
+
+                  </ListSubheader>
+
+                  <Link className={classes.link} to='/home/groceries/bread/1' >
+                    <ListItem className={classes.listItem} alignItems={'start'} dense={'true'} button  >
+                      <ListItemText disableTypography={true} className={classes.text}  >
+                      قهوه
+                      </ListItemText>
+                    </ListItem>
+                  </Link>
+
+                  <Link className={classes.link} to='/home/groceries/rice/1' >
+                    <ListItem className={classes.listItem} alignItems={'start'} dense={'true'} button >
+                      <ListItemText disableTypography={true} className={classes.text}>
+                      نسکافه و هات چاکلت
+                      </ListItemText>
+                    </ListItem>
+                  </Link>
+
+                  <Link className={classes.link} to='/home/groceries/oil/1' >
+                    <ListItem className={classes.listItem} alignItems={'start'} dense={'true'} button >
+                      <ListItemText disableTypography={true} className={classes.text}>
+                      چای
+                      </ListItemText>
+                    </ListItem>
+                  </Link>
+
+                  <Link className={classes.link} to='/home/groceries/sugar/1' >
+                    <ListItem className={classes.listItem} alignItems={'start'} dense={'true'} button >
+                      <ListItemText disableTypography={true} className={classes.text}>
+                      شربت و آبمیوه
+                      </ListItemText>
+                    </ListItem>
+                  </Link>
+                </List>
+
+
+
+
+
+
+
+
+                <List className={classes.list} disableTypography={true}>
+                  <ListSubheader className={classes.subHeader} >
+
+                    <span style={{ backgroundColor: 'white' }}> نوشیدنی</span>
+
+                  </ListSubheader>
+
+                  <Link className={classes.link} to='/home/groceries/bread/1' >
+                    <ListItem className={classes.listItem} alignItems={'start'} dense={'true'} button  >
+                      <ListItemText disableTypography={true} className={classes.text}  >
+                      قهوه
+                      </ListItemText>
+                    </ListItem>
+                  </Link>
+
+                  <Link className={classes.link} to='/home/groceries/rice/1' >
+                    <ListItem className={classes.listItem} alignItems={'start'} dense={'true'} button >
+                      <ListItemText disableTypography={true} className={classes.text}>
+                      نسکافه و هات چاکلت
+                      </ListItemText>
+                    </ListItem>
+                  </Link>
+
+                  <Link className={classes.link} to='/home/groceries/oil/1' >
+                    <ListItem className={classes.listItem} alignItems={'start'} dense={'true'} button >
+                      <ListItemText disableTypography={true} className={classes.text}>
+                      چای
+                      </ListItemText>
+                    </ListItem>
+                  </Link>
+
+                  <Link className={classes.link} to='/home/groceries/sugar/1' >
+                    <ListItem className={classes.listItem} alignItems={'start'} dense={'true'} button >
+                      <ListItemText disableTypography={true} className={classes.text}>
+                      شربت و آبمیوه
+                      </ListItemText>
+                    </ListItem>
+                  </Link>
+                </List>
+
+
+
+
 
 
                 <List className={classes.list} disableTypography={true}>
@@ -171,60 +357,43 @@ function ListMenu(props) {
 
                   </ListSubheader>
 
-                  <ListItem className={classes.listItem} alignItems={'start'} dense={'true'} button >
-                    <ListItemText disableTypography={true} className={classes.text}  >
-                      نان
-                    </ListItemText>
-                  </ListItem>
-                  <ListItem className={classes.listItem} alignItems={'start'} dense={'true'} button >
-                    <ListItemText disableTypography={true} className={classes.text}>
-                      برنج
-                    </ListItemText>
-                  </ListItem>
-                  <ListItem className={classes.listItem} alignItems={'start'} dense={'true'} button >
-                    <ListItemText disableTypography={true} className={classes.text}>
-                      روغن
-
-                    </ListItemText>
-                  </ListItem>
-                  <ListItem className={classes.listItem} alignItems={'start'} dense={'true'} button >
-                    <ListItemText disableTypography={true} className={classes.text}>
-                      قند و نبات
-
-                    </ListItemText>
-                  </ListItem>
-                </List>
-
-
-
-
-
-                <List className={classes.list}>
-                  <ListSubheader color={'secondary'} className={classes.subHeader}>
-                    کالاهای اساسی و خوار و بار
-                  </ListSubheader>
-                  {['نان', 'برنج', ' روغن', 'قند و نبات'].map((text, index) => (
-                    <ListItem className={classes.listItem} alignItems={'start'} dense={'true'} button key={text}>
-                      {/* <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon> */}
-                      <ListItemText className={classes.text}>
-                        {text}
+                  <Link className={classes.link} to='/home/groceries/bread/1' >
+                    <ListItem className={classes.listItem} alignItems={'start'} dense={'true'} button  >
+                      <ListItemText disableTypography={true} className={classes.text}  >
+                        نان
                       </ListItemText>
                     </ListItem>
-                  ))}
-                </List>
-                <List className={classes.list}>
-                  <ListSubheader color={'secondary'} className={classes.subHeader}>
-                    کالاهای اساسی و خوار و بار
-                  </ListSubheader>
-                  {['نان', 'برنج', ' روغن', 'قند و نبات'].map((text, index) => (
-                    <ListItem className={classes.listItem} alignItems={'start'} dense={'true'} button key={text}>
-                      {/* <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon> */}
-                      <ListItemText className={classes.text}>
-                        {text}
+                  </Link>
+
+                  <Link className={classes.link} to='/home/groceries/rice/1' >
+                    <ListItem className={classes.listItem} alignItems={'start'} dense={'true'} button >
+                      <ListItemText disableTypography={true} className={classes.text}>
+                        برنج
                       </ListItemText>
                     </ListItem>
-                  ))}
+                  </Link>
+
+                  <Link className={classes.link} to='/home/groceries/oil/1' >
+                    <ListItem className={classes.listItem} alignItems={'start'} dense={'true'} button >
+                      <ListItemText disableTypography={true} className={classes.text}>
+                        روغن
+                      </ListItemText>
+                    </ListItem>
+                  </Link>
+
+                  <Link className={classes.link} to='/home/groceries/sugar/1' >
+                    <ListItem className={classes.listItem} alignItems={'start'} dense={'true'} button >
+                      <ListItemText disableTypography={true} className={classes.text}>
+                        قند و نبات
+                      </ListItemText>
+                    </ListItem>
+                  </Link>
                 </List>
+
+
+
+
+
 
               </div>
             </Drawer>
