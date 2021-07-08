@@ -21,6 +21,10 @@ function TableContainer(props) {
       padding: theme.spacing(2),
       textAlign: 'center',
       color: theme.palette.text.secondary,
+      minHeight:550,
+      display:'flex',
+      flexDirection:'column', 
+      // justifyContent:'space-between'
     },
     buttonContainer: {
       display: 'flex',
