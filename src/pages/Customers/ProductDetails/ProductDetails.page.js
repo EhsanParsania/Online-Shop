@@ -23,6 +23,8 @@ import { getOneProduct } from '../../../api/API';
 import { Markup } from 'interweave';
 
 import { SimpleRating } from '../../../components/index.components'
+import { connect } from 'react-redux';
+import { addProductToCart, deleteCart } from '../../../redux/actions';
 
 
 
@@ -34,7 +36,7 @@ const useStyles = makeStyles({
     // flexDirection:'column',
     maxWidth: '100%',
     // minHeight:'100%',
-    minHeight:610,
+    minHeight: 610,
     padding: 15,
     margin: 20,
   },
@@ -46,7 +48,7 @@ const useStyles = makeStyles({
   topContent: {
     display: 'flex',
     justifyContent: 'flex-start',
-    flexWrap:'wrap',
+    flexWrap: 'wrap',
     cursor: 'unset',
     marginBottom: 20
 
@@ -79,8 +81,8 @@ const useStyles = makeStyles({
     color: '#777'
 
   },
-  rateContainer:{
-    display:'flex',
+  rateContainer: {
+    display: 'flex',
     // flexDirection:'column '
   }
 });
@@ -90,16 +92,14 @@ const useStyles = makeStyles({
 function ProductDetailsss(props) {
   const classes = useStyles();
 
-  const [state, setState] = useState([{}])
   const [product, setProduct] = useState([{}])
-  const [htmlInformation, setHtmlInformation] = useState()
+  const [number = 1, setNumber] = useState()
 
   const getDataWithParams = async () => {
     try {
       const { group, id } = props.match.params
       const { data: product } = await getOneProduct(group, id)
       await setProduct(product)
-
     }
     catch (error) {
       console.log(error.messege)
@@ -109,17 +109,36 @@ function ProductDetailsss(props) {
 
 
   useEffect(async () => {
-
     await getDataWithParams()
-
   }, [])
+
+
+  const addToBuyList = () => {
+    const { id, name, group, price,subgroup } = product
+    const orderId = props.cart.length + 1
+
+    const data = {
+      productId: id,
+      productName: name,
+      group: group,
+      subgroup:subgroup,
+      number: parseInt(number) ,
+      id: orderId,
+      productPrice: price
+    }
+
+    props.addProductToCart(data)
+    console.log(props.cart)
+
+
+  }
 
 
 
   return (
     <StoreHeader style={{ flexDirection: 'column' }}>
       <Toolbar />
-      <CssBaseline/>
+      <CssBaseline />
       <Card className={classes.root} raised={true}>
         <div className={classes.topContent} >
 
@@ -143,7 +162,7 @@ function ProductDetailsss(props) {
             <div className={classes.rateContainer}>
               <Typography variant="body2" color="textSecondary" component="p">
                 <p>
-                امتیاز محصول
+                  امتیاز محصول
                 </p>
                 <SimpleRating />
 
@@ -151,8 +170,8 @@ function ProductDetailsss(props) {
             </div>
 
             <div className={classes.buttonContainer} >
-              <InputNumber className={classes.inputNumber} />
-              <Button variant='contained' color="secondary">
+              <InputNumber className={classes.inputNumber} onChange={(number) => setNumber(number)} />
+              <Button variant='contained' color="secondary" onClick={addToBuyList} >
                 افزودن به سبد خرید
               </Button>
 
@@ -164,12 +183,7 @@ function ProductDetailsss(props) {
 
         <Divider variant='middle' />
         <CardActions className={classes.bottomContent}>
-          {/* <Button size="small" color="primary">
-            Share
-          </Button>
-          <Button size="small" color="primary">
-            Learn More
-          </Button> */}
+
           <Typography gutterBottom variant="h6" component="h6" >
             توضیحات محصول
           </Typography>
@@ -184,10 +198,21 @@ function ProductDetailsss(props) {
   );
 }
 
+const mapStateToProps = (state) => ({
+  cart: state.cart
+})
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    addProductToCart: (payload) => dispatch(addProductToCart(payload)),
+    deleteCart: () => dispatch(deleteCart())
+  }
+}
+
 
 
 const ProductDetails = withRouter(ProductDetailsss)
-export { ProductDetails }
+export default connect(mapStateToProps, mapDispatchToProps)(ProductDetails)
 
 
 
