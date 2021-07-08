@@ -4,8 +4,16 @@ const router = jsonServer.router('db.json')
 const middlewares = jsonServer.defaults()
 const fs = require('fs')
 const path = require('path')
-const multer  = require('multer')
+const multer = require('multer')
 const upload = multer({ dest: 'uploads/' })
+const express = require('express')
+const app = express()
+
+
+app.use('/payment', express.static('origin'))
+// app.get('/payment',(req,res)=>{
+//   res.send('<h1>hey</h1>')
+// })
 
 // Set default middlewares (logger, static, cors and no-cache)
 server.use(middlewares)
@@ -29,7 +37,7 @@ server.get('/files', (req, res, next) => {
 server.get('/files/:file_id', (req, res, next) => {
   const { file_id } = req.params
   res.set('Content-Type', 'image/jpeg')
-  res.sendFile(path.join(__dirname, 'uploads/'+file_id))
+  res.sendFile(path.join(__dirname, 'uploads/' + file_id))
 })
 
 // To handle POST, PUT and PATCH you need to use a body-parser
@@ -37,17 +45,19 @@ server.get('/files/:file_id', (req, res, next) => {
 server.use(jsonServer.bodyParser)
 
 
-// For all non-json POST requests (object creation endpoints using an image file)
+// For all non-json POST and PATCH requests (create and edit endpoints using an image file)
 // 1- Upload the file inside the `image` field
 // 2- (do it in next middleware)
 const imageFieldUploadMiddleware = upload.single('image')
+
 server.use((req, res, next) => {
-  if (req.method === 'POST' && req.headers['content-type'] != 'application/json') {
+  if ((req.method === 'POST' || req.method === 'PATCH') && req.headers['content-type'] != 'application/json') {
     imageFieldUploadMiddleware(req, res, next)
   } else {
     next()
   }
 })
+
 
 // If previous middle-ware worked, continue to next step
 // 1- (previous middle-ware already did first step)
@@ -61,10 +71,10 @@ server.use((req, res, next) => {
 
     // validate uploaded image
     if (mimetype != 'image/jpeg') throw new Error('image should be in image/jpeg type')
-    if (size > 2*1024*1024) throw new Error('image size should be less than 2MB')
-    
+    if (size > 2 * 1024 * 1024) throw new Error('image size should be less than 2MB')
+
     // Replace image field value with the file's path
-    req.body.image = '/files/'+filename
+    req.body.image = '/files/' + filename
   }
   // continue to normal json-server router for actual creation
   next()
@@ -82,6 +92,11 @@ server.use((req, res, next) => {
 
 // Use default router (CRUDs of db.json)
 server.use(router)
+
+// add express server for serving html on other origin
+app.listen(3050, () => {
+  console.log('Express is running at http://localhost:3050')
+})
 
 server.listen(3001, () => {
   console.log('Customized JSON-Server is running at http://localhost:3001/')
