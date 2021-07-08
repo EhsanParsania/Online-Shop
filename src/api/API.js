@@ -17,7 +17,7 @@ export function getData(group, pageNumber, rowNumber, isDelivered = '') {
 
 
 export const postProducts = (bodyFormData) => {
-  return API({ method: "post", url: '/products', data: bodyFormData, headers: { "Content-Type": "multipart/form-data" } })
+  return API({ method: "post", url: '/groceries', data: bodyFormData, headers: { "Content-Type": "multipart/form-data" } })
     .then(response => {
       console.log('formData posted --> ', response)
       return response
@@ -30,8 +30,8 @@ export const postProducts = (bodyFormData) => {
 }
 
 
-export const editProducts = (bodyFormData, id) => {
-  return API({ method: "patch", url: `/products/${id}`, data: bodyFormData, headers: { "Content-Type": "multipart/form-data" } })
+export const editProducts = (data, group, id) => {
+  return API({ method: "patch", url: `/${group}/${id}`, data: data, headers: { "Content-Type": "multipart/form-data" } })
     .then(response => {
       console.log('The product edited  --> ', response)
       return response
@@ -40,13 +40,12 @@ export const editProducts = (bodyFormData, id) => {
       console.log('The product not edited --> ', error.message)
       return error
     })
-
 }
 
 
 export const deleteProducts = async (id, group) => {
-  const address = `/${group}/${id}`
-  return API.delete(address)
+  const url = `/${group}/${id}`
+  return API.delete(url)
     .then(response => {
       console.log('The product deleted --> ', response)
       return response
@@ -70,4 +69,33 @@ export const getFilteredProducts = (group, subGroup, limit, pageNumber) => {
       return error
     })
 
+}
+
+
+
+
+export const getOneProduct = (group, id) => {
+  return API.get(`/${group}/${id}`)
+    .then(response => {
+      console.log('The product fetched')
+      return response
+    })
+    .catch(error => {
+      console.log('The product fetch had an error', error.message)
+      return error
+
+    })
+}
+
+export const finalizeCart = (data) => {
+  return API.post(`/orders`, data)
+    .then(response => {
+      console.log('Order sent')
+      return response
+    })
+    .catch(error => {
+      console.log('Order not sent', error)
+      return error
+
+    })
 }
