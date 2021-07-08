@@ -27,10 +27,28 @@
       "customerAddress": "تهران ولیعصر",
       "totalAmount": "۲۵۰۰۰۰۰",
       "deliveryTime": "۱۲",
-      "orderTime": "۱۴۰۰/۳/۲۷",
-      "endProccessTime": "۱۸",
+      "endProccessTime": "1625648901880",
       "createdAt": 1624547158551,
-      "delivered": "true",
+      "delivered": "false",
+      "orderList": [
+        {
+          "group": "groceries",
+          "ProductId": 2,
+          "number": 3,
+          "productName": "نان سحر",
+          "productPrice": "۱۵۰۰۰",
+          "id": 1
+        },
+        {
+          "group": "groceries",
+          "ProductId": 6,
+          "number": 14,
+          "productName": " روغن بهار",
+          "productPrice": "۸۰۰۰۰",
+          "id": 2
+        }
+      ],
+      "tell": "09123433344",
       "id": 1
     },
     {
@@ -38,10 +56,28 @@
       "customerAddress": "تهران خیابان انقلاب",
       "totalAmount": "۱۴۵۰۰۰",
       "deliveryTime": "۱۲",
-      "orderTime": "۱۴۰۰/۲/۵",
-      "endProccessTime": "۱۸",
-      "createdAt": 1624547158501,
-      "delivered": "false",
+      "endProccessTime": "1625651327935",
+      "createdAt": 1624547158551,
+      "delivered": "true",
+      "orderList": [
+        {
+          "group": "groceries",
+          "ProductId": 2,
+          "number": 3,
+          "productName": "نان سحر",
+          "productPrice": "۱۵۰۰۰",
+          "id": 1
+        },
+        {
+          "group": "groceries",
+          "ProductId": 6,
+          "number": 14,
+          "productName": " روغن بهار",
+          "productPrice": "۸۰۰۰۰",
+          "id": 2
+        }
+      ],
+      "tell": "09123433344",
       "id": 2
     },
     {
@@ -49,131 +85,344 @@
       "customerAddress": "تهران منطقه ۵",
       "totalAmount": "۶۵۰۰۰۰۰",
       "deliveryTime": "۱۲",
-      "orderTime": "۱۴۰۰/۲/۹",
-      "endProccessTime": "۱۸",
-      "createdAt": 1624547228545,
+      "endProccessTime": "1625651953127",
+      "createdAt": 1624547158551,
       "delivered": "true",
+      "orderList": [
+        {
+          "group": "groceries",
+          "ProductId": 2,
+          "number": 3,
+          "productName": "نان سحر",
+          "productPrice": "۱۵۰۰۰",
+          "id": 1
+        },
+        {
+          "group": "groceries",
+          "ProductId": 6,
+          "number": 14,
+          "productName": " روغن بهار",
+          "productPrice": "۸۰۰۰۰",
+          "id": 2
+        }
+      ],
+      "tell": "09123433344",
       "id": 3
     },
     {
       "customerName": "کوشیار تبسمی",
       "customerAddress": "تهران منطقه ۲",
       "totalAmount": "۱۲۷۰۰۰۰",
-      "deliveryTime": "۱۲",
-      "orderTime": "۱۴۰۰/۳/۹",
-      "endProccessTime": "۱۸",
-      "createdAt": 1624547275241,
+      "endProccessTime": "1625648901880",
+      "createdAt": 1624547158551,
       "delivered": "true",
+      "orderList": [
+        {
+          "group": "groceries",
+          "ProductId": 2,
+          "number": 3,
+          "productName": "نان سحر",
+          "productPrice": "۱۵۰۰۰",
+          "id": 1
+        },
+        {
+          "group": "groceries",
+          "ProductId": 6,
+          "number": 14,
+          "productName": " روغن بهار",
+          "productPrice": "۸۰۰۰۰",
+          "id": 2
+        }
+      ],
+      "tell": "09123433344",
       "id": 4
-    },
-    {
-      "customerName": "رامین امین",
-      "customerAddress": "تهران سعادت آباد",
-      "totalAmount": "۵۶۰۰۰",
-      "deliveryTime": "۱۲",
-      "orderTime": "۱۴۰۰/۳/۱۲",
-      "endProccessTime": "۱۸",
-      "createdAt": 1624547319890,
-      "delivered": "true",
-      "id": 5
-    },
-    {
-      "customerName": "فرهاد آزاد",
-      "customerAddress": "تهران منیریه",
-      "totalAmount": "۳۴۹۰۰۰۰",
-      "deliveryTime": "۱۲",
-      "orderTime": "۱۴۰۰/۳/۲۴",
-      "endProccessTime": "۱۸",
-      "createdAt": 1624547363749,
-      "delivered": "false",
-      "id": 6
-    },
-    {
-      "customerName": "تارا مقامی",
-      "customerAddress": "تهران قیطریه",
-      "totalAmount": "۲۳۰۰۰۰۰",
-      "deliveryTime": "۱۲",
-      "orderTime": "۱۴۰۰/۳/۲۹",
-      "endProccessTime": "۱۸",
-      "createdAt": 1624547399301,
-      "delivered": "true",
-      "id": 7
     },
     {
       "customerName": "آناهیتا نیاز",
       "customerAddress": "تهران ولیعصر",
       "totalAmount": "۲۵۰۰۰۰۰",
       "deliveryTime": "۱۲",
-      "orderTime": "۱۴۰۰/۲/۱۳",
-      "endProccessTime": "۱۸",
+      "endProccessTime": "1625651986506",
       "createdAt": 1624547158551,
-      "delivered": "false",
-      "id": 8
+      "delivered": "true",
+      "orderList": [
+        {
+          "group": "groceries",
+          "ProductId": 2,
+          "number": 3,
+          "productName": "نان سحر",
+          "productPrice": "۱۵۰۰۰",
+          "id": 1
+        },
+        {
+          "group": "groceries",
+          "ProductId": 6,
+          "number": 14,
+          "productName": " روغن بهار",
+          "productPrice": "۸۰۰۰۰",
+          "id": 2
+        }
+      ],
+      "tell": "09123433344",
+      "id": 5
     },
     {
-      "customerName": "تهمینه سام ",
+      "customerName": "سارا پارسا",
       "customerAddress": "تهران خیابان انقلاب",
       "totalAmount": "۱۴۵۰۰۰",
       "deliveryTime": "۱۲",
-      "orderTime": "۱۴۰۰/۲/۵",
-      "endProccessTime": "۱۸",
-      "createdAt": 1624547158501,
-      "delivered": "false",
-      "id": 9
+      "endProccessTime": "1625651327935",
+      "createdAt": 1624547158551,
+      "delivered": "true",
+      "orderList": [
+        {
+          "group": "groceries",
+          "ProductId": 2,
+          "number": 3,
+          "productName": "نان سحر",
+          "productPrice": "۱۵۰۰۰",
+          "id": 1
+        },
+        {
+          "group": "groceries",
+          "ProductId": 6,
+          "number": 14,
+          "productName": " روغن بهار",
+          "productPrice": "۸۰۰۰۰",
+          "id": 2
+        }
+      ],
+      "tell": "09123433344",
+      "id": 6
     },
     {
       "customerName": "سیاوش نامی",
       "customerAddress": "تهران منطقه ۵",
       "totalAmount": "۶۵۰۰۰۰۰",
       "deliveryTime": "۱۲",
-      "orderTime": "۱۴۰۰/۲/۹",
-      "endProccessTime": "۱۸",
-      "createdAt": 1624547228545,
-      "delivered": "true",
-      "id": 10
+      "endProccessTime": "1625648901880",
+      "createdAt": 1624547158551,
+      "delivered": "false",
+      "orderList": [
+        {
+          "group": "groceries",
+          "ProductId": 2,
+          "number": 3,
+          "productName": "نان سحر",
+          "productPrice": "۱۵۰۰۰",
+          "id": 1
+        },
+        {
+          "group": "groceries",
+          "ProductId": 6,
+          "number": 14,
+          "productName": " روغن بهار",
+          "productPrice": "۸۰۰۰۰",
+          "id": 7
+        }
+      ],
+      "tell": "09123433344",
+      "id": 3
     },
     {
       "customerName": "کوشیار تبسمی",
       "customerAddress": "تهران منطقه ۲",
       "totalAmount": "۱۲۷۰۰۰۰",
-      "deliveryTime": "۱۲",
-      "orderTime": "۱۴۰۰/۳/۹",
-      "endProccessTime": "۱۸",
-      "createdAt": 1624547275241,
+      "endProccessTime": "1625648901880",
+      "createdAt": 1624547158551,
       "delivered": "true",
+      "orderList": [
+        {
+          "group": "groceries",
+          "ProductId": 2,
+          "number": 3,
+          "productName": "نان سحر",
+          "productPrice": "۱۵۰۰۰",
+          "id": 1
+        },
+        {
+          "group": "groceries",
+          "ProductId": 6,
+          "number": 14,
+          "productName": " روغن بهار",
+          "productPrice": "۸۰۰۰۰",
+          "id": 2
+        }
+      ],
+      "tell": "09123433344",
+      "id": 8
+    },
+    {
+      "customerName": "آناهیتا نیاز",
+      "customerAddress": "تهران ولیعصر",
+      "totalAmount": "۲۵۰۰۰۰۰",
+      "deliveryTime": "۱۲",
+      "endProccessTime": "1625648901880",
+      "createdAt": 1624547158551,
+      "delivered": "true",
+      "orderList": [
+        {
+          "group": "groceries",
+          "ProductId": 2,
+          "number": 3,
+          "productName": "نان سحر",
+          "productPrice": "۱۵۰۰۰",
+          "id": 1
+        },
+        {
+          "group": "groceries",
+          "ProductId": 6,
+          "number": 14,
+          "productName": " روغن بهار",
+          "productPrice": "۸۰۰۰۰",
+          "id": 2
+        }
+      ],
+      "tell": "09123433344",
+      "id": 9
+    },
+    {
+      "customerName": "سارا پارسا",
+      "customerAddress": "تهران خیابان انقلاب",
+      "totalAmount": "۱۴۵۰۰۰",
+      "deliveryTime": "۱۲",
+      "endProccessTime": "1625651327935",
+      "createdAt": 1624547158551,
+      "delivered": "true",
+      "orderList": [
+        {
+          "group": "groceries",
+          "ProductId": 2,
+          "number": 3,
+          "productName": "نان سحر",
+          "productPrice": "۱۵۰۰۰",
+          "id": 1
+        },
+        {
+          "group": "groceries",
+          "ProductId": 6,
+          "number": 14,
+          "productName": " روغن بهار",
+          "productPrice": "۸۰۰۰۰",
+          "id": 2
+        }
+      ],
+      "tell": "09123433344",
+      "id": 10
+    },
+    {
+      "customerName": "سیاوش نامی",
+      "customerAddress": "تهران منطقه ۵",
+      "totalAmount": "۶۵۰۰۰۰۰",
+      "deliveryTime": "۱۲",
+      "endProccessTime": "1625648901880",
+      "createdAt": 1624547158551,
+      "delivered": "false",
+      "orderList": [
+        {
+          "group": "groceries",
+          "ProductId": 2,
+          "number": 3,
+          "productName": "نان سحر",
+          "productPrice": "۱۵۰۰۰",
+          "id": 1
+        },
+        {
+          "group": "groceries",
+          "ProductId": 6,
+          "number": 14,
+          "productName": " روغن بهار",
+          "productPrice": "۸۰۰۰۰",
+          "id": 2
+        }
+      ],
+      "tell": "09123433344",
       "id": 11
     },
     {
-      "customerName": "رامین امین",
-      "customerAddress": "تهران سعادت آباد",
-      "totalAmount": "۵۶۰۰۰",
-      "deliveryTime": "۱۲",
-      "orderTime": "۱۴۰۰/۳/۱۲",
-      "endProccessTime": "۱۸",
-      "createdAt": 1624547319890,
+      "customerName": "کوشیار تبسمی",
+      "customerAddress": "تهران منطقه ۲",
+      "totalAmount": "۱۲۷۰۰۰۰",
+      "endProccessTime": "1625648901880",
+      "createdAt": 1624547158551,
       "delivered": "true",
+      "orderList": [
+        {
+          "group": "groceries",
+          "ProductId": 2,
+          "number": 3,
+          "productName": "نان سحر",
+          "productPrice": "۱۵۰۰۰",
+          "id": 1
+        },
+        {
+          "group": "groceries",
+          "ProductId": 6,
+          "number": 14,
+          "productName": " روغن بهار",
+          "productPrice": "۸۰۰۰۰",
+          "id": 2
+        }
+      ],
+      "tell": "09123433344",
       "id": 12
     },
     {
-      "customerName": "فرهاد آزاد",
-      "customerAddress": "تهران منیریه",
-      "totalAmount": "۳۴۹۰۰۰۰",
+      "customerName": "آناهیتا نیاز",
+      "customerAddress": "تهران ولیعصر",
+      "totalAmount": "۲۵۰۰۰۰۰",
       "deliveryTime": "۱۲",
-      "orderTime": "۱۴۰۰/۳/۲۴",
-      "endProccessTime": "۱۸",
-      "createdAt": 1624547363749,
+      "endProccessTime": "1625648901880",
+      "createdAt": 1624547158551,
       "delivered": "true",
+      "orderList": [
+        {
+          "group": "groceries",
+          "ProductId": 2,
+          "number": 3,
+          "productName": "نان سحر",
+          "productPrice": "۱۵۰۰۰",
+          "id": 1
+        },
+        {
+          "group": "groceries",
+          "ProductId": 6,
+          "number": 14,
+          "productName": " روغن بهار",
+          "productPrice": "۸۰۰۰۰",
+          "id": 2
+        }
+      ],
+      "tell": "09123433344",
       "id": 13
     },
     {
-      "customerName": "تارا مقامی",
-      "customerAddress": "تهران قیطریه",
-      "totalAmount": "۲۳۰۰۰۰۰",
+      "customerName": "سارا پارسا",
+      "customerAddress": "تهران خیابان انقلاب",
+      "totalAmount": "۱۴۵۰۰۰",
       "deliveryTime": "۱۲",
-      "orderTime": "۱۴۰۰/۳/۲۹",
-      "endProccessTime": "۱۸",
-      "createdAt": 1624547399301,
+      "endProccessTime": "1625651327935",
+      "createdAt": 1624547158551,
       "delivered": "true",
+      "orderList": [
+        {
+          "group": "groceries",
+          "ProductId": 2,
+          "number": 3,
+          "productName": "نان سحر",
+          "productPrice": "۱۵۰۰۰",
+          "id": 1
+        },
+        {
+          "group": "groceries",
+          "ProductId": 6,
+          "number": 14,
+          "productName": " روغن بهار",
+          "productPrice": "۸۰۰۰۰",
+          "id": 2
+        }
+      ],
+      "tell": "09123433344",
       "id": 14
     },
     {
@@ -181,44 +430,57 @@
       "customerAddress": "تهران منطقه ۵",
       "totalAmount": "۶۵۰۰۰۰۰",
       "deliveryTime": "۱۲",
-      "orderTime": "۱۴۰۰/۲/۹",
-      "endProccessTime": "۱۸",
-      "createdAt": 1624547228545,
+      "endProccessTime": "1625648901880",
+      "createdAt": 1624547158551,
       "delivered": "false",
+      "orderList": [
+        {
+          "group": "groceries",
+          "ProductId": 2,
+          "number": 3,
+          "productName": "نان سحر",
+          "productPrice": "۱۵۰۰۰",
+          "id": 1
+        },
+        {
+          "group": "groceries",
+          "ProductId": 6,
+          "number": 14,
+          "productName": " روغن بهار",
+          "productPrice": "۸۰۰۰۰",
+          "id": 2
+        }
+      ],
+      "tell": "09123433344",
       "id": 15
     },
     {
       "customerName": "کوشیار تبسمی",
       "customerAddress": "تهران منطقه ۲",
       "totalAmount": "۱۲۷۰۰۰۰",
-      "deliveryTime": "۱۲",
-      "orderTime": "۱۴۰۰/۳/۹",
-      "endProccessTime": "۱۸",
-      "createdAt": 1624547275241,
-      "delivered": "true",
-      "id": 16
-    },
-    {
-      "customerName": "رامین امین",
-      "customerAddress": "تهران سعادت آباد",
-      "totalAmount": "۵۶۰۰۰",
-      "deliveryTime": "۱۲",
-      "orderTime": "۱۴۰۰/۳/۱۲",
-      "endProccessTime": "۱۸",
-      "createdAt": 1624547319890,
+      "endProccessTime": "1625648901880",
+      "createdAt": 1624547158551,
       "delivered": "false",
-      "id": 17
-    },
-    {
-      "customerName": "فرهاد آزاد",
-      "customerAddress": "تهران منیریه",
-      "totalAmount": "۳۴۹۰۰۰۰",
-      "deliveryTime": "۱۲",
-      "orderTime": "۱۴۰۰/۳/۲۴",
-      "endProccessTime": "۱۸",
-      "createdAt": 1624547363749,
-      "delivered": "true",
-      "id": 18
+      "orderList": [
+        {
+          "group": "groceries",
+          "ProductId": 2,
+          "number": 3,
+          "productName": "نان سحر",
+          "productPrice": "۱۵۰۰۰",
+          "id": 1
+        },
+        {
+          "group": "groceries",
+          "ProductId": 6,
+          "number": 14,
+          "productName": " روغن بهار",
+          "productPrice": "۸۰۰۰۰",
+          "id": 2
+        }
+      ],
+      "tell": "09123433344",
+      "id": 16
     }
   ],
   "groceries": [
@@ -229,7 +491,7 @@
       "subgroup": "bread",
       "subgroupfa": "نان",
       "information": "<p>برای ورآمدن بیشتر خمیرها، از خمیر ترش استفاده می‌شود. خمیر ترش، هیدرات کربن موجود در آرد یا شکر را تخمیر می‌کند و گاز دی‌اکسید کربن تولید می‌نماید. برای تهیه نان در خانه یا کارخانجات، معمولاً از خمیر ترش استفاده می‌شود. گاز حاصل از خمیر ترش سبب ترد شدن نان شده و عطر و طعم خوبی به آن می‌دهد. خمیر ترش، طعم ترشی به خمیر می‌دهد و طی فرایند تخمیر، بخشی از هیدرات‌های کربن موجود در خمیر را تجزیه می‌کند. همین امر، باعث می‌شود که نان راحت‌تر هضم گردد. از دیگر خواص خمیر ترش این است که نان را برای مدت زمان طولانی تری تازه نگه می‌دارد. تخصص تیم نان سازه ساخت انواع دستگاه های تولید وبسته بندی نان با کیفیتی در حد استاندارد های اروپاست. تمامی قطعات و متریال استفاده شده در دستگاه های تولیدی گروه نان سازه از بهترین و با کیفیت ترین آنهاست. خط تولید مدرن و منحصر به فرد تمام اتوماتیک لواش ، دستگاه برش نان تست ، دستگاه برش نان همبرگری ، دستگاه کلیپس زن برقی و بادی ، مولد بخار و… نمونه ای از محصولات تولیدی نان سازه می‌باشد. </P>",
-      "price": "۴۰۰۰",
+      "price": "۵۰۰۰",
       "supply": "۶۰",
       "image": "/files/11a005622f8356f7df584bc09d2ecd63",
       "createdAt": 1624539661193,
@@ -242,7 +504,7 @@
       "subgroup": "rice",
       "subgroupfa": "برنج",
       "information": "<p>   طارم یکی از شهرهای شمالی استان زنجان است و به استان‌های گیلان ، قزوین و اردبیل نزدیک است . از جمله محصولاتی که در این شهر کاشته می‌شود، می‌توان به برنج اشاره کرد . البته روستای طارم سر هم در استان گیلان و در نزدیکی شهر کوچصفهان قرار دارد که شباهت اسمی با این منطقه دارد و البته محصول غالب این روستا نیز برنج است. برنج های برداشت شده از این منطقه از لحاظ کمی بسیار ضعیف هستند اما کیفیت بالایی برخوردارند. به صورت ساده می‌توان گفت از نوع برنج های پرمحصول نیستند و کیفیت و عطر بالایی برخوردارند وزارت جهاد کشاورزی معتقد است میزان محصول برداشتی از زمین های این منطقه بسیار کم است و نمی‌تواند مورد حمایت قرار گیرد و بهتر است از سطح کاشت برنج این شهر کاسته شود و به محصولات دیگر اختصاص داده شود تا بهره وری بهتر داشته باشند. </p>",
-      "price": "۴۹۸۰۰",
+      "price": "۴۹۰۰۰",
       "supply": "۱۴۸",
       "image": "/files/157364e75ed18990e40b4c2df7977ff8",
       "createdAt": 1625346688823,
@@ -256,7 +518,7 @@
       "subgroupfa": "نان",
       "information": "<p>برای ورآمدن بیشتر خمیرها، از خمیر ترش استفاده می‌شود. خمیر ترش، هیدرات کربن موجود در آرد یا شکر را تخمیر می‌کند و گاز دی‌اکسید کربن تولید می‌نماید. برای تهیه نان در خانه یا کارخانجات، معمولاً از خمیر ترش استفاده می‌شود. گاز حاصل از خمیر ترش سبب ترد شدن نان شده و عطر و طعم خوبی به آن می‌دهد. خمیر ترش، طعم ترشی به خمیر می‌دهد و طی فرایند تخمیر، بخشی از هیدرات‌های کربن موجود در خمیر را تجزیه می‌کند. همین امر، باعث می‌شود که نان راحت‌تر هضم گردد. از دیگر خواص خمیر ترش این است که نان را برای مدت زمان طولانی تری تازه نگه می‌دارد. تخصص تیم نان سازه ساخت انواع دستگاه های تولید وبسته بندی نان با کیفیتی در حد استاندارد های اروپاست. تمامی قطعات و متریال استفاده شده در دستگاه های تولیدی گروه نان سازه از بهترین و با کیفیت ترین آنهاست. خط تولید مدرن و منحصر به فرد تمام اتوماتیک لواش ، دستگاه برش نان تست ، دستگاه برش نان همبرگری ، دستگاه کلیپس زن برقی و بادی ، مولد بخار و… نمونه ای از محصولات تولیدی نان سازه می‌باشد. </P>",
       "price": "۸۵۰۰",
-      "supply": "۱۵",
+      "supply": "۲۰",
       "image": "/files/350c6cdfa5931cf050cce1c7c0fb69b2",
       "createdAt": 1624541896804,
       "id": 3
@@ -431,7 +693,7 @@
       "id": 19
     },
     {
-      "name": "نان نسیم نان آوران بسته شش عددی",
+      "name": "نان نسیم نان آوران ",
       "groupfa": " کالاهای اساسی و خوار و بار",
       "group": "groceries",
       "subgroup": "bread",
@@ -597,20 +859,23 @@
       "supply": "۱۹۷",
       "image": "/files/e1c546b0e2a91872e12a0c84a3cac59e",
       "createdAt": 1625347793965,
-      "id": 32
+      "id": 33
     },
     {
-      "name": "روغن ارده‌ی کنجد ترنگ",
-      "groupfa": " کالاهای اساسی و خوار و بار",
+      "name": "نان نیو نان سحر",
+      "information": "نان سحررر",
+      "group": "",
+      "image": "/files/619f739a32cf3723b4f113f8e0e300e6",
+      "createdAt": 1625607997985,
+      "id": 35
+    },
+    {
+      "name": "نان خیلی جدید",
+      "information": "ثبت برای چک",
       "group": "groceries",
-      "subgroup": "oil",
-      "subgroupfa": "روغن",
-      "information": "<p>همه میدونیم مصرف روغن برای سلامتی خوب نیست اما نوعأ دچار روزمرگی شده‌ایم و فراموش می‌کنیم. بیایید با به حداقل رساندن روغن در حفظ سلامتی خودمان کوشا باشیم.</p>",
-      "price": "۷۴۴۰۰",
-      "supply": "۱۹۷",
-      "image": "/files/e1c546b0e2a91872e12a0c84a3cac59e",
-      "createdAt": 1625347793965,
-      "id": 33
+      "image": "/files/a3f71d042723071096a83f5d67d4d9f7",
+      "createdAt": 1625766791908,
+      "id": 36
     }
   ]
 }
