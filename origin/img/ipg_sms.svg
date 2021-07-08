@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 40 40">
+  <g id="ipg_sms" transform="translate(-1138 -343)">
+    <g id="Group_15051" data-name="Group 15051" transform="translate(1104.807 310.196)">
+      <g id="mail">
+        <g id="Group_15052" data-name="Group 15052">
+          <g id="Group_15051-2" data-name="Group 15051">
+            <path id="Path_58787" data-name="Path 58787" d="M48.6,54.44H43.6a.626.626,0,0,0-.05,1.251H48.6a.626.626,0,1,0,.05-1.251Z" fill="#1c6aff"/>
+          </g>
+        </g>
+        <g id="Group_15054" data-name="Group 15054">
+          <g id="Group_15053" data-name="Group 15053">
+            <path id="Path_58788" data-name="Path 58788" d="M46.726,51.312H41.721a.626.626,0,0,0,0,1.251h5.005a.626.626,0,0,0,0-1.251Z" fill="#1c6aff"/>
+          </g>
+        </g>
+        <g id="Group_15056" data-name="Group 15056">
+          <g id="Group_15055" data-name="Group 15055">
+            <path id="Path_58789" data-name="Path 58789" d="M44.849,48.184h-5a.626.626,0,0,0-.05,1.251h5.055a.626.626,0,1,0,.05-1.251Z" fill="#1c6aff"/>
+          </g>
+        </g>
+        <g id="Group_15058" data-name="Group 15058">
+          <g id="Group_15057" data-name="Group 15057">
+            <path id="Path_58790" data-name="Path 58790" d="M64.118,46.557a.673.673,0,0,0-.876-.125L56.61,51.5a1.971,1.971,0,0,1-2.315,0l-6.632-5.068a.626.626,0,0,0-.751,1L53.606,52.5a3.074,3.074,0,0,0,1.877.626A2.951,2.951,0,0,0,57.36,52.5l6.632-5.068A.672.672,0,0,0,64.118,46.557Z" fill="#1c6aff"/>
+          </g>
+        </g>
+        <g id="Group_15060" data-name="Group 15060">
+          <g id="Group_15059" data-name="Group 15059">
+            <path id="Path_58791" data-name="Path 58791" d="M64.87,43.8H44.849a.626.626,0,0,0,0,1.251H64.87a.591.591,0,0,1,.626.554.433.433,0,0,1,0,.072V58.194a.591.591,0,0,1-.553.626.445.445,0,0,1-.073,0H44.849a.626.626,0,0,0-.05,1.251H64.87a1.843,1.843,0,0,0,1.877-1.808q0-.034,0-.069V45.677A1.842,1.842,0,0,0,64.935,43.8Z" fill="#1c6aff"/>
+          </g>
+        </g>
+        <g id="Group_15062" data-name="Group 15062">
+          <g id="Group_15061" data-name="Group 15061">
+            <path id="Path_58792" data-name="Path 58792" d="M64.056,56.5,60.3,52.75a.619.619,0,0,0-.876.876L63.18,57.38a.6.6,0,0,0,.848.028l.028-.028a.6.6,0,0,0,.028-.848Z" fill="#1c6aff"/>
+          </g>
+        </g>
+      </g>
+    </g>
+    <rect id="Rectangle_3090" data-name="Rectangle 3090" width="40" height="40" transform="translate(1138 343)" fill="none"/>
+  </g>
+</svg>
