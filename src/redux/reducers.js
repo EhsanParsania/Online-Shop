@@ -1,7 +1,8 @@
-import { DELETE_QUANTITY_CHANGE_LOG, SET_NEW_QUANTITY } from "./types";
+import { DELETE_QUANTITY_CHANGE_LOG, SET_NEW_QUANTITY, ADD_PRODUCT_TO_CART, DELETE_CART } from "./types";
 
 const initialState = {
-  quantityChange: []
+  quantityChange: [],
+  cart: []
 }
 
 export const reducer = (state = initialState, action) => {
@@ -18,6 +19,19 @@ export const reducer = (state = initialState, action) => {
       return {
         ...state,
         quantityChange: []
+      }
+    case ADD_PRODUCT_TO_CART:
+      return {
+        ...state,
+        cart: [
+          ...state.cart,
+          action.payload
+        ]
+      }
+    case DELETE_CART:
+      return {
+        ...state,
+        cart: []
       }
 
     default: return state

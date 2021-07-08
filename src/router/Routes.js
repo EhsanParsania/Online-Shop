@@ -2,9 +2,15 @@ import { Router, Route, Link, Switch, Redirect } from "react-router-dom";
 import createHistrory from "history/createBrowserHistory"
 import { MainLayout, ManagementLayout } from '../layout/index.layout'
 import { Quantity, Products, SignIn, Orders, MainCustomers, ProductDetails } from "../pages/index.pages";
+import { ListMenu } from '../components/ListMenu/ListMenu.component'
 import React from 'react'
 import { ProductsList } from '../pages/index.pages'
+
 import { Payment } from "../pages/index.pages";
+import { ShoppingCart } from '../pages/index.pages'
+import { Checkout } from "../pages/index.pages";
+import { Error } from "../components/index.components";
+import { PaymentResult } from "../pages/Customers/PaymentResult/PaymentResult.page";
 
 function Routes() {
   const location = createHistrory()
@@ -40,7 +46,13 @@ function Routes() {
           </MainLayout>
         </Route>
 
-        <Route path='/home/products/:subgroup/:name' exact>
+        <Route path='/home/cart' exact >
+          <MainLayout >
+            <ShoppingCart />
+          </MainLayout>
+        </Route>
+
+        <Route path='/home/products/:group/:subgroup/:id' exact>
           <ProductDetails />
         </Route>
 
@@ -64,9 +76,21 @@ function Routes() {
 
 
 
-        <Route path='/payment' exact >
+        {/* <Route path='/payment' exact >
           <Payment />
+        </Route> */}
+
+        <Route path='/payment-result/:status/:number' exact>
+        <MainLayout >
+          <PaymentResult/>
+          </MainLayout>
         </Route>
+
+
+        <Route path='/checkout' exact >
+          <Checkout />
+        </Route>
+
 
 
 
@@ -127,10 +151,9 @@ function Routes() {
         </Route>
 
         <Route path='/' >
-          <h1 style={{ textAlign: 'center', marginTop: '15%' }}>
-            ۴۰۴ <br></br>
-            صفحه مورد نظر پیدا نشد !
-          </h1>
+          <Error>
+            <h4>۴۰۴ <br></br>صفحه مورد نظر پیدا نشد</h4>
+          </Error>
         </Route>
 
 
