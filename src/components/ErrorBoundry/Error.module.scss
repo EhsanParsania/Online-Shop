@@ -1,0 +1,34 @@
+@font-face {
+  font-family: yekan;
+  src: url('./../../asset/font/Yekan.ttf');
+}
+
+.container {
+
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%,-50%);
+  // min-width: 300px;
+
+}
+
+.text {
+  // text-align: center;
+  font-family: yekan;
+text-align: center;
+}
+
+.errorText{
+  color: red;
+
+}
+
+.logo {
+  display: flex;
+  width: 200px;
+  height: 200px;
+  margin: auto;
+  // transform: translate(-40px,0);
+
+}
