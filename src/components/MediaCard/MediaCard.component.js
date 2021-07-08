@@ -21,7 +21,8 @@ const useStyles = makeStyles({
     width: 350,
     // padding:'15px',
     marginTop: '20px',
-    height: 160
+    height: 160,
+
 
   },
   media: {
@@ -32,6 +33,7 @@ const useStyles = makeStyles({
     boxShadow: '0 0 10px #eee',
 
 
+
   },
   CardActionArea: {
     display: 'flex',
@@ -39,7 +41,11 @@ const useStyles = makeStyles({
     padding: '10px'
   },
   content: {
-    minWidth: 230
+    minWidth: 230,
+    display:'flex',
+    alignItems:'center',
+    flexDirection:'column'
+    
   },
   link: {
     textDecoration: 'none'
@@ -69,7 +75,7 @@ function MediaCard(props) {
           <CardMedia
             className={classes.media}
             image={`${BASE_URL}${props.image}`}
-            title={props.information}
+            title={props.title}
           />
           <CardContent className={classes.content} >
             <Typography gutterBottom variant="p" component="h4" className={classes.title}>

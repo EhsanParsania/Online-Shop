@@ -10,8 +10,11 @@ import { getData } from '../../api/API';
 const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
+    width: "100%",
     // backgroundColor:'white'
-    margin: ' 20px'
+    display: 'flex',
+    justifyContent: 'center',
+    // margin: ' 20px'
   },
   title: {
     fontSize: '1.5rem',
@@ -22,10 +25,24 @@ const useStyles = makeStyles((theme) => ({
     padding: theme.spacing(2),
     textAlign: 'center',
     color: theme.palette.text.secondary,
-    paddingBottom: 70
+    paddingBottom: 70,
+    flexGrow: 1,
+    [theme.breakpoints.up('sm')]: {
+      // display: 'block',
+      minWidth: 1230,
+      minHeight: 550,
 
-
+    },
   },
+  container_: {
+    display: 'flex',
+    // flex: 1,s
+    flexDirection: 'column',
+    justifyContent: 'space-between',
+    height: 500
+  }
+  ,
+
   paginateContainer: {
     paddingTop: 40
   }
@@ -56,44 +73,52 @@ function CardGroup(props) {
     <div className={classes.root}>
       {/* <Toolbar /> */}
       <Paper className={classes.paper}  >
+        <div className={classes.container_}>
+          <div>
 
-        <Grid container spacing={3}  >
+            <Grid container spacing={3}  >
 
-          <h2 className={classes.title}>کالاهای گروه {props.groupName}</h2>
+              <h2 className={classes.title}>کالاهای گروه {props.groupName}</h2>
 
-        </Grid>
-        <Grid container spacing={3} justify='space-evenly' >
+            </Grid>
+            <Grid container spacing={3} justify='space-evenly' >
 
-          {/* <Grid item sm={12}  > */}
-          {/* <Paper className={classes.paper}  > */}
+              {/* <Grid item sm={12}  > */}
+              {/* <Paper className={classes.paper}  > */}
 
-          {
+              {
 
-            props.data.map((row) => {
-              return <MediaCard
-                key={row.id}
-                image={row.image}
-                title={row.name}
-                price={row.price}
-                information={row.name}
-                group={row.group}
-                subgroup={row.subgroup}
-                id={row.id} />
-            })
-          }
-
-
-
-          {/* </Paper> */}
-
-          {/* </Grid> */}
+                props.data.map((row) => {
+                  return <MediaCard
+                    key={row.id}
+                    image={row.image}
+                    title={row.name}
+                    price={row.price}
+                    information={row.name}
+                    group={row.group}
+                    subgroup={row.subgroup}
+                    id={row.id} />
+                })
+              }
 
 
 
-        </Grid>
-        <Grid container spacing={3} justify='center' className={classes.paginateContainer} >
-          {props.children}
-        </Grid>
+              {/* </Paper> */}
+
+              {/* </Grid> */}
+
+
+
+            </Grid>
+          </div>
+
+          <div>
+            <Grid container spacing={3} justify='center' className={classes.paginateContainer} >
+              {props.children}
+            </Grid>
+          </div>
+
+        </div>
       </Paper>
 
 

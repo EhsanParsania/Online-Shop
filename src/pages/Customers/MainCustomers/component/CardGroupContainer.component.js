@@ -22,7 +22,7 @@ const useStyles = makeStyles((theme) => ({
     // padding: theme.spacing(2),
     // textAlign: 'center',
     // color: theme.palette.text.secondary,
-    padding:40
+    padding: 40
 
 
   },
@@ -33,14 +33,19 @@ function CardGroupContainer(props) {
 
   const [state, setState] = useState({ data: [{}] })
 
-  useEffect(async () => {
-    const field = props.field
-    const pageNumber = 1
-    const dataLimit = 6
+  useEffect(() => {
 
-    const { data } = await getData(field, pageNumber, dataLimit)
-    setState({ data })
+    // set a new async function because in useEffect we cant use async request directly :  
+    const fetchData = async () => {
+      const field = props.field
+      const pageNumber = 1
+      const dataLimit = 6
+      const { data } = await getData(field, pageNumber, dataLimit)
+      setState({ data: data })
+    }
 
+    fetchData()
+    console.log(state.data)
   }, [])
 
 
@@ -49,11 +54,11 @@ function CardGroupContainer(props) {
   return (
     <div className={classes.root}>
       {/* <Toolbar /> */}
-        {/* <Paper className={classes.paper}  > */}
+      {/* <Paper className={classes.paper}  > */}
 
       <Grid container spacing={3}  >
 
-        <h2 className={classes.title}>کالاهای گروه {props.groupName}</h2>
+        <h2 className={classes.title}>{state.data[0].groupfa} </h2>
 
       </Grid>
       <Grid container spacing={3} justify='space-evenly' >
@@ -65,10 +70,10 @@ function CardGroupContainer(props) {
         {
           // console.log(props.rows)
           state.data.map((row) => {
-            return <MediaCard key={row.id} image={row.image} subgroup={row.subgroup}  title={row.name} price={row.price} information={row.information} id={row.id} />
+            return <MediaCard key={row.id} image={row.image} group={row.group} subgroup={row.subgroup} title={row.name} price={row.price} information={row.information} id={row.id} />
           })
         }
-      
+
 
 
         {/* </Paper> */}
