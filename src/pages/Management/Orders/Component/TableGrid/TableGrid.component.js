@@ -78,11 +78,17 @@ class TableGrid extends Component {
     }
   }
 
-  style={
-    tableHeader:{
-      display:'flex',
-      justifyContent:'space-between',
-      flexWrap:'wrap'
+  style = {
+    tableHeader: {
+      display: 'flex',
+      justifyContent: 'space-between',
+      flexWrap: 'wrap',
+    },
+    container: {
+      display: 'flex',
+      flexDirection: 'column',
+      flex: 1,
+      justifyContent: 'space-between'
 
     }
   }
@@ -91,12 +97,22 @@ class TableGrid extends Component {
     return (
       <div>
         <TableContainer>
-          <div style={this.style.tableHeader}>
-            <h2 > مدیریت سفارش ها</h2>
-            <RadioButtons details={this.handleRadioButtonClick} />
+          <div style={this.style.container}>
+
+            <div>
+              <div style={this.style.tableHeader}>
+                <h2 > مدیریت سفارش ها</h2>
+                <RadioButtons details={this.handleRadioButtonClick} />
+              </div>
+              <BasicTable rows={this.state.data} />
+            </div>
+
+
+            <div>
+              <Paginate numberOfPages={this.state.numberOfPages} clickedPage={this.handleClickedPage} field='panel' pathSection='orders' />
+            </div>
+
           </div>
-          <BasicTable rows={this.state.data} />
-          <Paginate numberOfPages={this.state.numberOfPages} clickedPage={this.handleClickedPage}field='panel'  pathSection='orders' />
         </TableContainer>
 
       </div>

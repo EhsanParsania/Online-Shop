@@ -81,7 +81,7 @@ export function BasicTable(props) {
               <StyledTableCell className={classes.row} align="right">{row.name}</StyledTableCell>
               <StyledTableCell className={classes.row} align="right">{row.groupfa}</StyledTableCell>
               <StyledTableCell className={classes.row} align="right" >
-                <EditProductsModal name={row.name} imageName={row.image} group={'groceries'} productId={row.id} />
+                <EditProductsModal name={row.name} imageName={row.image} group={'groceries'} productId={row.id} information={row.information} />
               </StyledTableCell>
               <StyledTableCell className={classes.row} align="right" >
                 <DeleteButton productField={'groceries'} productId={row.id} />

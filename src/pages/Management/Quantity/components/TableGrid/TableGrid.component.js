@@ -63,10 +63,9 @@ class TableGrid extends Component {
         if (item) {
           const { productGroup, productId, changedItem, newValue } = item
 
-          // create a www-form-urlencoded body : 
-          const data = new URLSearchParams({
-            [changedItem]: newValue
-          })
+          let data = new FormData()
+          data.append(changedItem, newValue)
+
           await editProducts(data, productGroup, productId)
         }
       })
@@ -107,8 +106,19 @@ class TableGrid extends Component {
       flexWrap: 'wrap'
 
     },
+    saveButtonContainer: {
+      alignSelf: 'center',
+
+    },
     saveButton: {
-      alignSelf: 'center'
+      width: 100
+    },
+    container: {
+      display: 'flex',
+      flexDirection: 'column',
+      flex: 1,
+      justifyContent: 'space-between'
+
     }
   }
 
@@ -116,17 +126,28 @@ class TableGrid extends Component {
   render() {
     return (
       <div>
+
         <TableContainer>
-          <div style={this.style.tableHeader}>
-            <h2 > مدیریت موجودی و قیمت ها</h2>
-            <div style={this.style.saveButton}>
-              <Button variant="contained" color="primary" onClick={this.handleAllPatchData} >
-                ذخیره
-              </Button>
+
+          <div style={this.style.container} >
+
+            <div >
+              <div style={this.style.tableHeader}>
+                <h2 > مدیریت موجودی و قیمت ها</h2>
+                <div style={this.style.saveButtonContainer}>
+                  <Button style={this.style.saveButton} variant="contained" color="primary" onClick={this.handleAllPatchData} >
+                    ذخیره
+                  </Button>
+                </div>
+              </div>
+              <BasicTable rows={this.state.data} />
             </div>
+
+            <div>
+              <Paginate numberOfPages={this.state.numberOfPages} clickedPage={this.handleClickedPage} field='panel' pathSection='quantity' />
+            </div>
+
           </div>
-          <BasicTable rows={this.state.data} />
-          <Paginate numberOfPages={this.state.numberOfPages} clickedPage={this.handleClickedPage} field='panel' pathSection='quantity' />
         </TableContainer>
 
       </div>
@@ -138,9 +159,6 @@ const mapStateToProps = (state) => ({
   quantityChange: state.quantityChange
 })
 
-// const mapDispatchToProps = (dispatch) => ({
-//   deleteQuantityChangeLog: dispatch(deleteQuantityChangeLog())
-// })
 
 const mapDispatchToProps = (dispatch) => {
   return {
@@ -148,11 +166,6 @@ const mapDispatchToProps = (dispatch) => {
   }
 }
 
-// const mapDispatchToProps = (dispatch) => {
-//   return {
-//     insertTodo: (row) => { dispatch(insertTodo(row)) }
-//   }
-// }
 
 
 export default connect(mapStateToProps, mapDispatchToProps)(TableGrid)

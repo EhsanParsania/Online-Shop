@@ -12,7 +12,9 @@ import TableContainer from '@material-ui/core/TableContainer';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
-
+import { Button } from '@material-ui/core';
+import { editProducts as editOrder } from '../../../../../api/API';
+import { toast } from 'react-toastify';
 
 const useStyles = makeStyles((theme) => ({
   modal: {
@@ -23,10 +25,10 @@ const useStyles = makeStyles((theme) => ({
   paper: {
     backgroundColor: theme.palette.background.paper,
     // border: '2px solid #000',
-    outline:'none',
+    outline: 'none',
     boxShadow: theme.shadows[5],
     padding: theme.spacing(2, 4, 3),
-    borderRadius:'7px'
+    borderRadius: '7px'
   },
   button: {
     cursor: 'pointer',
@@ -54,6 +56,7 @@ export function OrdersModal(props) {
 
       </p>
       <Modal
+        style={{ overflow: 'scroll' }}
         aria-labelledby="transition-modal-title"
         aria-describedby="transition-modal-description"
         className={classes.modal}
@@ -68,13 +71,13 @@ export function OrdersModal(props) {
         <Fade in={open}>
           <div className={classes.paper}>
             <div className={style.modalHeader}  >
-            <h3> نمایش سفارش </h3>
+              <h3> نمایش سفارش </h3>
 
               <CancelIcon onClick={handleClose} className={style.cancelIcon} />
-       
+
             </div>
-           
-            <BasicTable data={props.data} />
+
+            <BasicTable data={props.data} handleClose={(close) => close && handleClose()} />
           </div>
         </Fade>
       </Modal>
@@ -108,52 +111,110 @@ const StyledTableRow = withStyles((theme) => ({
 
 
 
- function BasicTable(props) {
-   
-const useStyles = makeStyles({
-  table: {
-    minWidth: 400,
-  },
-  tableRow:{
-    height:'20px'
-  }
-});
+function BasicTable(props) {
+
+  const useStyles = makeStyles({
+    table: {
+      minWidth: 400,
+    },
+    tableRow: {
+      // height: '20px'
+    },
+    modalBottom: {
+      display: 'flex',
+      justifyContent: 'center',
+      padding: '20px 0 0 0'
+    }
+  });
   const classes = useStyles();
+
+  const convertDateToPersian = (epoch) => {
+    const date = new Date(+epoch)
+    const persianDate = date.toLocaleString('fa-IR')
+    return persianDate
+  }
+
+
+  const orderDelivered = async () => {
+    try {
+      const id = props.data.id
+      const group = 'orders'
+      const data = new FormData()
+      const endProccessTime = Date.now()
+      data.append('delivered', 'true')
+      data.append('endProccessTime', endProccessTime)
+      await editOrder(data, group, id)
+      props.handleClose(true)
+      toast.success(<p dir='rtl'> &emsp;<strong> ✔ </strong> &ensp;تغییر وضعیت به :<strong>  تحویل شد   </strong>   </p>, {
+        position: "bottom-left",
+        autoClose: 7000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+      });
+    }
+    catch (error) {
+      toast.error(<p>{error.message}</p>, {
+        position: "bottom-left",
+        autoClose: 7000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+      });
+    }
+
+  }
 
   return (
     <div>
-    <section>
-    <p className={style.text} >نام مشتری : {props.data.customerName}</p>
-    <p className={style.text} >آدرس : {props.data.customerAddress}</p>
-    <p className={style.text} >تلفن : {props.data.tell}</p>
-    <p className={style.text} >زمان تحویل : {props.data.deliveryTime}</p>
-    <p className={style.text} >زمان سفارش : {props.data.orderTime}</p>
+      <section>
+        <p className={style.text} >نام مشتری : {props.data.customerName}</p>
+        <p className={style.text} >آدرس : {props.data.customerAddress}</p>
+        <p className={style.text} >تلفن : {props.data.tell}</p>
+        <p className={style.text} >زمان سفارش : {convertDateToPersian(props.data.createdAt)}</p>
 
-  </section>
-    <TableContainer component={Paper}>
-      <Table className={classes.table} aria-label="customized table">
-        <TableHead>
-          <StyledTableRow className={classes.tableRow}   >
-            <StyledTableCell align="right"> کالا</StyledTableCell>
-            <StyledTableCell align="right"> تعداد</StyledTableCell>
-            <StyledTableCell align="right"> قیمت </StyledTableCell>
-   
-          </StyledTableRow  >
-        </TableHead>
-        <TableBody>
-       
-            <StyledTableRow key={props.data.id} className={classes.tableRow} >
+      </section>
+      <TableContainer component={Paper}>
+        <Table size='small' className={classes.table} aria-label="customized table">
+          <TableHead>
+            <StyledTableRow className={classes.tableRow}   >
+              <StyledTableCell align="right"> کالا</StyledTableCell>
+              <StyledTableCell align="right"> تعداد</StyledTableCell>
+              <StyledTableCell align="right"> قیمت </StyledTableCell>
 
-              <StyledTableCell align="right">{props.data.customerName}</StyledTableCell>
-              <StyledTableCell align="right">{props.data.totalAmount}</StyledTableCell>
-              <StyledTableCell align="right">{props.data.id}</StyledTableCell>
-   
-            </StyledTableRow>
+            </StyledTableRow  >
+          </TableHead>
+          <TableBody>
 
-        </TableBody>
-      </Table>
-    </TableContainer>
-    <p className={style.bottomText}  >زمان تحویل : </p>
+            {
+              props.data.orderList.map(row => {
+                return (
+                  <StyledTableRow key={row.id} className={classes.tableRow} >
+                    <StyledTableCell align="right">{row.productName}</StyledTableCell>
+                    <StyledTableCell align="right">{row.number}</StyledTableCell>
+                    <StyledTableCell align="right">{row.productPrice}</StyledTableCell>
+                  </StyledTableRow>
+                )
+              })
+
+            }
+
+
+
+          </TableBody>
+        </Table>
+      </TableContainer>
+      <div className={classes.modalBottom}>
+        {props.data.delivered == 'true' && <p className={style.bottomText} >زمان تحویل : {convertDateToPersian(props.data.endProccessTime)}</p>}
+        {props.data.delivered == 'false' && <Button onClick={orderDelivered} variant='contained' color='primary'  >  تحویل شد    </Button>}
+
+      </div>
+
+
     </div>
   );
 }

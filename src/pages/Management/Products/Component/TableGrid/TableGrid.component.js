@@ -6,7 +6,7 @@ import { Paginate } from '../../../../../components/index.components'
 import { TableContainer } from '../../../../../components/TableContainer.component'
 import React, { Component } from 'react'
 import { Button } from '@material-ui/core';
-import {AddProductsModal} from '../AddProductsModal/AddProductsModal.component'
+import { AddProductsModal } from '../AddProductsModal/AddProductsModal.component'
 class TableGrid extends Component {
   state = {
     data: [{}],
@@ -63,6 +63,13 @@ class TableGrid extends Component {
     },
     saveButton: {
       alignSelf: 'center'
+    },
+    container: {
+      display: 'flex',
+      flexDirection: 'column',
+      flex: 1,
+      justifyContent: 'space-between'
+
     }
   }
 
@@ -71,18 +78,24 @@ class TableGrid extends Component {
     return (
       <div>
         <TableContainer>
-          <div style={this.style.tableHeader}>
-            <h2 >مدیریت کالاها</h2>
-            <div style={this.style.saveButton}>
-              {/* <Button variant="contained" color="primary" >
-                افزودن کالا
-              </Button> */}
-             <AddProductsModal/>
-            </div>
-          </div>
 
-          <BasicTable rows={this.state.data} />
-          <Paginate numberOfPages={this.state.numberOfPages} clickedPage={this.handleClickedPage} field='panel'  pathSection='products' />
+          <div style={this.style.container}  >
+
+            <div>
+              <div style={this.style.tableHeader}>
+                <h2 >مدیریت کالاها</h2>
+                <div style={this.style.saveButton}>
+                  <AddProductsModal />
+                </div>
+              </div>
+              <BasicTable rows={this.state.data} style={{ alignSelf: 'flex-end' }} />
+            </div>
+
+            <div>
+              <Paginate numberOfPages={this.state.numberOfPages} clickedPage={this.handleClickedPage} field='panel' pathSection='products' />
+            </div>
+
+          </div>
         </TableContainer>
 
       </div>

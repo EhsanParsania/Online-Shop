@@ -8,7 +8,6 @@ import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
 import {OrdersModal} from '../OrdersModal/OrdersModal.component'
-
 const StyledTableCell = withStyles((theme) => ({
   head: {
     backgroundColor: theme.palette.common.black,
@@ -42,6 +41,12 @@ const useStyles = makeStyles({
 export function BasicTable(props) {
   const classes = useStyles();
 
+  const timeToPersian=(epoch)=>{
+    const date = new Date(+epoch)
+    const persianDate = date.toLocaleString('fa-IR')
+    return persianDate
+  }
+
   return (
     <TableContainer component={Paper} className={classes.paper}>
       <Table className={classes.table} aria-label="customized table">
@@ -63,7 +68,7 @@ export function BasicTable(props) {
               </StyledTableCell> */}
               <StyledTableCell align="right">{row.customerName}</StyledTableCell>
               <StyledTableCell align="right">{row.totalAmount}</StyledTableCell>
-              <StyledTableCell align="right">{row.orderTime}</StyledTableCell>
+              <StyledTableCell align="right">{timeToPersian(row.createdAt)}</StyledTableCell>
             <OrdersModal data={row}/>
    
             </StyledTableRow>
