@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Drawer from '@material-ui/core/Drawer';
 import CssBaseline from '@material-ui/core/CssBaseline';
@@ -9,16 +9,20 @@ import Divider from '@material-ui/core/Divider';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
-
 import { ListSubheader } from '@material-ui/core';
 import { create } from 'jss';
 import rtl from 'jss-rtl';
 import { StylesProvider, jssPreset } from '@material-ui/core/styles';
 import { createMuiTheme, ThemeProvider } from '@material-ui/core/styles';
-
 import Yekan from '../../asset/font/Yekan.ttf'
-
 import { Link } from 'react-router-dom';
+// import { Plus } from 'react-icons/fa'
+import { PlusOne } from '@material-ui/icons';
+import IconGenerator from './IconGenerator.component'
+import { getListIcons } from '../../api/API';
+import { wordToPersian } from '../../utils/convertNameToPersian'
+
+
 
 const theme = createMuiTheme({
   direction: 'rtl', // Both here and <body dir="rtl">
@@ -40,11 +44,13 @@ const useStyles = makeStyles((theme) => ({
   },
   appBar: {
     zIndex: theme.zIndex.drawer + 1,
-    backgroundColor: ''
+    // backgroundColor: ''
   },
   drawer: {
     width: drawerWidth,
-    flexShrink: 0,
+    // flexShrink: 0,
+    overflow:'auto',
+
 
     [theme.breakpoints.down('sm')]: {
       display: 'none',
@@ -55,12 +61,17 @@ const useStyles = makeStyles((theme) => ({
     },
 
   },
-  drawerPaper: {
-    width: drawerWidth,
+  // drawerPaper: {
+  //   width: drawerWidth,
+  //   // overflow: 'auto',
+  //   // height: '100%',
+  //   overflow:'none',
+  //   height:1000
 
-  },
+  // },
   drawerContainer: {
-    overflow: 'auto',
+
+    // overflow: 'hidden',
 
   },
   content: {
@@ -71,7 +82,7 @@ const useStyles = makeStyles((theme) => ({
     color: '#222',
     fontWeight: 600,
     margin: 0,
-    fontSize:16
+    fontSize: 16
     // padding:0
   },
   inline: {
@@ -81,7 +92,7 @@ const useStyles = makeStyles((theme) => ({
   text: {
     margin: 0,
     padding: 0,
-    color:'#666'
+    color: '#666'
   },
   list: {
     margin: 0,
@@ -100,6 +111,14 @@ const useStyles = makeStyles((theme) => ({
 function ListMenu(props) {
   const classes = useStyles();
 
+  const [iconList, setIconList] = useState()
+
+  useEffect(async () => {
+    const { data } = await getListIcons()
+
+    setIconList(data)
+
+  }, [])
   return (
 
     <div className={classes.root} >
@@ -116,16 +135,44 @@ function ListMenu(props) {
               // anchor="right"
               className={classes.drawer}
               variant="permanent"
-              classes={{
-                paper: classes.drawerPaper,
-              }}
             >
               <Toolbar />
               <div className={classes.drawerContainer}>
 
 
+                {
 
-                <List className={classes.list} disableTypography={true}>
+                  iconList && iconList.map(item => {
+                    return (
+                      <List className={classes.list}>
+                        <ListSubheader color={'secondary'} className={classes.subHeader}>
+
+                          <IconGenerator fa_iconName={item.icon} />
+                          <span style={{ backgroundColor: 'white' }}>  {wordToPersian(item.group)} </span>
+
+                        </ListSubheader>
+
+
+                        {item.subgroup.map((text, index) => (
+
+                          <Link to={`/home/${item.group}/${text}/1`} className={classes.link} >
+                            <ListItem className={classes.listItem} alignItems={'start'} dense={'true'} button key={text}>
+                              <ListItemText className={classes.text} disableTypography={true}>
+                                {wordToPersian(text)}
+                              </ListItemText>
+                            </ListItem>
+                          </Link>
+
+                        ))}
+                      </List>
+                    )
+                  })
+                }
+
+
+
+
+                {/* <List className={classes.list} disableTypography={true}>
                   <ListSubheader className={classes.subHeader} >
 
                     <span style={{ backgroundColor: 'white' }}>  کالاهای اساسی و خوار و بار </span>
@@ -388,7 +435,7 @@ function ListMenu(props) {
                       </ListItemText>
                     </ListItem>
                   </Link>
-                </List>
+                </List> */}
 
 
 
@@ -409,7 +456,7 @@ function ListMenu(props) {
         {props.children}
 
       </main>
-    </div>
+    </div >
   );
 }
 
