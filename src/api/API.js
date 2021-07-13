@@ -1,12 +1,27 @@
 import API from './Config.api'
 
+
+export function getListIcons() {
+  return API.get(`/groups`)
+    .then(response => {
+      return response
+    })
+    .catch(error => {
+      console.log(error.message)
+      return error
+    })
+}
+
+
+
+
+
 export function getData(group, pageNumber, rowNumber, isDelivered = '') {
   // get req example :
   //  http://localhost:3001/products?_page=2&_limit=3
   return API.get(`/${group}?_page=${pageNumber}&_limit=${rowNumber}${isDelivered}`)
     .then(response => {
 
-      console.log(response)
       return response
     })
     .catch(error => {
@@ -58,7 +73,7 @@ export const deleteProducts = async (id, group) => {
 
 
 export const getFilteredProducts = (group, subGroup, limit, pageNumber) => {
-  const address = `/${group}?_page=${pageNumber}&_limit=${limit}&subgroup=${subGroup}`
+  const address = `/${group}?_page=${pageNumber}&_limit=${limit}&subgroup=${subGroup}&_sort=id&_order=desc`
   return API.get(address)
     .then(response => {
       console.log('get filtered products for list menu ===> ', response)
