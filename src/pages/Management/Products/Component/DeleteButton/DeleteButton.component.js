@@ -40,12 +40,12 @@ function DeleteButton(props) {
     // Api enter ... 
     const productId = id
     const productField = field
-    console.log('hey')
     const confirm=window.confirm('Are you sure you want to remove this product ?')
     if (confirm) {
 
       try {
         await deleteProducts(productId, productField)
+        props.isRerender('yes')
       }
       catch (error) {
         console.log(error.message)

@@ -33,8 +33,11 @@ const useStyles = makeStyles((theme) => ({
     cursor: 'pointer',
     color: 'darkblue'
   },
-  addButton:{
-    width:100
+  addButton: {
+    width: 100
+  },
+  title:{
+    margin:0
   }
 
 
@@ -43,18 +46,23 @@ const useStyles = makeStyles((theme) => ({
 export function AddProductsModal(props) {
   const classes = useStyles();
   const [open, setOpen] = React.useState(false);
-  const [state, setState] = React.useState({ image: '', name: '', group: '', information: '' })
+  const [state, setState] = React.useState({ image: '', name: '', group: '', information: '', groupfa: '' })
 
   const handlePostData = async () => {
     let bodyFormData = new FormData()
     bodyFormData.append('name', state.name)
     bodyFormData.append('information', state.information)
     bodyFormData.append('group', state.group)
+    bodyFormData.append('subgroup', state.subgroup)
     bodyFormData.append('image', state.image)
+    bodyFormData.append('price', state.price)
+    bodyFormData.append('supply', state.supply)
+
 
     try {
       await AXIOS.postProducts(bodyFormData)
       handleClose()
+      props.isRerender('yes')
       toast.success(<p dir='rtl'> &emsp;<strong> ✔ </strong> &ensp;افزودن کالا با موفقیت انجام شد    </p>, {
         position: "bottom-left",
         autoClose: 7000,
@@ -93,7 +101,7 @@ export function AddProductsModal(props) {
       {/* <p onClick={handleOpen} className={classes.button} >
         افزودن کالا
       </p> */}
-      <Button className={classes.addButton}  onClick={handleOpen} color='primary' variant='contained' >
+      <Button className={classes.addButton} onClick={handleOpen} color='primary' variant='contained' >
         افزودن کالا
       </Button>
       <Modal style={{ overflow: 'scroll' }}
@@ -117,16 +125,25 @@ export function AddProductsModal(props) {
 
             </div>
 
-            <p>تصویر کالا</p>
+            <p className={classes.title}>تصویر کالا</p>
             <UploadFile image={(image) => setState({ ...state, image })} />
 
-            <p>نام کالا</p>
+            <p className={classes.title}>نام کالا</p>
             <BasicTextFields value={(value) => setState({ ...state, name: value })} />
 
-            <p> دسته بندی</p>
-            <SimpleSelect value={(value) => setState({ ...state, group: value })} />
+            <p className={classes.title}>موجودی </p>
+            <BasicTextFields value={(value) => setState({ ...state, supply: value })} />
 
-            <p>  توضیحات </p>
+            <p className={classes.title}> قیمت</p>
+            <BasicTextFields value={(value) => setState({ ...state, price: value })} />
+           
+            <p className={classes.title}> دسته بندی</p>
+            <SimpleSelect value={({ group, groupfa }) => setState({ ...state, group, groupfa })} />
+
+            <p className={classes.title}>گروه کالا</p>
+            <BasicTextFields value={(value) => setState({ ...state, subgroup: value })} />
+
+            <p className={classes.title}>  توضیحات </p>
             <TextArea value={(value) => setState({ ...state, information: value })} />
 
             <div style={{ display: 'flex', justifyContent: 'center' }} >
@@ -190,12 +207,17 @@ function SimpleSelect(props) {
   }));
 
   const classes = useStyles();
-  const [age, setAge] = React.useState('');
+  // const [value, setValue] = React.useState('');
+  // const [groupfa, setGroupfa] = React.useState('');
 
-  const handleChange = (event) => {
-    setAge(event.target.value);
+  const handleChange = async (event, eventInfo) => {
+    // await setValue(event.target.value);
+    // await setGroupfa(eventInfo.props.children)
 
-    props.value(event.target.value)
+    const group = event.target.value
+    const groupfa = eventInfo.props.children
+
+    props.value({ group, groupfa })
 
   };
 
@@ -207,17 +229,17 @@ function SimpleSelect(props) {
         <Select
           labelId="demo-simple-select-outlined-label"
           id="demo-simple-select-outlined"
-          value={age}
+          // value={value}
           onChange={handleChange}
         // label="Age"
         >
-          <MenuItem value="">
+          {/* <MenuItem value="">
             <em>گروه محصول</em>
-          </MenuItem>
+          </MenuItem> */}
           <MenuItem value={'groceries'}>کالاهای اساسی و خوار و بار</MenuItem>
           <MenuItem value={'dairies'}>لبنیات</MenuItem>
           <MenuItem value={'proteins'}>محصولات پروتئینی</MenuItem>
-          <MenuItem value={'drinkd'}>نوشیدنی و</MenuItem>
+          <MenuItem value={'drinks'}>نوشیدنی </MenuItem>
         </Select>
       </FormControl>
 

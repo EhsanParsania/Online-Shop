@@ -2,16 +2,15 @@ import React, { useEffect, useState } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
-import { Toolbar } from '@material-ui/core'
-import { MediaCard, Paginate } from '../../components/index.components';
+import { MediaCard } from '../../components/index.components';
 
-import { getData } from '../../api/API';
+import { wordToPersian } from '../../utils/convertNameToPersian';
+import { withRouter } from 'react-router-dom';
 
 const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
     width: "100%",
-    // backgroundColor:'white'
     display: 'flex',
     justifyContent: 'center',
     // margin: ' 20px'
@@ -30,6 +29,7 @@ const useStyles = makeStyles((theme) => ({
     [theme.breakpoints.up('sm')]: {
       // display: 'block',
       minWidth: 1230,
+
       minHeight: 550,
 
     },
@@ -39,7 +39,7 @@ const useStyles = makeStyles((theme) => ({
     // flex: 1,s
     flexDirection: 'column',
     justifyContent: 'space-between',
-    height: 500
+    height: 550
   }
   ,
 
@@ -52,78 +52,99 @@ const useStyles = makeStyles((theme) => ({
 
 
 
-function CardGroup(props) {
+function CardGrouppp(props) {
 
-  const [state, setState] = useState({ data: [{}] })
+  const [state, setState] = useState()
 
   useEffect(async () => {
     // const field = props.field || 'products'
     // const pageNumber = 1
     // const dataLimit = 6
 
-    const { data } = await props.data
-    setState({ data })
+    const data = await props.data
+    await setState(data)
+    console.log(state)
 
-  }, [])
-
+  }, [state,props])
 
   const classes = useStyles();
+
+
+
+
+//  const  handleGetData = async () => {
+//     const { group,subgroup,id=1 } = props.match.params  // this dhould get from props later  
+//     const limit = 6
+
+//     try {
+//       const { data = [{}], headers } = await getFilteredProducts(group, subgroup, limit, id)
+//       const totalCount = headers ? headers['x-total-count'] : 1
+//       const numberOfPages = Math.ceil(totalCount / limit)
+//       console.log(numberOfPages)
+//       // await this.setState({ data, numberOfPages, pageNumber: id, subgroup: subgroup })
+//       s
+//     }
+//     catch (error) {
+//       console.log('get data failed with error ==> ', error.message)
+//     }
+//   }
+
 
   return (
     <div className={classes.root}>
       {/* <Toolbar /> */}
-      <Paper className={classes.paper}  >
-        <div className={classes.container_}>
-          <div>
+      {state &&
+        <Paper className={classes.paper}  >
+          <div className={classes.container_}>
+            <div>
 
-            <Grid container spacing={3}  >
+              <Grid container spacing={3}  >
 
-              <h2 className={classes.title}>کالاهای گروه {props.groupName}</h2>
+                <h2 className={classes.title}> {wordToPersian(state[0].subgroup)}</h2>
 
-            </Grid>
-            <Grid container spacing={3} justify='space-evenly' >
+              </Grid>
+              <Grid container spacing={3} justify='space-evenly' >
 
-              {/* <Grid item sm={12}  > */}
-              {/* <Paper className={classes.paper}  > */}
+                {/* <Grid item sm={12}  > */}
+                {/* <Paper className={classes.paper}  > */}
 
-              {
+                {
 
-                props.data.map((row) => {
-                  return <MediaCard
-                    key={row.id}
-                    image={row.image}
-                    title={row.name}
-                    price={row.price}
-                    information={row.name}
-                    group={row.group}
-                    subgroup={row.subgroup}
-                    id={row.id} />
-                })
-              }
+                  props.data.map((row) => {
+                    return <MediaCard
+                      key={row.id}
+                      {...row}
+                    />
+                  })
+                }
 
 
 
-              {/* </Paper> */}
+                {/* </Paper> */}
 
-              {/* </Grid> */}
+                {/* </Grid> */}
 
 
 
-            </Grid>
+              </Grid>
+            </div>
+
+            <div>
+              <Grid container spacing={3} justify='center' className={classes.paginateContainer} >
+                {props.children}
+              </Grid>
+            </div>
+
           </div>
+        </Paper>
 
-          <div>
-            <Grid container spacing={3} justify='center' className={classes.paginateContainer} >
-              {props.children}
-            </Grid>
-          </div>
-
-        </div>
-      </Paper>
-
+      }
 
     </div>
   );
+
 }
 
+
+const CardGroup=withRouter(CardGrouppp)
 export { CardGroup }

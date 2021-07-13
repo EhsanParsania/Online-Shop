@@ -22,7 +22,7 @@ class TableGrid extends Component {
     const field = 'groceries'
     const rowNumber = 6
     try {
-      const { data = [{}], headers } = await getData(field, clickedPage, rowNumber)
+      const { data = [{}], headers } = await getData(field, clickedPage, rowNumber,`&_sort=id&_order=desc`)
       const totalCount = headers ? headers['x-total-count'] : 1
       const numberOfPages = Math.ceil(totalCount / rowNumber)
       await this.setState({ data, numberOfPages })

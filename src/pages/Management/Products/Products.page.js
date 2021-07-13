@@ -7,7 +7,7 @@ function Products() {
   return (
     <div style={{ width: '100%' }}>
       {/* <Toolbar/> */}
-      <TableGrid data={'importData'} />
+      <TableGrid />
     </div >
   )
 }

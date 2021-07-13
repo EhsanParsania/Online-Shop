@@ -1,18 +1,18 @@
-
+import React, { Component } from 'react'
 import { getData } from '../../../../../api/API';
-
 import { BasicTable } from '../Table/Table.component'
 import { Paginate } from '../../../../../components/index.components'
 import { TableContainer } from '../../../../../components/TableContainer.component'
-import React, { Component } from 'react'
-import { Button } from '@material-ui/core';
 import { AddProductsModal } from '../AddProductsModal/AddProductsModal.component'
+
+
 class TableGrid extends Component {
   state = {
     data: [{}],
     initialId: 0,
     numberOfPages: 0,
-    clickedPage: 1
+    clickedPage: 1,
+    isRerender: 'no'
   }
 
 
@@ -21,7 +21,7 @@ class TableGrid extends Component {
     const field = 'groceries'
     const rowNumber = 6
     try {
-      const { data = [{}], headers } = await getData(field, clickedPage, rowNumber)
+      const { data = [{}], headers } = await getData(field, clickedPage, rowNumber, `&_sort=id&_order=desc`)
       const totalCount = headers ? headers['x-total-count'] : 1
       const numberOfPages = Math.ceil(totalCount / rowNumber)
       await this.setState({ data, numberOfPages })
@@ -38,11 +38,17 @@ class TableGrid extends Component {
   }
 
   async shouldComponentUpdate(nextProps, nextState) {
-    const clickedPage = this.state.clickedPage
-    if (this.state.clickedPage !== nextState.clickedPage) {
+    if (nextState.isRerender === 'yes') {
+      console.log('rerender should be happen here ......')
+      await this.getProductsData(this.state.clickedPage)
+      await this.setState({ isRerender: 'no' })
+      return true
+    }
+    else if (this.state.clickedPage !== nextState.clickedPage) {
       await this.getProductsData(nextState.clickedPage)
       return true
     }
+
     else return false
   }
 
@@ -52,6 +58,11 @@ class TableGrid extends Component {
     await this.setState({
       clickedPage
     })
+  }
+
+
+  handleRerender = async (isRerender) => {
+    await this.setState({ isRerender })
   }
 
   style = {
@@ -85,10 +96,10 @@ class TableGrid extends Component {
               <div style={this.style.tableHeader}>
                 <h2 >مدیریت کالاها</h2>
                 <div style={this.style.saveButton}>
-                  <AddProductsModal />
+                  <AddProductsModal isRerender={this.handleRerender} />
                 </div>
               </div>
-              <BasicTable rows={this.state.data} style={{ alignSelf: 'flex-end' }} />
+              <BasicTable rows={this.state.data} style={{ alignSelf: 'flex-end' }} isRerender={this.handleRerender} />
             </div>
 
             <div>

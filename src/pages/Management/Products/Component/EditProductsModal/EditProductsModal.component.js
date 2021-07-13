@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import Modal from '@material-ui/core/Modal';
 import Backdrop from '@material-ui/core/Backdrop';
 import Fade from '@material-ui/core/Fade';
@@ -6,18 +6,14 @@ import style from './EditProductsModal.module.scss'
 import CancelIcon from '@material-ui/icons/Cancel';
 import { makeStyles } from '@material-ui/core/styles';
 import { Button } from '@material-ui/core';
-
 import TextField from '@material-ui/core/TextField';
-
 import MenuItem from '@material-ui/core/MenuItem';
 import FormControl from '@material-ui/core/FormControl';
 import Select from '@material-ui/core/Select';
-
 import { UploadFile } from '../UploadFile/UploadFile.component'
-
 import * as AXIOS from '../../../../../api/API'
-
 import { toast } from 'react-toastify';
+import { wordToPersian } from '../../../../../utils/convertNameToPersian';
 
 
 const useStyles = makeStyles((theme) => ({
@@ -45,13 +41,31 @@ const useStyles = makeStyles((theme) => ({
 export function EditProductsModal(props) {
   const classes = useStyles();
   const [open, setOpen] = React.useState(false);
-  const [state, setState] = React.useState({ image: '', name: '', group: '', information: '' })
+  const [state, setState] = React.useState({ })
+
+
+  useEffect(async () => {
+    await setState({
+      image: props.image,
+      name: props.name,
+      group: props.group,
+      groupfa: wordToPersian(props.group),
+      subgroup: props.subgroup,
+      subgroupfa: wordToPersian(props.subgroup),
+      information: props.information,
+
+    })
+    // console.log(wordToPersian(props.subgroup))
+    // console.log(props)
+
+  }, [])
 
   const handlePatchData = async () => {
     let data = new FormData()
     data.append('name', state.name)
-    data.append('information', state.information)
     data.append('group', state.group)
+    data.append('subgroup', state.subgroup)
+    data.append('information', state.information)
     data.append('image', state.image)
 
     // var params = new URLSearchParams();
@@ -61,11 +75,12 @@ export function EditProductsModal(props) {
 
 
     const group = props.group
-    const id = props.productId
+    const id = props.id
 
     try {
       await AXIOS.editProducts(data, group, id)
       handleClose()
+      props.isRerender('yes')
       toast.success(<p dir='rtl'> &emsp;<strong> ✔ </strong> &ensp;ویرایش با موفقیت انجام شد    </p>, {
         position: "bottom-left",
         autoClose: 7000,
@@ -130,13 +145,13 @@ export function EditProductsModal(props) {
             </div>
 
             <p>تصویر کالا</p>
-            <UploadFile image={(image) => setState({ ...state, image })} defaultValue={props.imageName} />
+            <UploadFile image={(image) => setState({ ...state, image })} defaultValue={props.image} />
 
             <p>نام کالا</p>
             <BasicTextFields value={(value) => setState({ ...state, name: value })} defaultValue={props.name} />
 
             <p> دسته بندی</p>
-            <SimpleSelect group={props.group} value={(value) => setState({ ...state, group: value })} />
+            <SimpleSelect value={(group, groupfa) => setState({ ...state, group, groupfa })} {... props} />
 
             <p>  توضیحات </p>
             <TextArea defaultValue={props.information} value={(value) => setState({ ...state, information: value })} />
@@ -202,12 +217,14 @@ function SimpleSelect(props) {
   }));
 
   const classes = useStyles();
-  const [age, setAge] = React.useState('');
 
-  const handleChange = (event) => {
-    setAge(event.target.value);
+  const handleChange = (event, eventInfo) => {
+    const group = event.target.value
+    const groupfa = eventInfo.props.children
 
-    props.value(event.target.value)
+    props.value({ group, groupfa })
+
+
 
   };
 
@@ -219,17 +236,19 @@ function SimpleSelect(props) {
         <Select
           labelId="demo-simple-select-outlined-label"
           id="demo-simple-select-outlined"
-          value={props.group}
+          value={props.groupfa}
           onChange={handleChange}
+          displayEmpty={true}
+          renderValue={()=> props.groupfa}
         // label="Age"
         >
-          <MenuItem value="">
+          {/* <MenuItem value="">
             <em>گروه محصول</em>
-          </MenuItem>
+          </MenuItem> */}
           <MenuItem value={'groceries'}>کالاهای اساسی و خوار و بار</MenuItem>
           <MenuItem value={'dairies'}>لبنیات</MenuItem>
           <MenuItem value={'proteins'}>محصولات پروتئینی</MenuItem>
-          <MenuItem value={'drinkd'}>نوشیدنی و</MenuItem>
+          <MenuItem value={'drinks'}>نوشیدنی و</MenuItem>
         </Select>
       </FormControl>
 

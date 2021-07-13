@@ -75,11 +75,11 @@ function MediaCard(props) {
           <CardMedia
             className={classes.media}
             image={`${BASE_URL}${props.image}`}
-            title={props.title}
+            title={props.name}
           />
           <CardContent className={classes.content} >
             <Typography gutterBottom variant="p" component="h4" className={classes.title}>
-              {props.title}
+              {props.name}
             </Typography>
 
             <SimpleRating />

@@ -11,6 +11,7 @@ import { EditableText } from '../EditableText.component';
 
 import { connect } from 'react-redux';
 import { setNewQuantity } from '../../../../../redux/actions'
+import { toPersinaDigit } from '../../../../../utils/convertNumber';
 
 
 const StyledTableCell = withStyles((theme) => ({
@@ -55,14 +56,10 @@ function TableData(props) {
   const classes = useStyles();
 
 
-  String.prototype.toPersinaDigit = function () {
-    var id = ['۰', '۱', '۲', '۳', '۴', '۵', '۶', '۷', '۸', '۹'];
-    return this.replace(/[0-9]/g, function (w) { return id[+w] });
-  }
 
   const handleChangeEditedField = (changeDetail) => {
     const { newValue, productGroup, productId, changedItem } = changeDetail
-    const value = newValue.toPersinaDigit()
+    const value = toPersinaDigit(newValue) 
     const payload = {
       productGroup,
       productId,

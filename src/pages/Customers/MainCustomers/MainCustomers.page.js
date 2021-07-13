@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 
 import { ListMenu } from '../../../components/ListMenu/ListMenu.component'
 import { CardGroupContainer } from './component/CardGroupContainer.component';
-
+import Divider from '@material-ui/core/Divider';
 class MainCustomers extends Component {
   state = {
     data:[{}]
@@ -21,11 +21,10 @@ class MainCustomers extends Component {
       <section>
 
       <CardGroupContainer field='groceries'/>
-      <CardGroupContainer field='groceries'/>
-      <CardGroupContainer field='groceries'/>
-      <CardGroupContainer field='groceries'/>
-      <CardGroupContainer field='groceries'/>
-      <CardGroupContainer field='groceries'/>
+      <CardGroupContainer field='dairies'/>
+      {/* <CardGroupContainer field='proteins'/> */}
+      {/* <CardGroupContainer field='drinks'/> */}
+
 
    
 

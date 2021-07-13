@@ -1,20 +1,33 @@
 import React, { useEffect, useState } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
-import { Toolbar } from '@material-ui/core'
-import { MediaCard, Paginate } from '../../../../components/index.components';
+import { MediaCard } from '../../../../components/index.components';
 import { getData } from '../../../../api/API';
+import { Spinner } from '../../../../components/index.components'
+import { Divider } from '@material-ui/core';
+import { wordToPersian } from '../../../../utils/convertNameToPersian';
 
 const useStyles = makeStyles((theme) => ({
   root: {
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
     flexGrow: 1,
     // backgroundColor:'white'
-    margin: ' 20px'
+    margin: ' 20px',
+    [theme.breakpoints.up('sm')]: {
+      // display: 'block',
+      minWidth:1000,
+
+      // minHeight: 550,
+
+    },
+
   },
   title: {
     fontSize: '1.5rem',
-    marginRight: '40px',
+    // marginRight: '40px',
+
     // paddingRight:'10%' 
   },
 
@@ -23,17 +36,21 @@ const useStyles = makeStyles((theme) => ({
     // textAlign: 'center',
     // color: theme.palette.text.secondary,
     padding: 40
-
-
   },
+  divider:{
+    marginTop:60,
+    marginBottom:30
+    // paddingTop:20
+  }
 
 }));
 
 function CardGroupContainer(props) {
 
   const [state, setState] = useState({ data: [{}] })
+  const [loading, setLoading] = useState(true)
 
-  useEffect(() => {
+  useEffect(async () => {
 
     // set a new async function because in useEffect we cant use async request directly :  
     const fetchData = async () => {
@@ -44,50 +61,52 @@ function CardGroupContainer(props) {
       setState({ data: data })
     }
 
-    fetchData()
-    console.log(state.data)
-  }, [])
+    await fetchData()
+    setLoading(false)
+  }, [loading])
 
 
   const classes = useStyles();
+  if (!loading) {
+    return (
+      <React.Fragment>
+        <div className={classes.root}>
 
-  return (
-    <div className={classes.root}>
-      {/* <Toolbar /> */}
-      {/* <Paper className={classes.paper}  > */}
+          <Grid container spacing={3}  >
+            <h2 className={classes.title}>{wordToPersian(state.data[0].group)} </h2>
+          </Grid>
 
-      <Grid container spacing={3}  >
+          <Grid container spacing={3} justify='space-evenly' >
+            {
+              state.data.map((row) => {
+                return <MediaCard key={row.id} {...row} />
+              })
+            }
+          </Grid>
 
-        <h2 className={classes.title}>{state.data[0].groupfa} </h2>
+        </div>
+        <Divider variant='middle' className={classes.divider} />
+      </React.Fragment>
+    );
+  }
 
-      </Grid>
-      <Grid container spacing={3} justify='space-evenly' >
+  if (loading === true) {
+    return (
+      <div className={classes.root}>
+        <Grid container spacing={3}  >
+          <h2 className={classes.title}>{wordToPersian(state.data[0].group)} </h2>
+        </Grid>
 
-        {/* <Grid item sm={12}  > */}
-        {/* <Paper className={classes.paper}  > */}
+        <Grid container justify='center' >
 
+          <Spinner />
 
-        {
-          // console.log(props.rows)
-          state.data.map((row) => {
-            return <MediaCard key={row.id} image={row.image} group={row.group} subgroup={row.subgroup} title={row.name} price={row.price} information={row.information} id={row.id} />
-          })
-        }
+        </Grid>
+      </div>
 
+    )
+  }
 
-
-        {/* </Paper> */}
-
-        {/* </Grid> */}
-
-
-
-      </Grid>
-      {/* </Paper> */}
-
-
-    </div>
-  );
 }
 
 export { CardGroupContainer }

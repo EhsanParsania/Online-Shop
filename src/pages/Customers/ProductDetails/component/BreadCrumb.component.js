@@ -3,6 +3,7 @@ import Breadcrumbs from '@material-ui/core/Breadcrumbs';
 import { Link } from 'react-router-dom';
 import ArrowBackIosSharpIcon from '@material-ui/icons/ArrowBackIosSharp';
 import { makeStyles } from '@material-ui/core';
+import { wordToPersian } from '../../../../utils/convertNameToPersian';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -26,7 +27,7 @@ export function BreadCrumb(props) {
          صفحه اصلی
         </Link>
         <Link className={classes.link}to={`/home/${props.group}/${props.subgroup}`} >
-          {props.subgroupfa}
+          {wordToPersian(props.subgroup)}
         </Link>
         <Typography color="textSecondary">
           {props.name}

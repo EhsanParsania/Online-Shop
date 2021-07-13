@@ -22,21 +22,21 @@ class ProductsListtt extends Component {
       subgroup
     })
 
-    await this.handleGetData(subgroup, id)
+    await this.handleGetData(group, subgroup, id)
   }
 
 
   async shouldComponentUpdate(nextProps, nextState) {
     const { id, subgroup } = this.props.match.params
     // if (this.state.pageNumber !== id || this.state.subgroup !== subgroup) {
-    if (this.props.match.params.id !== nextProps.match.params.id || this.props.match.params.subgroup !== nextProps.match.params.subgroup) {
+    if (this.props.match.params.id !== nextProps.match.params.id || this.props.match.params.subgroup !== nextProps.match.params.subgroup || this.props.match.params.group !== nextProps.match.params.group) {
 
 
-      console.log('heyyyyyyyyyyyyyyyyyyyyyyyyyyy')
       const subgroup = nextProps.match.params.subgroup
       const id = nextProps.match.params.id
-      await this.handleGetData(subgroup, id)
-      await this.setState({ pageNumber: id, subgroup: subgroup })
+      const group = nextProps.match.params.group
+      await this.handleGetData(group, subgroup, id)
+      await this.setState({ group: group, pageNumber: id, subgroup: subgroup })
       return true
     }
     else return false
@@ -48,8 +48,7 @@ class ProductsListtt extends Component {
 
 
 
-  handleGetData = async (subgroup, id = 1) => {
-    const { group } = this.props.match.params  // this dhould get from props later  
+  handleGetData = async (group, subgroup, id = 1) => {
     const limit = 6
 
     try {
@@ -57,7 +56,7 @@ class ProductsListtt extends Component {
       const totalCount = headers ? headers['x-total-count'] : 1
       const numberOfPages = Math.ceil(totalCount / limit)
       console.log(numberOfPages)
-      await this.setState({ data, numberOfPages, pageNumber: id, subgroup: subgroup })
+      await this.setState({ data, numberOfPages, pageNumber: id, subgroup: subgroup, group: group })
     }
     catch (error) {
       console.log('get data failed with error ==> ', error.message)
