@@ -13,8 +13,7 @@ export function InputNumber(props) {
       // color='secondary'
       defaultValue={1}
       onChange={onChange}
-    // min={1}
-    // max={100}
+      InputProps={{ inputProps: { min: 1, max: props.max } }}
     />
   )
 }
