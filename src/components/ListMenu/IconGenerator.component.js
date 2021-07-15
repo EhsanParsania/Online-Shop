@@ -5,7 +5,7 @@ export default function IconGenerator(props) {
     icon: {
       width: 20,
       height: 20,
-      marginLeft:5
+      // marginLeft:1[]
     }
   }
   return (
