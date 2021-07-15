@@ -1,7 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
-import CardActionArea from '@material-ui/core/CardActionArea';
 import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
@@ -25,6 +24,8 @@ import { Markup } from 'interweave';
 import { SimpleRating } from '../../../components/index.components'
 import { connect } from 'react-redux';
 import { addProductToCart, deleteCart } from '../../../redux/actions';
+import { toEnglishDigit } from '../../../utils/convertNumber';
+import { toast } from 'react-toastify';
 
 
 
@@ -83,7 +84,18 @@ const useStyles = makeStyles({
   },
   rateContainer: {
     display: 'flex',
+    // margin:0,
+    // padding:0
     // flexDirection:'column '
+  },
+  supplyText: {
+    paddingBottom: 20,
+    fontSize: 16
+  },
+  supplyNumber: {
+    color: 'red',
+    fontWeight: 'bold',
+    fontSize: 18
   }
 });
 
@@ -94,6 +106,7 @@ function ProductDetailsss(props) {
 
   const [product, setProduct] = useState([{}])
   const [number = 1, setNumber] = useState()
+  const [supply, setSupply] = useState()
 
   const getDataWithParams = async () => {
     try {
@@ -110,26 +123,38 @@ function ProductDetailsss(props) {
 
   useEffect(async () => {
     await getDataWithParams()
-  }, [])
-
+    const EN_digit_supply = toEnglishDigit(product.supply)
+    await setSupply(EN_digit_supply)
+    console.log(EN_digit_supply)
+  }, [supply])
 
   const addToBuyList = () => {
-    const { id, name, group, price,subgroup } = product
-    const orderId = props.cart.length + 1
+    const { id, name, group, price, subgroup, image } = product
+    const orderId = props.cart.length
 
     const data = {
       productId: id,
       productName: name,
       group: group,
-      subgroup:subgroup,
-      number: parseInt(number) ,
+      subgroup: subgroup,
+      number: parseInt(number),
       id: orderId,
-      productPrice: price
+      productPrice: price,
+      image: image
     }
 
     props.addProductToCart(data)
-    console.log(props.cart)
-
+    toast.info(<p dir='rtl'> &emsp;<strong> ✔ </strong> &ensp;کالا به سبد خرید اضافه شد   </p>, {
+      position: "bottom-left",
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      });
+    // console.log(props.cart)
+    // console.log(toEnglishDigit(product.supply))
 
   }
 
@@ -161,21 +186,51 @@ function ProductDetailsss(props) {
 
             <div className={classes.rateContainer}>
               <Typography variant="body2" color="textSecondary" component="p">
-                <p>
-                  امتیاز محصول
-                </p>
+
+                امتیاز محصول
+
                 <SimpleRating />
 
               </Typography>
             </div>
+            {
+              supply !== 0 ?
 
-            <div className={classes.buttonContainer} >
-              <InputNumber className={classes.inputNumber} onChange={(number) => setNumber(number)} />
-              <Button variant='contained' color="secondary" onClick={addToBuyList} >
-                افزودن به سبد خرید
-              </Button>
+                <>
+                  <Typography variant="body2" component="p" className={classes.supplyText}>
 
-            </div>
+                    موجودی محصول : <span className={classes.supplyNumber} > {product.supply} </span> &nbsp; عدد
+
+                  </Typography>
+
+                  <div className={classes.buttonContainer} >
+                    <InputNumber className={classes.inputNumber} onChange={(number) => setNumber(number)} max={toEnglishDigit(product.supply)} />
+                    <Button variant='contained' color="secondary" onClick={addToBuyList} >
+                      افزودن به سبد خرید
+                    </Button>
+                  </div>
+                </>
+
+                :
+
+                <>
+                  <Typography variant="body2" component="p" className={classes.supplyText}>
+
+                    موجودی محصول : <span className={classes.supplyNumber} >اتمام موجودی</span>
+
+
+
+                  </Typography>
+
+                  <div className={classes.buttonContainer} >
+                    <InputNumber disabled className={classes.inputNumber} onChange={(number) => setNumber(number)} max={toEnglishDigit(product.supply)} />
+                    <Button disabled variant='contained' color="secondary" onClick={addToBuyList} >
+                      افزودن به سبد خرید
+                    </Button>
+                  </div>
+                </>
+            }
+
           </CardContent>
 
         </div>
