@@ -4,18 +4,18 @@ import EasyEdit from 'react-easy-edit';
 
 export function EditableText(props) {
 
-  const [productGroup,setProductGroup]=useState()
-  const [productId,setProductId]=useState()
-  const [changedItem,setChangedItem]=useState()
+  const [productGroup, setProductGroup] = useState()
+  const [productId, setProductId] = useState()
+  const [changedItem, setChangedItem] = useState()
 
-  useEffect(()=>{
+  useEffect(() => {
     setProductGroup(props.productGroup)
     setProductId(props.productId)
     setChangedItem(props.changedItem)
-  },[])
+  }, [])
 
-  const save = (value) => { console.log('save called',value) }
-  const cancel = (value) => {console.log('edit price canceled ' ,value) }
+  const save = (value) => { console.log('save called', value) }
+  const cancel = (value) => { console.log('edit price canceled ', value) }
 
 
 
