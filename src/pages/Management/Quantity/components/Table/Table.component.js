@@ -36,8 +36,8 @@ const StyledTableRow = withStyles((theme) => ({
 
 
 const useStyles = makeStyles({
-  paper:{
-    minWidth:400
+  paper: {
+    minWidth: 400
   },
   table: {
     // minWidth: 700,
@@ -58,8 +58,8 @@ function TableData(props) {
 
 
   const handleChangeEditedField = (changeDetail) => {
-    const { newValue, productGroup, productId, changedItem } = changeDetail
-    const value = toPersinaDigit(newValue) 
+    const { newValue, productGroup, productId, changedItem, isChanged } = changeDetail
+    const value = toPersinaDigit(newValue)
     const payload = {
       productGroup,
       productId,
@@ -67,7 +67,9 @@ function TableData(props) {
       newValue: value,
     }
 
-    payload  && props.setNewQuantity(payload)
+    // to active save button : 
+    props.isChanged(true)
+    payload && props.setNewQuantity(payload)
 
     // then give them to API.editProducts which exists now in API 
   }

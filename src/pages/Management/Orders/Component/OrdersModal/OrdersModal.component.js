@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Modal from '@material-ui/core/Modal';
 import Backdrop from '@material-ui/core/Backdrop';
 import Fade from '@material-ui/core/Fade';
@@ -36,9 +36,14 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
+
+
+
+
 export function OrdersModal(props) {
   const classes = useStyles();
   const [open, setOpen] = React.useState(false);
+
 
   const handleOpen = () => {
     setOpen(true);
@@ -77,7 +82,7 @@ export function OrdersModal(props) {
 
             </div>
 
-            <BasicTable data={props.data} handleClose={(close) => close && handleClose()} />
+            <BasicTable data={props.data} handleClose={(close) => close && handleClose()} isRerender={(isRerender => props.isRerender(isRerender))} />
           </div>
         </Fade>
       </Modal>
@@ -145,6 +150,7 @@ function BasicTable(props) {
       data.append('endProccessTime', endProccessTime)
       await editOrder(data, group, id)
       props.handleClose(true)
+      props.isRerender(true)
       toast.success(<p dir='rtl'> &emsp;<strong> ✔ </strong> &ensp;تغییر وضعیت به :<strong>  تحویل شد   </strong>   </p>, {
         position: "bottom-left",
         autoClose: 7000,

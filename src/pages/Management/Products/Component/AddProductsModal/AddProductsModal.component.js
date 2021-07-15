@@ -36,8 +36,8 @@ const useStyles = makeStyles((theme) => ({
   addButton: {
     width: 100
   },
-  title:{
-    margin:0
+  title: {
+    margin: 0
   }
 
 
@@ -136,7 +136,7 @@ export function AddProductsModal(props) {
 
             <p className={classes.title}> قیمت</p>
             <BasicTextFields value={(value) => setState({ ...state, price: value })} />
-           
+
             <p className={classes.title}> دسته بندی</p>
             <SimpleSelect value={({ group, groupfa }) => setState({ ...state, group, groupfa })} />
 
@@ -146,6 +146,7 @@ export function AddProductsModal(props) {
             <p className={classes.title}>  توضیحات </p>
             <TextArea value={(value) => setState({ ...state, information: value })} />
 
+            {/* <EditorConvertToHTML onChange={(value) => setState({ ...state, information: value })} /> */}
             <div style={{ display: 'flex', justifyContent: 'center' }} >
               <Button onClick={handlePostData} variant="contained" color="primary" style={{ width: '100px', marginTop: '10px' }}>
                 ذخیره

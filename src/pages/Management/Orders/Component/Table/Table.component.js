@@ -7,7 +7,7 @@ import TableContainer from '@material-ui/core/TableContainer';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
-import {OrdersModal} from '../OrdersModal/OrdersModal.component'
+import { OrdersModal } from '../OrdersModal/OrdersModal.component'
 const StyledTableCell = withStyles((theme) => ({
   head: {
     backgroundColor: theme.palette.common.black,
@@ -30,8 +30,8 @@ const StyledTableRow = withStyles((theme) => ({
 
 
 const useStyles = makeStyles({
-  paper:{
-    minWidth:400
+  paper: {
+    minWidth: 400
   },
   table: {
     // minWidth: 700,
@@ -41,7 +41,8 @@ const useStyles = makeStyles({
 export function BasicTable(props) {
   const classes = useStyles();
 
-  const timeToPersian=(epoch)=>{
+
+  const timeToPersian = (epoch) => {
     const date = new Date(+epoch)
     const persianDate = date.toLocaleString('fa-IR')
     return persianDate
@@ -52,12 +53,12 @@ export function BasicTable(props) {
       <Table className={classes.table} aria-label="customized table">
         <TableHead>
           <TableRow>
-            
+
             <StyledTableCell align="right">نام کاربر</StyledTableCell>
             <StyledTableCell align="right">مجموع مبلغ</StyledTableCell>
             <StyledTableCell align="right">زمان ثبت سفارش</StyledTableCell>
             <StyledTableCell align="right"></StyledTableCell>
-   
+
           </TableRow>
         </TableHead>
         <TableBody>
@@ -69,8 +70,8 @@ export function BasicTable(props) {
               <StyledTableCell align="right">{row.customerName}</StyledTableCell>
               <StyledTableCell align="right">{row.totalAmount}</StyledTableCell>
               <StyledTableCell align="right">{timeToPersian(row.createdAt)}</StyledTableCell>
-            <OrdersModal data={row}/>
-   
+              <OrdersModal data={row} isRerender={(isRerender) => props.isRerender(isRerender)} />
+
             </StyledTableRow>
           ))}
         </TableBody>

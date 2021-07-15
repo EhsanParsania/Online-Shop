@@ -14,7 +14,8 @@ class TableGrid extends Component {
     data: [{}],
     initialId: 0,
     numberOfPages: 0,
-    clickedPage: 1
+    clickedPage: 1,
+    isChanged: false
   }
 
 
@@ -22,7 +23,7 @@ class TableGrid extends Component {
     const field = 'groceries'
     const rowNumber = 6
     try {
-      const { data = [{}], headers } = await getData(field, clickedPage, rowNumber,`&_sort=id&_order=desc`)
+      const { data = [{}], headers } = await getData(field, clickedPage, rowNumber, `&_sort=id&_order=desc`)
       const totalCount = headers ? headers['x-total-count'] : 1
       const numberOfPages = Math.ceil(totalCount / rowNumber)
       await this.setState({ data, numberOfPages })
@@ -55,8 +56,10 @@ class TableGrid extends Component {
 
 
   handleAllPatchData = async () => {
+
     // get quantity change from redux : 
     const quantityChangeArray = this.props.quantityChange
+
 
     try {
       quantityChangeArray.map(async (item) => {
@@ -72,6 +75,8 @@ class TableGrid extends Component {
 
       // delete all quantity change on redux : 
       this.props.deleteAllQuantity()
+
+      this.setState({ isChanged: false })
 
       toast.success(<p dir='rtl'> &emsp;<strong> ✔ </strong> &ensp;ویرایش با موفقیت انجام شد    </p>, {
         position: "bottom-left",
@@ -135,12 +140,18 @@ class TableGrid extends Component {
               <div style={this.style.tableHeader}>
                 <h2 > مدیریت موجودی و قیمت ها</h2>
                 <div style={this.style.saveButtonContainer}>
-                  <Button style={this.style.saveButton} variant="contained" color="primary" onClick={this.handleAllPatchData} >
-                    ذخیره
-                  </Button>
+                  {
+                    this.state.isChanged ?
+                      <Button style={this.style.saveButton} variant="contained" color="primary" onClick={this.handleAllPatchData} >
+                        ذخیره
+                      </Button> :
+                      <Button style={this.style.saveButton} variant="contained" color="primary" disabled >
+                        ذخیره
+                      </Button>
+                  }
                 </div>
               </div>
-              <BasicTable rows={this.state.data} />
+              <BasicTable rows={this.state.data} isChanged={(isChanged) => this.setState({ isChanged })} />
             </div>
 
             <div>
