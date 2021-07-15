@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
-import { getData, getFilteredProducts } from '../../../api/API'
-import { ListMenu, Paginate, CardGroup } from '../../../components/index.components'
-import { useParams, withRouter } from 'react-router'
+import { getFilteredProducts } from '../../../api/API'
+import { ListMenu, Paginate, CardGroup, Spinner } from '../../../components/index.components'
+import { withRouter } from 'react-router'
 
 
 class ProductsListtt extends Component {
@@ -10,7 +10,8 @@ class ProductsListtt extends Component {
     numberOfPages: '',
     data: [{}],
     group: '',
-    subgroup: ''
+    subgroup: '',
+    isLoading: true
   }
 
   async componentDidMount() {
@@ -23,6 +24,7 @@ class ProductsListtt extends Component {
     })
 
     await this.handleGetData(group, subgroup, id)
+    this.setState({ isLoading: false })
   }
 
 
@@ -37,6 +39,7 @@ class ProductsListtt extends Component {
       const group = nextProps.match.params.group
       await this.handleGetData(group, subgroup, id)
       await this.setState({ group: group, pageNumber: id, subgroup: subgroup })
+      this.setState({ isLoading: false })
       return true
     }
     else return false
@@ -64,7 +67,15 @@ class ProductsListtt extends Component {
   }
 
 
-
+  style = {
+    spinner: {
+      // display: 'flex',
+      // justifyContent: 'center',
+      // flex: 1,
+      // alignItems: 'center'
+      // display: 'block'
+    }
+  }
 
 
 
@@ -72,9 +83,18 @@ class ProductsListtt extends Component {
     return (
       <div>
         <ListMenu>
-          <CardGroup data={this.state.data}>
-            <Paginate numberOfPages={this.state.numberOfPages} clickedPage={async (clickedPage) => await this.setState({ clickedPage })} field={`home/${this.props.match.params.group}`} pathSection={this.props.match.params.subgroup} currentPage={this.props.match.params.id} />
-          </CardGroup>
+          {
+            !this.state.isLoading ?
+              <CardGroup data={this.state.data}>
+                <Paginate numberOfPages={this.state.numberOfPages} clickedPage={async (clickedPage) => await this.setState({ clickedPage })} field={`home/${this.props.match.params.group}`} pathSection={this.props.match.params.subgroup} currentPage={this.props.match.params.id} />
+              </CardGroup>
+              :
+              <section style={this.style.spinner}>
+                <CardGroup >
+                </CardGroup>
+                  <Spinner />
+              </section>
+          }
         </ListMenu >
       </div>
     )
