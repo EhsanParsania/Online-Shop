@@ -82,7 +82,7 @@ const useStyles = makeStyles((theme) => ({
     color: '#222',
     fontWeight: 600,
     margin: 0,
-    fontSize: 16
+    fontSize: 14
     // padding:0
   },
   inline: {
@@ -156,7 +156,7 @@ function ListMenu(props) {
                         {item.subgroup.map((text, index) => (
 
                           <Link to={`/home/${item.group}/${text}/1`} className={classes.link} >
-                            <ListItem className={classes.listItem} alignItems={'start'} dense={'true'} button key={text}>
+                            <ListItem className={classes.listItem} alignItems={'start'}  button key={text}>
                               <ListItemText className={classes.text} disableTypography={true}>
                                 {wordToPersian(text)}
                               </ListItemText>
