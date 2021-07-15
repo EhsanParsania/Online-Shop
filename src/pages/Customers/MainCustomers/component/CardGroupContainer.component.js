@@ -13,16 +13,22 @@ const useStyles = makeStyles((theme) => ({
     flexDirection: 'column',
     alignItems: 'center',
     flexGrow: 1,
-    // backgroundColor:'white'
+   
     margin: ' 20px',
     [theme.breakpoints.up('sm')]: {
       // display: 'block',
-      minWidth:1000,
+      minWidth: 1000,
 
-      // minHeight: 550,
+      // minHeight: 450,
+      // minheight: 'auto'
 
     },
 
+  },
+  rootContainer:{
+    // backgroundColor: 'white-smock',
+    borderRadius:5,
+    // boxShadow:'0 5px 10px #666'
   },
   title: {
     fontSize: '1.5rem',
@@ -37,9 +43,9 @@ const useStyles = makeStyles((theme) => ({
     // color: theme.palette.text.secondary,
     padding: 40
   },
-  divider:{
-    marginTop:60,
-    marginBottom:30
+  divider: {
+    marginTop: 60,
+    marginBottom: 30
     // paddingTop:20
   }
 
@@ -69,7 +75,7 @@ function CardGroupContainer(props) {
   const classes = useStyles();
   if (!loading) {
     return (
-      <React.Fragment>
+      <div className={classes.rootContainer}>
         <div className={classes.root}>
 
           <Grid container spacing={3}  >
@@ -86,7 +92,7 @@ function CardGroupContainer(props) {
 
         </div>
         <Divider variant='middle' className={classes.divider} />
-      </React.Fragment>
+      </div>
     );
   }
 

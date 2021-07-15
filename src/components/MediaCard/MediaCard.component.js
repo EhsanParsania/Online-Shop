@@ -7,9 +7,6 @@ import CardMedia from '@material-ui/core/CardMedia';
 import Typography from '@material-ui/core/Typography';
 import { Link } from 'react-router-dom';
 
-import Rating from '@material-ui/lab/Rating';
-import Box from '@material-ui/core/Box';
-
 
 import {SimpleRating} from '../index.components'
 
@@ -48,7 +45,8 @@ const useStyles = makeStyles({
     
   },
   link: {
-    textDecoration: 'none'
+    textDecoration: 'none',
+    // minHeight:160
   },
   title: {
     // minHeight: 35

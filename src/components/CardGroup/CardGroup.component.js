@@ -24,7 +24,7 @@ const useStyles = makeStyles((theme) => ({
     padding: theme.spacing(2),
     textAlign: 'center',
     color: theme.palette.text.secondary,
-    paddingBottom: 70,
+    paddingBottom: 30,
     flexGrow: 1,
     [theme.breakpoints.up('sm')]: {
       // display: 'block',
@@ -65,29 +65,29 @@ function CardGrouppp(props) {
     await setState(data)
     console.log(state)
 
-  }, [state,props])
+  }, [state, props])
 
   const classes = useStyles();
 
 
 
 
-//  const  handleGetData = async () => {
-//     const { group,subgroup,id=1 } = props.match.params  // this dhould get from props later  
-//     const limit = 6
+  //  const  handleGetData = async () => {
+  //     const { group,subgroup,id=1 } = props.match.params  // this dhould get from props later  
+  //     const limit = 6
 
-//     try {
-//       const { data = [{}], headers } = await getFilteredProducts(group, subgroup, limit, id)
-//       const totalCount = headers ? headers['x-total-count'] : 1
-//       const numberOfPages = Math.ceil(totalCount / limit)
-//       console.log(numberOfPages)
-//       // await this.setState({ data, numberOfPages, pageNumber: id, subgroup: subgroup })
-//       s
-//     }
-//     catch (error) {
-//       console.log('get data failed with error ==> ', error.message)
-//     }
-//   }
+  //     try {
+  //       const { data = [{}], headers } = await getFilteredProducts(group, subgroup, limit, id)
+  //       const totalCount = headers ? headers['x-total-count'] : 1
+  //       const numberOfPages = Math.ceil(totalCount / limit)
+  //       console.log(numberOfPages)
+  //       // await this.setState({ data, numberOfPages, pageNumber: id, subgroup: subgroup })
+  //       s
+  //     }
+  //     catch (error) {
+  //       console.log('get data failed with error ==> ', error.message)
+  //     }
+  //   }
 
 
   return (
@@ -105,9 +105,6 @@ function CardGrouppp(props) {
               </Grid>
               <Grid container spacing={3} justify='space-evenly' >
 
-                {/* <Grid item sm={12}  > */}
-                {/* <Paper className={classes.paper}  > */}
-
                 {
 
                   props.data.map((row) => {
@@ -117,14 +114,6 @@ function CardGrouppp(props) {
                     />
                   })
                 }
-
-
-
-                {/* </Paper> */}
-
-                {/* </Grid> */}
-
-
 
               </Grid>
             </div>
@@ -137,14 +126,12 @@ function CardGrouppp(props) {
 
           </div>
         </Paper>
-
       }
-
     </div>
   );
 
 }
 
 
-const CardGroup=withRouter(CardGrouppp)
+const CardGroup = withRouter(CardGrouppp)
 export { CardGroup }
