@@ -3,7 +3,6 @@ import { makeStyles } from '@material-ui/core/styles';
 import Pagination from '@material-ui/lab/Pagination';
 import { Link } from 'react-router-dom'
 import { PaginationItem } from '@material-ui/lab';
-import { useEffect, useRef, useState } from 'react';
 
 const useStyles = makeStyles((theme) => ({
   root: {
