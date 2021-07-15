@@ -10,7 +10,7 @@ export function SimpleRating(props) {
 
   return (
     <div dir='ltr'>
-      <Box component="fieldset" mt={1} mb={2} borderColor="transparent"  >
+      <Box component="fieldset" borderColor="transparent"  >
         {/* <Typography component="legend">امتیاز کالا</Typography> */}
         <Rating
           size='small'
