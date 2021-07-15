@@ -18,6 +18,7 @@ import { deleteCart } from '../../../redux/actions';
 
 
 import Input from '@material-ui/core/Input';
+import { finalizeCart } from '../../../api/API';
 
 const useStyles$ = makeStyles((theme) => ({
   root: {
@@ -84,8 +85,10 @@ function PaymentAdd(props) {
 
   // convert date to iso to send server :
   const date = new Date()
-  const isoDate = date.toISOString()
-  const [state, setState] = useState(isoDate)
+  // const isoDate = date.toISOString()
+  const time=date.getTime()
+  const [state, setState] = useState(time)
+  const [plainDate,setPlainDate]=useState(date)
   const [name, setName] = useState('')
   const [family, setFamily] = useState('')
   const [tell, setTell] = useState('')
@@ -93,30 +96,42 @@ function PaymentAdd(props) {
 
   const classes = useStyles()
 
-
+  // console.log(JSON.stringify(JSON.stringify(props.cart)))
 
   const handleChangeDatePicker = (event) => {
-    // let newState = {};
     let plainDate = event.target.value
-    // newState = new Date(plainDate)
-    setState(plainDate);
+    const epochTime=new Date(plainDate).getTime()
+    // console.log(epochTime)
+    setState(epochTime);
+    setPlainDate(plainDate)
   };
 
-  const handlePaymentButton = () => {
-
-  }
 
   const handleSubmitForm = (event) => {
     event.preventDefault()
-    const cart = props.cart
+    const cart =props.cart
+
+
+
     const data = new FormData()
     data.append('customerName', name + ' ' + family)
     data.append('customerAddress', address)
     data.append('deliveryTime', state)
-    data.append('orderList', cart)
+    data.append('orderList',cart)
+    // cart.forEach(item => data.append('orderList', item))
     data.append('tell', tell)
-    const orderNumber=Math.floor(Math.random()*100000)+100000
-    window.location.href = `http://localhost:3050/payment?number=${orderNumber}`;
+
+    try {
+      finalizeCart(data)
+    } catch (error) {
+      console.log(error.message)
+    }
+
+    // const orderNumber = Math.floor(Math.random() * 100000) + 100000
+    const orderNumber = tell
+    const paramName = name + ' ' + family
+    // const paramPrice=props.price
+    window.location.href = `http://localhost:3050/payment?number=${orderNumber}&name=${paramName}`;
   }
 
   return (
@@ -196,14 +211,14 @@ function PaymentAdd(props) {
             <DateInput
               className={classes.datePicker}
               id='date'
-              value={state}
+              value={plainDate}
               name={'myDateTime'}
               onChange={handleChangeDatePicker}
             />
           </Grid>
 
           <Grid item xs={12} style={{ display: 'flex', justifyContent: 'center' }}>
-            <Button type='submit' variant='contained' color='primary' onClick={handlePaymentButton} >
+            <Button type='submit' variant='contained' color='primary'  >
               پرداخت
             </Button>
           </Grid>
@@ -220,7 +235,8 @@ function PaymentAdd(props) {
 }
 
 const mapStateToProps = (state) => ({
-  cart: state.cart
+  cart: state.cart,
+  price: state.price
 })
 
 const mapDispatchToProps = (dispatch) => {
