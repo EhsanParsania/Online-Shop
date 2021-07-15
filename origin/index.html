@@ -224,11 +224,11 @@
 								</div>
 
 								<ul class="col-lg-12 col-sm-8 merchant-detail">
-									<li>نام پذیرنده : <b>فروشکاه پارسیان</b></li>
+									<li>نام پذیرنده : <b>فروشگاه پارسیان</b></li>
 									<li>شماره سفارش: <b id='order-number' >2370746</b></li>
 
 
-									<li>شماره ترمینال: <b>5827069</b></li>
+									<li> نام خریدار: <b id='params-name'>5827069</b></li>
 									<li>آدرس وب سایت: <b class="merchantwebsite">
 
 
@@ -358,8 +358,13 @@
 		const urlSearchParams = new URLSearchParams(window.location.search);
 		const params = Object.fromEntries(urlSearchParams.entries());
 		console.log(params)
+
 		const orderNumberText=document.getElementById('order-number')
 		orderNumberText.innerHTML=params.number
+
+		const name=document.getElementById('params-name')
+		name.innerHTML=params.name
+
 		function success(){
 			window.location.href=`http://localhost:3000/payment-result/success/${params.number}`
 		}
