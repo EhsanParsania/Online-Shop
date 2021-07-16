@@ -1,11 +1,11 @@
 export const wordToPersian = (word) => {
   switch (word) {
     case 'groceries':
-      return 'کالاهای اساسی و خوار و بار'
+      return 'خوار و بار'
     case 'dairies':
       return 'لبنیات'
     case 'proteins':
-      return 'محصولات پروتئینی'
+      return ' پروتئینی'
     case 'drinks':
       return 'نوشیدنی'
     case 'bread':
