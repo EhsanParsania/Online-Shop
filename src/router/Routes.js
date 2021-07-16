@@ -81,8 +81,8 @@ function Routes() {
         </Route> */}
 
         <Route path='/payment-result/:status/:number' exact>
-        <MainLayout >
-          <PaymentResult/>
+          <MainLayout >
+            <PaymentResult />
           </MainLayout>
         </Route>
 
@@ -100,9 +100,7 @@ function Routes() {
 
 
         <Route path='/panel/login' exact >
-          <ManagementLayout>
-            <SignIn />
-          </ManagementLayout>
+          <SignIn />
         </Route>
 
         <Route path='/panel/orders' exact >
