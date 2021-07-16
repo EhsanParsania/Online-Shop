@@ -86,9 +86,9 @@ function PaymentAdd(props) {
   // convert date to iso to send server :
   const date = new Date()
   // const isoDate = date.toISOString()
-  const time=date.getTime()
+  const time = date.getTime()
   const [state, setState] = useState(time)
-  const [plainDate,setPlainDate]=useState(date)
+  const [plainDate, setPlainDate] = useState(date)
   const [name, setName] = useState('')
   const [family, setFamily] = useState('')
   const [tell, setTell] = useState('')
@@ -100,7 +100,7 @@ function PaymentAdd(props) {
 
   const handleChangeDatePicker = (event) => {
     let plainDate = event.target.value
-    const epochTime=new Date(plainDate).getTime()
+    const epochTime = new Date(plainDate).getTime()
     // console.log(epochTime)
     setState(epochTime);
     setPlainDate(plainDate)
@@ -109,7 +109,7 @@ function PaymentAdd(props) {
 
   const handleSubmitForm = (event) => {
     event.preventDefault()
-    const cart =props.cart
+    const cart = JSON.stringify(props.cart)
 
 
 
@@ -117,9 +117,24 @@ function PaymentAdd(props) {
     data.append('customerName', name + ' ' + family)
     data.append('customerAddress', address)
     data.append('deliveryTime', state)
-    data.append('orderList',cart)
-    // cart.forEach(item => data.append('orderList', item))
+    data.append('orderList', cart)
     data.append('tell', tell)
+
+    // for (let i = 0; i < cart.length; i++) {
+    //   data.append('orderList',JSON.stringify(cart[i]) )
+    // }
+    // cart.forEach(item => data.append('orderList', item))
+
+
+    // const urlFormData = new URLSearchParams({
+    //   customerName: name+' '+family,
+    //   customerAddress:address,
+    //   deliveryTime:state,
+    //   orderList:cart,
+    //   tell:tell
+    // })
+
+
 
     try {
       finalizeCart(data)
