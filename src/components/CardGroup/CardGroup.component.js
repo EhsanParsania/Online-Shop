@@ -18,6 +18,7 @@ const useStyles = makeStyles((theme) => ({
   title: {
     fontSize: '1.5rem',
     marginRight: '40px',
+    marginBottom:45
   },
 
   paper: {

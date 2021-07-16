@@ -18,6 +18,8 @@ function Toastify() {
         pauseOnFocusLoss
         draggable
         pauseOnHover
+        limit={3}
+
       />
       {/* Same as */}
       <ToastContainer />
@@ -25,5 +27,5 @@ function Toastify() {
   )
 }
 
-export  {Toastify}
+export { Toastify }
 

@@ -82,7 +82,9 @@ const useStyles = makeStyles((theme) => ({
     color: '#222',
     fontWeight: 600,
     margin: 0,
-    fontSize: 14
+    fontSize: 14,
+    // paddingLeft:180
+    marginLeft:100
     // padding:0
   },
   inline: {

@@ -31,8 +31,10 @@ const useStyles = makeStyles((theme) => ({
     // boxShadow:'0 5px 10px #666'
   },
   title: {
-    fontSize: '1.5rem',
+    fontSize: '1.4rem',
     // marginRight: '40px',
+    marginBottom:50,
+    color:"#777"
 
     // paddingRight:'10%' 
   },

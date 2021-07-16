@@ -164,7 +164,7 @@ function ProductDetailsss(props) {
     <StoreHeader style={{ flexDirection: 'column' }}>
       <Toolbar />
       <CssBaseline />
-      <Card className={classes.root} raised={true}>
+        <Card className={classes.root} raised={true}>
         <div className={classes.topContent} >
 
           <CardMedia className={classes.image}
