@@ -12,6 +12,7 @@ function Error(props) {
       <h1 className={style.text } >
       {props.children}
       </h1>
+      <p className={style.sub}>لطفا سرور را راه اندازی کنید...</p>
     </div>
     </div>
   )
