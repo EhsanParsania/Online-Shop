@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
 import CssBaseline from '@material-ui/core/CssBaseline';
@@ -13,6 +13,23 @@ import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 import { Link as RouterLink } from 'react-router-dom'
+import { authentication } from '../../../api/API';
+
+import { useHistory } from "react-router-dom";
+
+function HomeButton() {
+  let history = useHistory();
+
+  function handleClick() {
+    history.push("/home");
+  }
+
+  return (
+    <button type="button" onClick={handleClick}>
+      Go home
+    </button>
+  );
+}
 
 function Copyright() {
   return (
@@ -45,12 +62,30 @@ const useStyles = makeStyles((theme) => ({
   },
   submit: {
     margin: theme.spacing(3, 0, 2),
-    fontWeight:'bold'
+    fontWeight: 'bold'
   },
 }));
 
 function SignIn() {
   const classes = useStyles();
+  let history = useHistory()
+
+  const [username, setUsername] = useState()
+  const [password, setPassword] = useState()
+
+  const handleSubmit = async (e) => {
+    e.preventDefault()
+    const formData = new FormData()
+    formData.append('username', username)
+    formData.append('password', password)
+    const { status } = await authentication(formData)
+    if (status === 200){
+      history.push("/panel/orders");
+  
+    }
+
+
+  }
 
   return (
     <Container component="main" maxWidth="xs" >
@@ -62,7 +97,7 @@ function SignIn() {
         <Typography component="h1" variant="h5">
           ورود به پنل مدیریت فروشگاه فلان
         </Typography>
-        <form className={classes.form} noValidate >
+        <form className={classes.form} noValidate onSubmit={handleSubmit} >
           <span dir='ltr'>
             <TextField
 
@@ -75,6 +110,7 @@ function SignIn() {
               name="email"
               autoComplete="email"
               autoFocus
+              onChange={(e) => setUsername(e.target.value)}
             />
             <TextField
               variant="outlined"
@@ -86,12 +122,15 @@ function SignIn() {
               type="password"
               id="password"
               autoComplete="current-password"
+              onChange={(e) => setPassword(e.target.value)}
+
             />
           </span>
           <FormControlLabel
             control={<Checkbox value="remember" color="primary" />}
             label="مرا به خاطر بسپار"
           />
+          {/* <RouterLink to={'/panel/orders'} style={{ textDecoration: 'none' }}> */}
           <Button
             type="submit"
             fullWidth
@@ -101,6 +140,7 @@ function SignIn() {
           >
             ورود
           </Button>
+          {/* </RouterLink> */}
           <Grid container>
             <Grid item xs>
               <Link href="#" variant="body2">

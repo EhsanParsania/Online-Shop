@@ -14,7 +14,7 @@ ReactDOM.render(
   <Provider store={store}>
     <ThemeProvider theme={theme}>
       <App />
-      <Toastify />
+      <Toastify  />
     </ThemeProvider>
   </Provider>,
   document.getElementById('root')

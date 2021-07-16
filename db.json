@@ -1,4 +1,21 @@
 {
+  "users": [
+    {
+      "name": "Jamshid Mashayekhi",
+      "username": "admin",
+      "password": "admin",
+      "role": "admin"
+    }
+  ],
+  "protection": {
+    "products.get": false,
+    "orders.post": true,
+    "upload": true,
+    "products": "admin",
+    "orders": "admin",
+    "users": "admin",
+    "protection": "admin"
+  },
   "groups": [
     {
       "icon": "fas fa-shopping-basket",

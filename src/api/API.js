@@ -114,3 +114,23 @@ export const finalizeCart = (data) => {
 
     })
 }
+
+
+export const authentication = (data) => {
+  var config = {
+    method: 'post',
+    url: 'http://localhost:3001/auth/login',
+    headers: { "Content-Type": "multipart/form-data" },
+    data: data
+  };
+
+  return API(config)
+    .then(response => {
+      console.log('authentication posted --> ', response)
+      return response
+    })
+    .catch(error => {
+      console.log(error.message)
+      return error
+    })
+}
