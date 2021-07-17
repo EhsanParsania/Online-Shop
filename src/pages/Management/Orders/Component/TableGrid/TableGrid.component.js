@@ -14,7 +14,7 @@ class TableGrid extends Component {
     clickedPage: 1,
     isFilteredData: '',
     isDelivered: '',
-    isRerender:false
+    isRerender: false
   }
 
   //get first orders page on did mount
@@ -40,9 +40,9 @@ class TableGrid extends Component {
       this.getOrdersData(nextState.clickedPage)
       return true
     }
-    else if(nextState.isRerender === true){
+    else if (nextProps.isRerender == true) {
       this.getOrdersData(nextState.clickedPage)
-      this.setState({isRerender:false})
+      this.setState({ isRerender: false })
       return true
     }
     else return false
@@ -110,7 +110,7 @@ class TableGrid extends Component {
                 <h2 > مدیریت سفارش ها</h2>
                 <RadioButtons details={this.handleRadioButtonClick} />
               </div>
-              <BasicTable rows={this.state.data} isRerender={(isRerender)=>this.setState({isRerender})} />
+              <BasicTable rows={this.state.data} isRerender={(isRerender) => this.setState({ isRerender })} />
             </div>
 
 

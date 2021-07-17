@@ -110,6 +110,8 @@ function PaymentAdd(props) {
   const handleSubmitForm = (event) => {
     event.preventDefault()
     const cart = JSON.stringify(props.cart)
+    const sumPrice=JSON.stringify(props.price)
+    console.log(sumPrice)
 
 
 
@@ -119,6 +121,9 @@ function PaymentAdd(props) {
     data.append('deliveryTime', state)
     data.append('orderList', cart)
     data.append('tell', tell)
+    data.append('sumPrice', sumPrice)
+    data.append('delivered','false')
+    data.append('paid','false')
 
     // for (let i = 0; i < cart.length; i++) {
     //   data.append('orderList',JSON.stringify(cart[i]) )
@@ -146,7 +151,7 @@ function PaymentAdd(props) {
     const orderNumber = tell
     const paramName = name + ' ' + family
     // const paramPrice=props.price
-    window.location.href = `http://localhost:3050/payment?number=${orderNumber}&name=${paramName}`;
+    // window.location.href = `http://localhost:3050/payment?number=${orderNumber}&name=${paramName}`;
   }
 
   return (

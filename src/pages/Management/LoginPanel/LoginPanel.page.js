@@ -64,6 +64,9 @@ const useStyles = makeStyles((theme) => ({
     margin: theme.spacing(3, 0, 2),
     fontWeight: 'bold'
   },
+  title:{
+    margin:'35px 0'
+  }
 }));
 
 function SignIn() {
@@ -75,14 +78,14 @@ function SignIn() {
 
   const handleSubmit = async (e) => {
     e.preventDefault()
-    const formData = new FormData()
-    formData.append('username', username)
-    formData.append('password', password)
-    const { status } = await authentication(formData)
-    if (status === 200){
+    // const formData = new FormData()
+    // formData.append('username', username)
+    // formData.append('password', password)
+    // const { status } = await authentication(formData)
+    // if (status === 200){
       history.push("/panel/orders");
   
-    }
+    // }
 
 
   }
@@ -94,8 +97,8 @@ function SignIn() {
         <Avatar className={classes.avatar}>
           <LockOutlinedIcon />
         </Avatar>
-        <Typography component="h1" variant="h5">
-          ورود به پنل مدیریت فروشگاه فلان
+        <Typography component="h1" variant="h5" className={classes.title} >
+          ورود به پنل مدیریت فروشگاه پارسیان
         </Typography>
         <form className={classes.form} noValidate onSubmit={handleSubmit} >
           <span dir='ltr'>

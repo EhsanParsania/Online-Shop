@@ -13,7 +13,7 @@ const useStyles = makeStyles((theme) => ({
     flexDirection: 'column',
     alignItems: 'center',
     flexGrow: 1,
-   
+
     margin: ' 20px',
     [theme.breakpoints.up('sm')]: {
       // display: 'block',
@@ -25,16 +25,16 @@ const useStyles = makeStyles((theme) => ({
     },
 
   },
-  rootContainer:{
+  rootContainer: {
     // backgroundColor: 'white-smock',
-    borderRadius:5,
+    borderRadius: 5,
     // boxShadow:'0 5px 10px #666'
   },
   title: {
     fontSize: '1.4rem',
     // marginRight: '40px',
-    marginBottom:50,
-    color:"#777"
+    marginBottom: 50,
+    color: "#777"
 
     // paddingRight:'10%' 
   },
@@ -65,12 +65,15 @@ function CardGroupContainer(props) {
       const field = props.field
       const pageNumber = 1
       const dataLimit = 6
-      const { data } = await getData(field, pageNumber, dataLimit)
+      const { data,status } = await getData(field, pageNumber, dataLimit)
       setState({ data: data })
+      return data
     }
 
-    await fetchData()
-    setLoading(false)
+    const data = await fetchData()
+    if (data) {
+      setLoading(false)
+    }
   }, [loading])
 
 
@@ -102,7 +105,7 @@ function CardGroupContainer(props) {
     return (
       <div className={classes.root}>
         <Grid container spacing={3}  >
-          <h2 className={classes.title}>{wordToPersian(state.data[0].group)} </h2>
+          <h2 className={classes.title}> </h2>
         </Grid>
 
         <Grid container justify='center' >

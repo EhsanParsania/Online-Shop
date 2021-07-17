@@ -68,7 +68,7 @@ export function BasicTable(props) {
                 {row.name}
               </StyledTableCell> */}
               <StyledTableCell align="right">{row.customerName}</StyledTableCell>
-              <StyledTableCell align="right">{row.totalAmount}</StyledTableCell>
+              <StyledTableCell align="right">{row.sumPrice}</StyledTableCell>
               <StyledTableCell align="right">{timeToPersian(row.createdAt)}</StyledTableCell>
               <OrdersModal data={row} isRerender={(isRerender) => props.isRerender(isRerender)} />
 

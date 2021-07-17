@@ -77,7 +77,7 @@ export function OrdersModal(props) {
 
             </div>
 
-            <BasicTable data={props.data} handleClose={(close) => close && handleClose()} />
+            <BasicTable data={props.data} handleClose={(close) => close && handleClose()} isRerender={isRerender => props.isRerender(isRerender)} />
           </div>
         </Fade>
       </Modal>
@@ -124,6 +124,11 @@ function BasicTable(props) {
       display: 'flex',
       justifyContent: 'center',
       padding: '20px 0 0 0'
+    },
+    failText:{
+      fontSize:15,
+      fontWeight:'bold',
+      color:'red'
     }
   });
   const classes = useStyles();
@@ -139,12 +144,18 @@ function BasicTable(props) {
     try {
       const id = props.data.id
       const group = 'orders'
+
       const data = new FormData()
       const endProccessTime = Date.now()
       data.append('delivered', 'true')
       data.append('endProccessTime', endProccessTime)
+
       await editOrder(data, group, id)
+
       props.handleClose(true)
+
+      props.isRerender(true)
+
       toast.success(<p dir='rtl'> &emsp;<strong> ✔ </strong> &ensp;تغییر وضعیت به :<strong>  تحویل شد   </strong>   </p>, {
         position: "bottom-left",
         autoClose: 7000,
@@ -191,7 +202,7 @@ function BasicTable(props) {
           <TableBody>
 
             {
-              props.data.orderList.map(row => {
+              JSON.parse(props.data.orderList).map(row => {
                 return (
                   <StyledTableRow key={row.id} className={classes.tableRow} >
                     <StyledTableCell align="right">{row.productName}</StyledTableCell>
@@ -209,9 +220,9 @@ function BasicTable(props) {
         </Table>
       </TableContainer>
       <div className={classes.modalBottom}>
-        {props.data.delivered == 'true' && <p className={style.bottomText} >زمان تحویل : {convertDateToPersian(props.data.endProccessTime)}</p>}
-        {props.data.delivered == 'false' && <Button onClick={orderDelivered} variant='contained' color='primary'  >  تحویل شد    </Button>}
-
+        {props.data.delivered == 'true' && props.data.paid == 'true' && <p className={style.bottomText} >زمان تحویل : {convertDateToPersian(props.data.endProccessTime)}</p>}
+        {props.data.delivered == 'false' && props.data.paid == 'true' && <Button onClick={orderDelivered} variant='contained' color='primary'  >  تحویل شد    </Button>}
+        { props.data.paid == 'false' && <p className={classes.failText} >پرواخت ناموفق</p>}
       </div>
 
 
