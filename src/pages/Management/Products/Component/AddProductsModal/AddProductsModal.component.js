@@ -13,6 +13,7 @@ import Select from '@material-ui/core/Select';
 import { UploadFile } from '../UploadFile/UploadFile.component'
 import * as AXIOS from '../../../../../api/API'
 import { toast } from 'react-toastify';
+import { SimpleSelectSubgroup } from './component/SimpleSelectSubgroup.component';
 
 
 const useStyles = makeStyles((theme) => ({
@@ -60,7 +61,7 @@ export function AddProductsModal(props) {
 
 
     try {
-      await AXIOS.postProducts(bodyFormData)
+      await AXIOS.postProducts(bodyFormData,state.group)
       handleClose()
       props.isRerender('yes')
       toast.success(<p dir='rtl'> &emsp;<strong> ✔ </strong> &ensp;افزودن کالا با موفقیت انجام شد    </p>, {
@@ -138,10 +139,10 @@ export function AddProductsModal(props) {
             <BasicTextFields value={(value) => setState({ ...state, price: value })} />
 
             <p className={classes.title}> دسته بندی</p>
-            <SimpleSelect value={({ group, groupfa }) => setState({ ...state, group, groupfa })} />
+            <SimpleSelectGroup value={({ group, groupfa }) => setState({ ...state, group, groupfa })} />
 
             <p className={classes.title}>گروه کالا</p>
-            <BasicTextFields value={(value) => setState({ ...state, subgroup: value })} />
+            <SimpleSelectSubgroup value={({ subgroup, subgroupfa }) => setState({ ...state, subgroup, subgroupfa })} />
 
             <p className={classes.title}>  توضیحات </p>
             <TextArea value={(value) => setState({ ...state, information: value })} />
@@ -195,7 +196,7 @@ export default function BasicTextFields(props) {
 
 
 
-function SimpleSelect(props) {
+function SimpleSelectGroup(props) {
   const useStyles = makeStyles((theme) => ({
     formControl: {
       margin: theme.spacing(1),

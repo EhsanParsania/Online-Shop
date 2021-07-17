@@ -32,8 +32,8 @@ export function getData(group, pageNumber, rowNumber, isDelivered = '') {
 }
 
 
-export const postProducts = (bodyFormData) => {
-  return API({ method: "post", url: '/groceries', data: bodyFormData, headers: { "Content-Type": "multipart/form-data" } })
+export const postProducts = (bodyFormData, group) => {
+  return API({ method: "post", url: group, data: bodyFormData, headers: { "Content-Type": "multipart/form-data" } })
     .then(response => {
       console.log('formData posted --> ', response)
       return response

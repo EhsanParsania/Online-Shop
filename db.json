@@ -919,6 +919,17 @@
       "image": "/files/157364e75ed18990e40b4c2df7977ff8",
       "createdAt": 1625346688823,
       "id": 84
+    },
+    {
+      "name": "روغن لادن",
+      "information": "<p> <strong> روغن لادن </strong> تهیه شده از بهترین دانه های </p>",
+      "group": "groceries",
+      "subgroup": "oil",
+      "price": "۵۹۰۰۰",
+      "supply": "۲۳",
+      "image": "/files/26e7e70fdc0325ed9e6abbd5be6ce252",
+      "createdAt": 1626514532847,
+      "id": 85
     }
   ],
   "dairies": [
@@ -2089,6 +2100,17 @@
       "image": "/files/b6011f193846b3028fa1271f60a29288",
       "createdAt": 1626336775493,
       "id": 42
+    },
+    {
+      "name": "میگو منجمد",
+      "information": "میگو یخ زده صادراتی",
+      "group": "proteins",
+      "subgroup": "fish",
+      "price": "۷۸۹۰۰",
+      "supply": "۱۲",
+      "image": "/files/6e09b670801eb14a276dfe467824a19c",
+      "createdAt": 1626515545671,
+      "id": 43
     }
   ],
   "drinks": [

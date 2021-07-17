@@ -26,6 +26,7 @@ import { connect } from 'react-redux';
 import { addProductToCart, deleteCart } from '../../../redux/actions';
 import { toEnglishDigit } from '../../../utils/convertNumber';
 import { toast } from 'react-toastify';
+import ConfirmModal from './component/ConfirmModal.component'
 
 
 
@@ -128,33 +129,36 @@ function ProductDetailsss(props) {
     console.log(EN_digit_supply)
   }, [supply])
 
-  const addToBuyList = () => {
-    const { id, name, group, price, subgroup, image } = product
-    const orderId = props.cart.length
+  const addToBuyList = (flag) => {
+    if (flag == 'true') {
+      const { id, name, group, price, subgroup, image } = product
+      const orderId = props.cart.length
 
-    const data = {
-      productId: id,
-      productName: name,
-      group: group,
-      subgroup: subgroup,
-      number: parseInt(number),
-      id: orderId,
-      productPrice: price,
-      image: image
-    }
+      const data = {
+        productId: id,
+        productName: name,
+        group: group,
+        subgroup: subgroup,
+        number: parseInt(number),
+        id: orderId,
+        productPrice: price,
+        image: image
+      }
 
-    props.addProductToCart(data)
-    toast.info(<p dir='rtl'> &emsp;<strong> ✔ </strong> &ensp;کالا به سبد خرید اضافه شد   </p>, {
-      position: "bottom-left",
-      autoClose: 5000,
-      hideProgressBar: false,
-      closeOnClick: true,
-      pauseOnHover: true,
-      draggable: true,
-      progress: undefined,
+      props.addProductToCart(data)
+      toast.info(<p dir='rtl'> &emsp;<strong> ✔ </strong> &ensp;کالا به سبد خرید اضافه شد   </p>, {
+        position: "bottom-left",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
       });
-    // console.log(props.cart)
-    // console.log(toEnglishDigit(product.supply))
+      // console.log(props.cart)
+      // console.log(toEnglishDigit(product.supply))
+
+    }
 
   }
 
@@ -164,7 +168,7 @@ function ProductDetailsss(props) {
     <StoreHeader style={{ flexDirection: 'column' }}>
       <Toolbar />
       <CssBaseline />
-        <Card className={classes.root} raised={true}>
+      <Card className={classes.root} raised={true}>
         <div className={classes.topContent} >
 
           <CardMedia className={classes.image}
@@ -205,9 +209,11 @@ function ProductDetailsss(props) {
 
                   <div className={classes.buttonContainer} >
                     <InputNumber className={classes.inputNumber} onChange={(number) => setNumber(number)} max={toEnglishDigit(product.supply)} />
-                    <Button variant='contained' color="secondary" onClick={addToBuyList} >
+                    {/* <Button variant='contained' color="secondary" onClick={addToBuyList} >
                       افزودن به سبد خرید
-                    </Button>
+                    </Button> */}
+                    <ConfirmModal onClick={addToBuyList} />
+
                   </div>
                 </>
 
