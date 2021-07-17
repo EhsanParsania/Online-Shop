@@ -117,7 +117,7 @@ export const finalizeCart = (data) => {
 }
 
 
-export const authentication = (data) => {
+export const authentication = (data={}) => {
   var config = {
     method: 'post',
     url: `${BASE_URL}/auth/login`,
@@ -128,10 +128,18 @@ export const authentication = (data) => {
   return API(config)
     .then(response => {
       console.log('authentication posted --> ', response)
+      localStorage.setItem('token', response.data.token)
+      localStorage.setItem('refreshToken', response.data.token)
+
       return response
     })
     .catch(error => {
-      console.log(error.message)
+      console.log(error.response)
+      if(error.message == 'Token Expired!'){
+        localStorage.removeItem('token')
+        localStorage.removeItem('refreshToken')
+        window.location.href=`http://localhost:3000/panel/login`
+      }
       return error
     })
 }

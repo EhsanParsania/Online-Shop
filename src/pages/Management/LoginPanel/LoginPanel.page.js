@@ -64,8 +64,8 @@ const useStyles = makeStyles((theme) => ({
     margin: theme.spacing(3, 0, 2),
     fontWeight: 'bold'
   },
-  title:{
-    margin:'35px 0'
+  title: {
+    margin: '35px 0'
   }
 }));
 
@@ -78,14 +78,22 @@ function SignIn() {
 
   const handleSubmit = async (e) => {
     e.preventDefault()
-    // const formData = new FormData()
-    // formData.append('username', username)
-    // formData.append('password', password)
-    // const { status } = await authentication(formData)
-    // if (status === 200){
+    const formData = new FormData()
+    // const data = Object.fromEntries(formData)
+    // console.log(data)
+    formData.append('username', username)
+    formData.append('password', password)
+    try {
+      localStorage.removeItem('token')
+      localStorage.removeItem('refreshToken')
+      const { status, data } = await authentication(formData)
       history.push("/panel/orders");
-  
-    // }
+
+    }
+    catch (error) {
+      console.log(error.message)
+    }
+
 
 
   }
