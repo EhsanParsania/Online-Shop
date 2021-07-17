@@ -1,4 +1,5 @@
 import API from './Config.api'
+import { BASE_URL } from './Variables.api'
 
 
 export function getListIcons() {
@@ -44,7 +45,7 @@ export const postProducts = (bodyFormData) => {
 
 }
 
-
+// it can also use for edit an order: 
 export const editProducts = (data, group, id) => {
   return API({ method: "patch", url: `/${group}/${id}`, data: data, headers: { "Content-Type": "multipart/form-data" } })
     .then(response => {
@@ -103,7 +104,7 @@ export const getOneProduct = (group, id) => {
 }
 
 export const finalizeCart = (data) => {
-  return API.post(`/orders`, data)
+  return API.post(`${BASE_URL}/orders`, data)
     .then(response => {
       console.log('Order sent')
       return response
@@ -119,7 +120,7 @@ export const finalizeCart = (data) => {
 export const authentication = (data) => {
   var config = {
     method: 'post',
-    url: 'http://localhost:3001/auth/login',
+    url: `${BASE_URL}/auth/login`,
     headers: { "Content-Type": "multipart/form-data" },
     data: data
   };
