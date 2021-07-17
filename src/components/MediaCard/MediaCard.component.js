@@ -18,16 +18,22 @@ const useStyles = makeStyles({
     width: 350,
     // padding:'15px',
     marginTop: '20px',
-    height: 160,
+    // height: 160,
+    '&:hover':{
+      boxShadow: '0 5px 4px #bbb',
+
+
+      }
 
 
   },
   media: {
     minHeight: 100,
     minWidth: 100,
-    border: '1px solid #eee',
-    borderRadius: '10px',
-    boxShadow: '0 0 10px #eee',
+    // border: '1px solid #eee',
+    borderRadius: '6px',
+    // boxShadow: '0 6px 2px #ddd',
+
 
 
 

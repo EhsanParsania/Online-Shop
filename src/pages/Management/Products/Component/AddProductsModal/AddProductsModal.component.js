@@ -14,6 +14,7 @@ import { UploadFile } from '../UploadFile/UploadFile.component'
 import * as AXIOS from '../../../../../api/API'
 import { toast } from 'react-toastify';
 import { SimpleSelectSubgroup } from './component/SimpleSelectSubgroup.component';
+import HtmlEditor from '../../../../../components/HtmlEditor/HtmlEditor.component';
 
 
 const useStyles = makeStyles((theme) => ({
@@ -61,7 +62,8 @@ export function AddProductsModal(props) {
 
 
     try {
-      await AXIOS.postProducts(bodyFormData,state.group)
+      const groupUrl = `/${state.group}`
+      await AXIOS.postProducts(bodyFormData, groupUrl)
       handleClose()
       props.isRerender('yes')
       toast.success(<p dir='rtl'> &emsp;<strong> ✔ </strong> &ensp;افزودن کالا با موفقیت انجام شد    </p>, {
@@ -144,8 +146,10 @@ export function AddProductsModal(props) {
             <p className={classes.title}>گروه کالا</p>
             <SimpleSelectSubgroup value={({ subgroup, subgroupfa }) => setState({ ...state, subgroup, subgroupfa })} />
 
+            {/* <TextArea value={(value) => setState({ ...state, information: value })} /> */}
+
             <p className={classes.title}>  توضیحات </p>
-            <TextArea value={(value) => setState({ ...state, information: value })} />
+            <HtmlEditor htmlData={async (value='initial') => await setState({ ...state, information: value })} />
 
             {/* <EditorConvertToHTML onChange={(value) => setState({ ...state, information: value })} /> */}
             <div style={{ display: 'flex', justifyContent: 'center' }} >
