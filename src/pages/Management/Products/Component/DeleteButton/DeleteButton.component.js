@@ -1,10 +1,6 @@
 import { makeStyles } from '@material-ui/core'
 import React, { useEffect, useState } from 'react'
 import { deleteProducts } from '../../../../../api/API'
-import API from '../../../../../api/Config.api'
-
-
-
 
 const useStyle = makeStyles({
   deleteButton: {

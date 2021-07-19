@@ -18,12 +18,9 @@ export function SimpleSelectSubgroup(props) {
   }));
 
   const classes = useStyles();
-  // const [value, setValue] = React.useState('');
-  // const [groupfa, setGroupfa] = React.useState('');
+
 
   const handleChange = async (event, eventInfo) => {
-    // await setValue(event.target.value);
-    // await setGroupfa(eventInfo.props.children)
 
     const subgroup = event.target.value
     const subgroupfa = eventInfo.props.children
@@ -36,17 +33,12 @@ export function SimpleSelectSubgroup(props) {
     <div>
 
       <FormControl size='small' variant="outlined" className={classes.formControl}>
-        {/* <InputLabel id="demo-simple-select-outlined-label">Age</InputLabel> */}
         <Select
           labelId="demo-simple-select-outlined-label"
           id="demo-simple-select-outlined"
-          // value={value}
           onChange={handleChange}
-        // label="Age"
         >
-          {/* <MenuItem value="">
-            <em>گروه محصول</em>
-          </MenuItem> */}
+      
           <MenuItem value={'bread'}>نان</MenuItem>
           <MenuItem value={'rice'}>برنج</MenuItem>
           <MenuItem value={'oil'}>روغن </MenuItem>

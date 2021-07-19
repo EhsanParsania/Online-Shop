@@ -9,8 +9,6 @@ export function InputNumber(props) {
     <TextField className={props.className}
       type='number'
       variant='outlined'
-      // value={1}
-      // color='secondary'
       defaultValue={1}
       onChange={onChange}
       InputProps={{ inputProps: { min: 1, max: props.max } }}

@@ -101,9 +101,7 @@ export function AddProductsModal(props) {
   return (
     <div>
 
-      {/* <p onClick={handleOpen} className={classes.button} >
-        افزودن کالا
-      </p> */}
+
       <Button className={classes.addButton} onClick={handleOpen} color='primary' variant='contained' >
         افزودن کالا
       </Button>
@@ -235,13 +233,9 @@ function SimpleSelectGroup(props) {
         <Select
           labelId="demo-simple-select-outlined-label"
           id="demo-simple-select-outlined"
-          // value={value}
           onChange={handleChange}
-        // label="Age"
         >
-          {/* <MenuItem value="">
-            <em>گروه محصول</em>
-          </MenuItem> */}
+
           <MenuItem value={'groceries'}>کالاهای اساسی و خوار و بار</MenuItem>
           <MenuItem value={'dairies'}>لبنیات</MenuItem>
           <MenuItem value={'proteins'}>محصولات پروتئینی</MenuItem>

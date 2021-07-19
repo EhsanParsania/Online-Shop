@@ -16,39 +16,23 @@ const useStyles = makeStyles((theme) => ({
 
     margin: ' 20px',
     [theme.breakpoints.up('sm')]: {
-      // display: 'block',
       minWidth: 1000,
-
-      // minHeight: 450,
-      // minheight: 'auto'
-
     },
-
   },
   rootContainer: {
-    // backgroundColor: 'white-smock',
     borderRadius: 5,
-    // boxShadow:'0 5px 10px #666'
   },
   title: {
     fontSize: '1.4rem',
-    // marginRight: '40px',
     marginBottom: 50,
     color: "#777"
-
-    // paddingRight:'10%' 
   },
-
   paper: {
-    // padding: theme.spacing(2),
-    // textAlign: 'center',
-    // color: theme.palette.text.secondary,
     padding: 40
   },
   divider: {
     marginTop: 60,
     marginBottom: 30
-    // paddingTop:20
   }
 
 }));

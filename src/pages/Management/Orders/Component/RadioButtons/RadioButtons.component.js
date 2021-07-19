@@ -22,7 +22,6 @@ export function RadioButtons(props) {
 
   return (
     <FormControl component="fieldset" style={style.formControl}>
-      {/* <FormLabel component="legend">labelPlacement</FormLabel> */}
       <RadioGroup row aria-label="position" name="position" defaultValue="top">
 
         <FormControlLabel style={style.radio}

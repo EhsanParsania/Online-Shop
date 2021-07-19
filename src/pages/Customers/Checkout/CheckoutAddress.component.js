@@ -2,17 +2,11 @@ import React from 'react';
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 import TextField from '@material-ui/core/TextField';
-// import FormControlLabel from '@material-ui/core/FormControlLabel';
-// import Checkbox from '@material-ui/core/Checkbox';
-import { FormControl } from '@material-ui/core';
 import { useState } from 'react';
-import { Toolbar } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core';
 import { Button } from '@material-ui/core';
-
 import { DateInput } from 'react-hichestan-datetimepicker';
 import { connect } from 'react-redux';
-
 import { deleteCart } from '../../../redux/actions';
 
 
@@ -96,12 +90,9 @@ function PaymentAdd(props) {
 
   const classes = useStyles()
 
-  // console.log(JSON.stringify(JSON.stringify(props.cart)))
-
   const handleChangeDatePicker = (event) => {
     let plainDate = event.target.value
     const epochTime = new Date(plainDate).getTime()
-    // console.log(epochTime)
     setState(epochTime);
     setPlainDate(plainDate)
   };
@@ -110,7 +101,7 @@ function PaymentAdd(props) {
   const handleSubmitForm = (event) => {
     event.preventDefault()
     const cart = JSON.stringify(props.cart)
-    const sumPrice=JSON.stringify(props.price)
+    const sumPrice = JSON.stringify(props.price)
     console.log(sumPrice)
 
 
@@ -122,36 +113,14 @@ function PaymentAdd(props) {
     data.append('orderList', cart)
     data.append('tell', tell)
     data.append('sumPrice', sumPrice)
-    data.append('delivered','false')
-    data.append('paid','false')
-
-    // for (let i = 0; i < cart.length; i++) {
-    //   data.append('orderList',JSON.stringify(cart[i]) )
-    // }
-    // cart.forEach(item => data.append('orderList', item))
-
-
-    // const urlFormData = new URLSearchParams({
-    //   customerName: name+' '+family,
-    //   customerAddress:address,
-    //   deliveryTime:state,
-    //   orderList:cart,
-    //   tell:tell
-    // })
-
-
+    data.append('delivered', 'false')
+    data.append('paid', 'false')
 
     try {
       finalizeCart(data)
     } catch (error) {
       console.log(error.message)
     }
-
-    // const orderNumber = Math.floor(Math.random() * 100000) + 100000
-    const orderNumber = tell
-    const paramName = name + ' ' + family
-    // const paramPrice=props.price
-    // window.location.href = `http://localhost:3050/payment?number=${orderNumber}&name=${paramName}`;
   }
 
   return (
@@ -245,10 +214,7 @@ function PaymentAdd(props) {
 
         </Grid>
 
-
-
       </form>
-
 
     </div>
   );

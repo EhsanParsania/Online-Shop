@@ -30,7 +30,7 @@ class ProductsListtt extends Component {
 
   async shouldComponentUpdate(nextProps, nextState) {
     const { id, subgroup } = this.props.match.params
-    // if (this.state.pageNumber !== id || this.state.subgroup !== subgroup) {
+    
     if (this.props.match.params.id !== nextProps.match.params.id || this.props.match.params.subgroup !== nextProps.match.params.subgroup || this.props.match.params.group !== nextProps.match.params.group) {
 
 
@@ -44,11 +44,6 @@ class ProductsListtt extends Component {
     }
     else return false
   }
-
-
-
-
-
 
 
   handleGetData = async (group, subgroup, id = 1) => {
@@ -66,19 +61,6 @@ class ProductsListtt extends Component {
     }
   }
 
-
-  style = {
-    spinner: {
-      // display: 'flex',
-      // justifyContent: 'center',
-      // flex: 1,
-      // alignItems: 'center'
-      // display: 'block'
-    }
-  }
-
-
-
   render() {
     return (
       <div>
@@ -89,7 +71,7 @@ class ProductsListtt extends Component {
                 <Paginate numberOfPages={this.state.numberOfPages} clickedPage={async (clickedPage) => await this.setState({ clickedPage })} field={`home/${this.props.match.params.group}`} pathSection={this.props.match.params.subgroup} currentPage={this.props.match.params.id} />
               </CardGroup>
               :
-              <section style={this.style.spinner}>
+              <section >
                 <CardGroup >
                 </CardGroup>
                   <Spinner />

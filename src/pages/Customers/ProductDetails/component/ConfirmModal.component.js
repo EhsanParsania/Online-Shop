@@ -22,33 +22,33 @@ const useStyles = makeStyles((theme) => ({
     outline: 'none'
 
   },
-  modalTitle:{
-    marginBottom:35
+  modalTitle: {
+    marginBottom: 35
   },
   button: {
     height: 55
   },
-  buttonContainer:{
-    display:'flex',
-    justifyContent:'space-evenly'
+  buttonContainer: {
+    display: 'flex',
+    justifyContent: 'space-evenly'
   },
-  confirmButton:{
-    width:70,
-    height:30,
-    borderRadius:4,
-    backgroundColor:'rgb(250, 250, 250)',
-    '&:hover':{
-      backgroundColor:'#eee',
+  confirmButton: {
+    width: 70,
+    height: 30,
+    borderRadius: 4,
+    backgroundColor: 'rgb(250, 250, 250)',
+    '&:hover': {
+      backgroundColor: '#eee',
       cursor: 'pointer',
       transition: '.3s'
     }
 
   },
-  yesButton:{
-    border:'1.4px solid rgb(0, 175, 0)',
+  yesButton: {
+    border: '1.4px solid rgb(0, 175, 0)',
   },
-  noButton:{
-    border:'1.4px solid red',
+  noButton: {
+    border: '1.4px solid red',
   }
 
 }));
@@ -68,7 +68,6 @@ export default function ConfrimModal(props) {
   const onClick = (e) => {
     handleClose()
     props.onClick(e.target.value)
-    // console.log(e.target.value)
   }
 
 
@@ -96,8 +95,7 @@ export default function ConfrimModal(props) {
             <h4 id="transition-modal-title" className={classes.modalTitle}>  آیا مایلید این محصول به لیست خرید اضافه شود ؟</h4>
 
 
-            {/* <p id="transition-modal-description"> </p> */}
-            <section className={classes.buttonContainer} > 
+            <section className={classes.buttonContainer} >
               <button className={`${classes.confirmButton} ${classes.yesButton}`} variant='outlined' onClick={onClick} value={true} > بله </button>
               <button className={`${classes.confirmButton} ${classes.noButton}`} variant='outlined' onClick={onClick} value={false}> خیر </button>
             </section>

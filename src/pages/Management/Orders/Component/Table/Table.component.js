@@ -33,9 +33,6 @@ const useStyles = makeStyles({
   paper: {
     minWidth: 400
   },
-  table: {
-    // minWidth: 700,
-  },
 });
 
 export function BasicTable(props) {
@@ -64,9 +61,7 @@ export function BasicTable(props) {
         <TableBody>
           {props.rows.map((row) => (
             <StyledTableRow key={row.id}>
-              {/* <StyledTableCell component="th" scope="row">
-                {row.name}
-              </StyledTableCell> */}
+
               <StyledTableCell align="right">{row.customerName}</StyledTableCell>
               <StyledTableCell align="right">{row.sumPrice}</StyledTableCell>
               <StyledTableCell align="right">{timeToPersian(row.createdAt)}</StyledTableCell>

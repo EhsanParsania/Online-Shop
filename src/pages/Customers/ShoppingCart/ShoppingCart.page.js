@@ -11,12 +11,10 @@ import { connect } from 'react-redux';
 import { addSumPrice, deleteCart } from '../../../redux/actions';
 import { Toolbar } from '@material-ui/core';
 import { TableContainer } from '../../../components/index.components'
-import { Paginate } from '../../../components/index.components'
 import { Button } from '@material-ui/core';
 import { Link } from 'react-router-dom';
 import DeleteOrder from './DeleteOrder.component'
-import { toEnglishDigit, toPersinaDigit } from '../../../utils/convertNumber';
-import { wordToPersian } from '../../../utils/convertNameToPersian';
+import { toEnglishDigit } from '../../../utils/convertNumber';
 import { BASE_URL } from '../../../api/Variables.api';
 
 const StyledTableCell = withStyles((theme) => ({
@@ -43,15 +41,8 @@ const StyledTableRow = withStyles((theme) => ({
 const useStyles = makeStyles({
   paper: {
     minWidth: 400,
-
-  }
-  ,
-  table: {
-    // minWidth: 700,
   },
-
   row: {
-    // height:30
     padding: 7
   },
   button: {
@@ -73,8 +64,6 @@ const useStyles = makeStyles({
     justifyContent: 'space-between',
     padding: 0,
     alignItems: 'center',
-
-
   },
   link: {
     textDecoration: 'none'
@@ -82,30 +71,24 @@ const useStyles = makeStyles({
   sumPriceText: {
     color: '#111',
     fontWeight: 'bold',
-    // borderBottom:'3px solid #ccc',
     padding: '7px 10px',
     margin: 0,
     boxShadow: '0 0px 3px #ccc',
     borderRadius: '4px',
-    height:38,
+    height: 38,
     backgroundColor: 'rgb(206, 255, 206)'
   },
-  image:{
-    width:40,
-    height:40,
-    borderRadius:5,
-    border:'.5px solid #ccc'
-
+  image: {
+    width: 40,
+    height: 40,
+    borderRadius: 5,
+    border: '.5px solid #ccc'
   },
-  imageCell:{
-    margin:0,
-    padding:'6px 4px 0px 4px',
+  imageCell: {
+    margin: 0,
+    padding: '6px 4px 0px 4px',
   }
-
 });
-
-
-
 
 
 
@@ -121,7 +104,6 @@ function Cart(props) {
   useEffect(async () => {
     if (isRerender === 'true') {
 
-      // console.log(props.cart, 'props???')
       setIsRerender('false')
       const cart = props.cart
       await setState({ data: cart })
@@ -136,16 +118,10 @@ function Cart(props) {
     }
   }, [isRerender])
 
-  // useEffect(()=>{
-  // },[state])
+
 
   const classes = useStyles();
 
-  const convertDateToPersian = (epoch) => {
-    const date = new Date(+epoch)
-    const persianDate = date.toLocaleString('fa-IR')
-    return persianDate
-  }
 
   const handleRerender = async (isRerender) => {
     console.log('rerender called')
@@ -194,7 +170,7 @@ function Cart(props) {
                   state.data.map((row) => (
                     <StyledTableRow key={row.id}>
 
-                      <StyledTableCell className={classes.imageCell} align="right"><img className={classes.image}  src={`${BASE_URL}${row.image}`} alt='تصویر کالا' />   </StyledTableCell>
+                      <StyledTableCell className={classes.imageCell} align="right"><img className={classes.image} src={`${BASE_URL}${row.image}`} alt='تصویر کالا' />   </StyledTableCell>
 
                       <StyledTableCell className={classes.row} align="right">
                         <Link className={classes.link} to={`/home/products/${row.group}/${row.subgroup}/${row.productId}`}>

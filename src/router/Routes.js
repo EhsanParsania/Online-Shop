@@ -20,25 +20,6 @@ function Routes() {
     >
 
       <Switch>
-        {/* <Route path='/home' exact>
-          <StoreRoutes />
-        </Route>
-
-        <Route path='/panel'  exact>
-          <PanelRoutes />
-        </Route>
-
-        <Route path='/' exact >
-          <Redirect to='/home' />
-        </Route>
-
-        <Route path='/home' exact  >
-        <MainLayout>
-          
-        </MainLayout>
-        </Route> */}
-
-
 
         <Route path='/home' exact >
           <MainLayout >
@@ -75,11 +56,6 @@ function Routes() {
         </Route>
 
 
-
-        {/* <Route path='/payment' exact >
-          <Payment />
-        </Route> */}
-
         <Route path='/payment-result/:status/:number' exact>
           <MainLayout >
             <PaymentResult />
@@ -90,8 +66,6 @@ function Routes() {
         <Route path='/checkout' exact >
           <Checkout />
         </Route>
-
-
 
 
 

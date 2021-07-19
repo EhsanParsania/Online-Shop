@@ -180,7 +180,6 @@ export default function BasicTextFields(props) {
     root: {
       '& > *': {
         margin: theme.spacing(1),
-        // width: '25ch',
       },
     },
   }));
@@ -192,8 +191,7 @@ export default function BasicTextFields(props) {
 
   return (
     <form className={classes.root} noValidate autoComplete="off">
-      {/* <TextField id="standard-basic" label="Standard" />
-      <TextField id="filled-basic" label="Filled" variant="filled" /> */}
+
       <TextField onChange={handleChange} fullWidth id="outlined-basic" fullWidth variant="outlined" size='small' defaultValue={props.defaultValue} />
 
     </form>
@@ -232,7 +230,6 @@ function SimpleSelect(props) {
     <div>
 
       <FormControl size='small' variant="outlined" className={classes.formControl}>
-        {/* <InputLabel id="demo-simple-select-outlined-label">Age</InputLabel> */}
         <Select
           labelId="demo-simple-select-outlined-label"
           id="demo-simple-select-outlined"
@@ -240,11 +237,8 @@ function SimpleSelect(props) {
           onChange={handleChange}
           displayEmpty={true}
           renderValue={()=> props.groupfa}
-        // label="Age"
         >
-          {/* <MenuItem value="">
-            <em>گروه محصول</em>
-          </MenuItem> */}
+ 
           <MenuItem value={'groceries'}>کالاهای اساسی و خوار و بار</MenuItem>
           <MenuItem value={'dairies'}>لبنیات</MenuItem>
           <MenuItem value={'proteins'}>محصولات پروتئینی</MenuItem>

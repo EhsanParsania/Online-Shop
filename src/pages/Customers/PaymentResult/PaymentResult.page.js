@@ -9,7 +9,6 @@ const useStyle = makeStyles({
     display: 'flex',
     flexDirection: 'column',
     justifyContent: 'center',
-    // alignItems:'center',
     flex: 1,
     width: "100%"
   },
@@ -21,31 +20,25 @@ const useStyle = makeStyles({
   button: {
     width: 200
   },
-  buttonContainer:{
-    display:'flex',
-    justifyContent:'center'
+  buttonContainer: {
+    display: 'flex',
+    justifyContent: 'center'
 
   },
-  link:{
-    textDecoration:'none'
+  link: {
+    textDecoration: 'none'
   }
 })
 
 function Result(props) {
   const { status, number } = props.match.params
-  console.log(status)
-  const persianStatus = status === 'success' ? 'موفقیت' : 'خطا';
 
   const classes = useStyle()
-
-
-
 
   return (
     <div className={classes.container}>
       <Toolbar />
       <Toolbar />
-
 
       {
         status === 'success' ?
@@ -59,9 +52,9 @@ function Result(props) {
       <section className={classes.buttonContainer}>
         {
           <Link to='/home' className={classes.link} >
-          <Button variant='outlined' className={classes.button}>
-            برگشت به سایت
-          </Button>
+            <Button variant='outlined' className={classes.button}>
+              برگشت به سایت
+            </Button>
           </Link>
         }
       </section>

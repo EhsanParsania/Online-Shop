@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
 import CardActions from '@material-ui/core/CardActions';
@@ -9,18 +9,13 @@ import Typography from '@material-ui/core/Typography';
 import Divider from '@material-ui/core/Divider';
 import { CssBaseline } from '@material-ui/core';
 import { BASE_URL } from '../../../api/Variables.api';
-
-
 import { BreadCrumb } from './component/BreadCrumb.component';
-
 import { StoreHeader } from '../../../components/index.components';
 import { Toolbar } from '@material-ui/core'
-
 import { InputNumber } from './component/InputNumber.component';
 import { withRouter } from 'react-router-dom';
 import { getOneProduct } from '../../../api/API';
 import { Markup } from 'interweave';
-
 import { SimpleRating } from '../../../components/index.components'
 import { connect } from 'react-redux';
 import { addProductToCart, deleteCart } from '../../../redux/actions';
@@ -34,10 +29,7 @@ import ConfirmModal from './component/ConfirmModal.component'
 
 const useStyles = makeStyles({
   root: {
-    // display:'flex',
-    // flexDirection:'column',
     maxWidth: '100%',
-    // minHeight:'100%',
     minHeight: 610,
     padding: 15,
     margin: 20,
@@ -58,11 +50,9 @@ const useStyles = makeStyles({
   image: {
     width: 360,
     height: 360,
-    // margin: '0px 20px 0 20px'
   },
   leftContent: {
     display: 'flex',
-    // justifyContent:'space-evenly'
     flexDirection: 'column',
     justifyContent: 'space-evenly'
   },
@@ -85,9 +75,7 @@ const useStyles = makeStyles({
   },
   rateContainer: {
     display: 'flex',
-    // margin:0,
-    // padding:0
-    // flexDirection:'column '
+
   },
   supplyText: {
     paddingBottom: 20,
@@ -155,14 +143,8 @@ function ProductDetailsss(props) {
         draggable: true,
         progress: undefined,
       });
-      // console.log(props.cart)
-      // console.log(toEnglishDigit(product.supply))
-
     }
-
   }
-
-
 
   return (
     <StoreHeader style={{ flexDirection: 'column' }}>
@@ -209,9 +191,7 @@ function ProductDetailsss(props) {
 
                   <div className={classes.buttonContainer} >
                     <InputNumber className={classes.inputNumber} onChange={(number) => setNumber(number)} max={toEnglishDigit(product.supply)} />
-                    {/* <Button variant='contained' color="secondary" onClick={addToBuyList} >
-                      افزودن به سبد خرید
-                    </Button> */}
+
                     <ConfirmModal onClick={addToBuyList} />
 
                   </div>

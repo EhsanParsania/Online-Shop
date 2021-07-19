@@ -17,19 +17,7 @@ import { authentication } from '../../../api/API';
 
 import { useHistory } from "react-router-dom";
 
-function HomeButton() {
-  let history = useHistory();
 
-  function handleClick() {
-    history.push("/home");
-  }
-
-  return (
-    <button type="button" onClick={handleClick}>
-      Go home
-    </button>
-  );
-}
 
 function Copyright() {
   return (
@@ -50,7 +38,6 @@ const useStyles = makeStyles((theme) => ({
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
-    // boxShadow:'0 0 5px black'
   },
   avatar: {
     margin: theme.spacing(1),
@@ -79,8 +66,7 @@ function SignIn() {
   const handleSubmit = async (e) => {
     e.preventDefault()
     const formData = new FormData()
-    // const data = Object.fromEntries(formData)
-    // console.log(data)
+
     formData.append('username', username)
     formData.append('password', password)
     try {

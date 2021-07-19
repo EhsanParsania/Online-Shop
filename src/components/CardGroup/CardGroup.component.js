@@ -3,7 +3,6 @@ import { makeStyles } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
 import { MediaCard } from '../../components/index.components';
-
 import { wordToPersian } from '../../utils/convertNameToPersian';
 import { withRouter } from 'react-router-dom';
 
@@ -13,14 +12,12 @@ const useStyles = makeStyles((theme) => ({
     width: "100%",
     display: 'flex',
     justifyContent: 'center',
-    // margin: ' 20px'
   },
   title: {
     fontSize: '1.5rem',
     marginRight: '40px',
-    marginBottom:45
+    marginBottom: 45
   },
-
   paper: {
     padding: theme.spacing(2),
     textAlign: 'center',
@@ -28,26 +25,19 @@ const useStyles = makeStyles((theme) => ({
     paddingBottom: 30,
     flexGrow: 1,
     [theme.breakpoints.up('sm')]: {
-      // display: 'block',
       minWidth: 1230,
-
       minHeight: 550,
-
     },
   },
   container_: {
     display: 'flex',
-    // flex: 1,s
     flexDirection: 'column',
     justifyContent: 'space-between',
     height: 550
-  }
-  ,
-
+  },
   paginateContainer: {
     paddingTop: 40
   }
-
 }));
 
 
@@ -58,38 +48,14 @@ function CardGrouppp(props) {
   const [state, setState] = useState()
 
   useEffect(async () => {
-    // const field = props.field || 'products'
-    // const pageNumber = 1
-    // const dataLimit = 6
 
+    // get data from props ( from product list page or ...)
     const data = await props.data
     await setState(data)
-    console.log(state)
 
   }, [state, props])
 
   const classes = useStyles();
-
-
-
-
-  //  const  handleGetData = async () => {
-  //     const { group,subgroup,id=1 } = props.match.params  // this dhould get from props later  
-  //     const limit = 6
-
-  //     try {
-  //       const { data = [{}], headers } = await getFilteredProducts(group, subgroup, limit, id)
-  //       const totalCount = headers ? headers['x-total-count'] : 1
-  //       const numberOfPages = Math.ceil(totalCount / limit)
-  //       console.log(numberOfPages)
-  //       // await this.setState({ data, numberOfPages, pageNumber: id, subgroup: subgroup })
-  //       s
-  //     }
-  //     catch (error) {
-  //       console.log('get data failed with error ==> ', error.message)
-  //     }
-  //   }
-
 
   return (
     <div className={classes.root}>
@@ -130,9 +96,7 @@ function CardGrouppp(props) {
       }
     </div>
   );
-
 }
-
 
 const CardGroup = withRouter(CardGrouppp)
 export { CardGroup }
