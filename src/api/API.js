@@ -117,7 +117,13 @@ export const finalizeCart = (data) => {
 }
 
 
-export const authentication = (data={}) => {
+export const successPayment = (data,id) => {
+  return API({ method: "patch", url: `/orders/${id}`, data: data, headers: { "Content-Type": "multipart/form-data" } })
+
+}
+
+
+export const authentication = (data = {}) => {
   var config = {
     method: 'post',
     url: `${BASE_URL}/auth/login`,
@@ -135,10 +141,10 @@ export const authentication = (data={}) => {
     })
     .catch(error => {
       console.log(error.response)
-      if(error.message == 'Token Expired!'){
+      if (error.message == 'Token Expired!') {
         localStorage.removeItem('token')
         localStorage.removeItem('refreshToken')
-        window.location.href=`http://localhost:3000/panel/login`
+        window.location.href = `http://localhost:3000/panel/login`
       }
       return error
     })

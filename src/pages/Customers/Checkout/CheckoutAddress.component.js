@@ -98,7 +98,7 @@ function PaymentAdd(props) {
   };
 
 
-  const handleSubmitForm = (event) => {
+  const handleSubmitForm = async (event) => {
     event.preventDefault()
     const cart = JSON.stringify(props.cart)
     const sumPrice = JSON.stringify(props.price)
@@ -117,7 +117,13 @@ function PaymentAdd(props) {
     data.append('paid', 'false')
 
     try {
-      finalizeCart(data)
+      const response = await finalizeCart(data)
+      // console.log(response.data.id)
+      const id = response.data.id
+      const orderNumber = tell
+      const paramName = name + ' ' + family
+      // const paramPrice = props.price
+      window.location.href = `http://localhost:3050/payment?number=${orderNumber}&name=${paramName}&id=${id}`;
     } catch (error) {
       console.log(error.message)
     }

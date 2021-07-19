@@ -2,11 +2,10 @@ import { Router, Route, Link, Switch, Redirect } from "react-router-dom";
 import createHistrory from "history/createBrowserHistory"
 import { MainLayout, ManagementLayout } from '../layout/index.layout'
 import { Quantity, Products, SignIn, Orders, MainCustomers, ProductDetails } from "../pages/index.pages";
-import { ListMenu } from '../components/ListMenu/ListMenu.component'
+
 import React from 'react'
 import { ProductsList } from '../pages/index.pages'
 
-import { Payment } from "../pages/index.pages";
 import { ShoppingCart } from '../pages/index.pages'
 import { Checkout } from "../pages/index.pages";
 import { Error } from "../components/index.components";
@@ -56,7 +55,7 @@ function Routes() {
         </Route>
 
 
-        <Route path='/payment-result/:status/:number' exact>
+        <Route path='/payment-result/:status/:number/:id' exact>
           <MainLayout >
             <PaymentResult />
           </MainLayout>

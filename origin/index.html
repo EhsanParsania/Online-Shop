@@ -366,10 +366,10 @@
 		name.innerHTML=params.name
 
 		function success(){
-			window.location.href=`http://localhost:3000/payment-result/success/${params.number}`
+			window.location.href=`http://localhost:3000/payment-result/success/${params.number}/${params.id}`
 		}
 		function cancelPay(){
-			window.location.href=`http://localhost:3000/payment-result/cancel/${params.number}`
+			window.location.href=`http://localhost:3000/payment-result/cancel/${params.number}/${params.id}`
 		}
 	</script>
 </body>

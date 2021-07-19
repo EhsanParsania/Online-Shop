@@ -1,8 +1,9 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { withRouter } from 'react-router-dom'
 import { makeStyles, Toolbar } from '@material-ui/core'
 import { Button } from '@material-ui/core'
 import { Link } from 'react-router-dom'
+import { successPayment } from '../../../api/API'
 
 const useStyle = makeStyles({
   container: {
@@ -31,7 +32,18 @@ const useStyle = makeStyles({
 })
 
 function Result(props) {
-  const { status, number } = props.match.params
+  const { status, number, id } = props.match.params
+
+  useEffect(async () => {
+    if (status == 'success') {
+      const formData = new FormData()
+      formData.append('paid', "true")
+
+      await successPayment(formData, id)
+    }
+
+
+  }, [])
 
   const classes = useStyle()
 
