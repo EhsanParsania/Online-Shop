@@ -2,7 +2,7 @@ import { makeStyles } from '@material-ui/core'
 import React from 'react'
 import { connect } from 'react-redux'
 import { editCart } from '../../../redux/actions'
-
+import ConfrimModal from './ConfirmModal.component'
 
 
 
@@ -17,11 +17,11 @@ function DeleteButton(props) {
 
   const classes = useStyle()
 
-  const handleDeleteProduct = async () => {
+  const handleDeleteProduct = async (flag) => {
     // Api enter ... 
+    console.log(flag)
 
-    const confirm = window.confirm('Are you sure you want to remove this product ?')
-    if (confirm) {
+    if (flag == 'true') {
 
       const currentCart = props.state.cart
       const id = props.id
@@ -51,11 +51,10 @@ function DeleteButton(props) {
   }
 
   return (
-    <span
-      onClick={handleDeleteProduct}
-      className={classes.deleteButton} >
-      حذف
-    </span >
+
+    <ConfrimModal onClick={handleDeleteProduct} />
+
+
 
   )
 }

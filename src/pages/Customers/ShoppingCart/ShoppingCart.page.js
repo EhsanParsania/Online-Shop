@@ -98,7 +98,7 @@ function Cart(props) {
 
   const [state, setState] = useState({ data: [{}] })
   const [isRerender, setIsRerender] = useState('true')
-  const [sumPrice, setSumPrice] = useState(0)
+  const [sumPrice = 0, setSumPrice] = useState(0)
 
 
   useEffect(async () => {
@@ -168,7 +168,7 @@ function Cart(props) {
               state.data[0] ? <TableBody>
                 {
                   state.data.map((row) => (
-                    <StyledTableRow key={row.id}>
+                    <StyledTableRow key={Math.random()}>
 
                       <StyledTableCell className={classes.imageCell} align="right"><img className={classes.image} src={`${BASE_URL}${row.image}`} alt='تصویر کالا' />   </StyledTableCell>
 
