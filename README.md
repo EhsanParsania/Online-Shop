@@ -13,3 +13,7 @@
   $ npm start
   
   $ npm run server
+
+**preview :**
+
+<img src="https://s4.uupload.ir/files/overview_sj96.jpg" />
