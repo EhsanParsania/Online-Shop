@@ -1,6 +1,14 @@
-# maktab47-project-ehsan-parsania
+# Online Shop (SPA)
 
--  run project with : 
+- ⚡  Technologies : 
+     - ✔  React
+     - ✔  Redux
+     - ✔  Material-UI
+     - ✔  React-Router
+     - ✔  Axios
+     - ✔  Git
+
+- How to run :
 
   $ npm start
   
