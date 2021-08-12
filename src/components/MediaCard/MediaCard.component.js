@@ -15,9 +15,9 @@ import { BASE_URL } from '../../api/Variables.api';
 
 const useStyles = makeStyles({
   root: {
-    width: 350,
+    width: (window.screen.width-320)/3,
     // padding:'15px',
-    marginTop: '20px',
+    margin: '20px 20px 20px',
     // height: 160,
     '&:hover':{
       boxShadow: '0 5px 4px #bbb',
@@ -47,7 +47,7 @@ const useStyles = makeStyles({
     minWidth: 230,
     display:'flex',
     alignItems:'center',
-    flexDirection:'column'
+    flexDirection:'column',
     
   },
   link: {
