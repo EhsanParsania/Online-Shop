@@ -1,47 +1,6 @@
-// import React, { Component } from 'react';
-// import { Button } from '@material-ui/core';
-// import Badge from '@material-ui/core/Badge';
-// import { makeStyles } from '@material-ui/core/styles';
-// import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
-// import { connect } from 'react-redux';
-// import { IconButton } from '@material-ui/core';
-
-
-
-// function CartButton(props) {
-//   const useStyles = makeStyles((theme) => ({
-//     root: {
-//       '& > *': {
-//         margin: theme.spacing(1),
-//         color: '#fff'
-//       },
-//     },
-//   }));
-//   const classes = useStyles();
-
-//   return (
-//     <div className={classes.root}>
-//       <IconButton aria-label="cart">
-//         {
-//           props.cartNumber ? <Badge badgeContent={props.cartNumber} color="secondary">  <ShoppingCartIcon />   </Badge> : <ShoppingCartIcon />
-//         }
-//       </IconButton>
-
-//     </div>
-//   );
-// }
-
-// const mapStateToProps = (state) => ({
-//   cartNumber: state.cart.length
-// })
-
-
-
-// export default connect(mapStateToProps)(CartButton)
-
 import React from 'react';
 import Badge from '@material-ui/core/Badge';
-import { withStyles } from '@material-ui/core/styles';
+import { makeStyles, withStyles } from '@material-ui/core/styles';
 import IconButton from '@material-ui/core/IconButton';
 import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
 import { connect } from 'react-redux';
@@ -54,19 +13,30 @@ const StyledBadge = withStyles((theme) => ({
     border: `1px solid ${theme.palette.background.paper}`,
     padding: '0 px',
   },
+
+
 }))(Badge);
 
-const style = {
+const useStyle=makeStyles((theme)=>({
   icon: {
-    margin: '0 30px',
+    margin: '0 10px',
     color: '#fff'
+  },
+  [theme.breakpoints.up('sm')]: {
+    icon: {
+      margin: '0 30px',
+      color: '#fff'
+    },
   }
-}
+}))
+
+
 
 function CartButton(props) {
+  const classes=useStyle()
   return (
     <Link to='/home/cart'>
-      <IconButton aria-label="cart" style={style.icon} >
+      <IconButton aria-label="cart" className={classes.icon} >
         {
           props.cartNumber ? <StyledBadge badgeContent={props.cartNumber} color="secondary">
             <ShoppingCartIcon />

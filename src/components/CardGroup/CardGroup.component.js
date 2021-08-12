@@ -25,7 +25,9 @@ const useStyles = makeStyles((theme) => ({
     paddingBottom: 30,
     flexGrow: 1,
     [theme.breakpoints.up('sm')]: {
-      minWidth: 1230,
+      // minWidth: 1230,
+      minWidth: window.screen.width - 320,
+      margin: 'auto',
       minHeight: 550,
     },
   },
@@ -33,7 +35,7 @@ const useStyles = makeStyles((theme) => ({
     display: 'flex',
     flexDirection: 'column',
     justifyContent: 'space-between',
-    height: 550
+    minHeight: 550
   },
   paginateContainer: {
     paddingTop: 40
