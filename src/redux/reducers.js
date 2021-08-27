@@ -1,4 +1,9 @@
-import { DELETE_QUANTITY_CHANGE_LOG, SET_NEW_QUANTITY, ADD_PRODUCT_TO_CART, DELETE_CART, EDIT_CART, ADD_SUM_PRICE } from "./types";
+import { DELETE_QUANTITY_CHANGE_LOG,
+        SET_NEW_QUANTITY,
+        ADD_PRODUCT_TO_CART,
+        DELETE_CART,
+        EDIT_CART,
+        ADD_SUM_PRICE } from "./types";
 
 const initialState = {
   quantityChange: [],
