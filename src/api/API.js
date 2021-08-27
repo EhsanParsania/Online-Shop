@@ -18,11 +18,8 @@ export function getListIcons() {
 
 
 export function getData(group, pageNumber, rowNumber, isDelivered = '') {
-  // get req example :
-  //  http://localhost:3001/products?_page=2&_limit=3
   return API.get(`/${group}?_page=${pageNumber}&_limit=${rowNumber}${isDelivered}`)
     .then(response => {
-
       return response
     })
     .catch(error => {
